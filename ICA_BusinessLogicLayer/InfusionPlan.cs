@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICA_Model
 {
-    class InfusionPlan
+    public class InfusionPlan
     {
     }
 }

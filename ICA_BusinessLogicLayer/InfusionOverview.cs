@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace ICA_Model
 {
-    class InfusionOverview
+    public class InfusionOverview
     {
+        private readonly InfusionPlan _infusionPlan;
+
+        public async Task<IEnumerable<InfusionPlan>> GetAllInfusionPlans()
+        {
+
+        }
+
+        public async Task CreateInfusionPlan(InfusionPlan infusionPlan)
+        {
+
+        }
     }
 }
