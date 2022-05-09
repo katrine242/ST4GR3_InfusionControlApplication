@@ -4,6 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ICA_BusinessLogicLayer\ICA_Model.csproj" />
+  </ItemGroup>
 
 </Project>

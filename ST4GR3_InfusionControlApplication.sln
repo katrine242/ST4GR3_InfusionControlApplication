@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST4GR3_InfusionControlApplication", "ST4GR3_InfusionControlApplication\ST4GR3_InfusionControlApplication.csproj", "{87B267F4-C660-4928-9922-EEDBD1A8FA98}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D2A12BD9-25B9-46C6-971D-78AC2336EE1D} = {D2A12BD9-25B9-46C6-971D-78AC2336EE1D}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST4GR3_test_ICA", "ST4GR3_test_ICA\ST4GR3_test_ICA.csproj", "{AF96ED36-DCE2-4376-A857-3E3480998E0B}"
 EndProject
@@ -11,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICA_Model", "ICA_BusinessLo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICA_DataAccessLayer", "ICA_DataAccessLayer\ICA_DataAccessLayer.csproj", "{48B8A122-018E-4E1E-92C2-CFEF20542209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICA_DTOs", "ICA_DTOs\ICA_DTOs.csproj", "{A4C5C570-DB2C-4B20-A7F1-4CF50DBAF8C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO_Library", "DTO_Library\DTO_Library.csproj", "{D2A12BD9-25B9-46C6-971D-78AC2336EE1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +38,10 @@ Global
 		{48B8A122-018E-4E1E-92C2-CFEF20542209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48B8A122-018E-4E1E-92C2-CFEF20542209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48B8A122-018E-4E1E-92C2-CFEF20542209}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4C5C570-DB2C-4B20-A7F1-4CF50DBAF8C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4C5C570-DB2C-4B20-A7F1-4CF50DBAF8C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4C5C570-DB2C-4B20-A7F1-4CF50DBAF8C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4C5C570-DB2C-4B20-A7F1-4CF50DBAF8C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A12BD9-25B9-46C6-971D-78AC2336EE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A12BD9-25B9-46C6-971D-78AC2336EE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A12BD9-25B9-46C6-971D-78AC2336EE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A12BD9-25B9-46C6-971D-78AC2336EE1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
