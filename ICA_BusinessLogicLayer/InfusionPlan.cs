@@ -27,7 +27,7 @@ namespace ICA_Model
         {
             
             InfusionData = new DTO_Infusionplan();
-            InfusionData.TimeFlowList = MakeInfusionPlan();
+            InfusionData.TimeFlowList = MakeInfusionPlan(); // sætter intervaller med tilhørende flow
 
         }
 
@@ -61,7 +61,8 @@ namespace ICA_Model
             for (int i = 0; i < listCapacity; i++)
             {
                 time = time + intervaltime; // lægger tid til for hvert interval
-                flow = Weight * accFactor * intervaltime;
+                flow = ((Weight * accFactor * intervaltime)/ intervaltime) / konc; 
+                // flow/konc = ml
 
                 if (accFactor < maxDosis) // sikrer at der ikke gives mere end maxdosis
                 {
@@ -74,7 +75,7 @@ namespace ICA_Model
             }
 
             return myList;
-
+            
         }
     }
 

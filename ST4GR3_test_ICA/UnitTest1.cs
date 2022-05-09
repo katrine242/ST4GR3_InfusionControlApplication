@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace ST4GR3_test_ICA
 {
-   public class Tests
+   public class InfusionPlanUnitTest
    {
       [SetUp]
       public void Setup()
