@@ -4,8 +4,4 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DTO_Library\DTO_Library.csproj" />
-  </ItemGroup>
-
 </Project>
