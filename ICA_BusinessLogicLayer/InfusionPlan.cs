@@ -20,37 +20,29 @@ namespace ICA_Model
         public int MachineID { get; }
 
         private List<List<double>> _timeFlowList;
-        public List<DTO_Infusionplan> InfusionData { get; set; }
+        public DTO_Infusionplan InfusionData { get; set; }
 
 
-        public InfusionPlan(Medicine medicine, string name, int cpr, double weight, int machineId, List<List<double>> timeFlowList)
+        public InfusionPlan()
         {
-            InfusionData = new List<DTO_Infusionplan>();
-            Medicine = medicine;
-            Name = name;
-            CPR = cpr;
-            Weight = weight;
-            MachineID = machineId;
-            MedicineName = Medicine.Name;
-            _timeFlowList = timeFlowList;
+            
+            InfusionData = new DTO_Infusionplan();
+            InfusionData.TimeFlowList = MakeInfusionPlan();
 
         }
 
-        public void SetDTOInfusion()
-        {
-            InfusionData.Add();
-        }
-        public List<List<double>> MakeInfusionPlan() // kan ikke finde ud af tilgå listen hvis void
+        public List<List<double>> MakeInfusionPlan() 
         {
             //sæt vægt i unit test
 
-            timeFlowList = CalculateFlowRate(Medicine);
-            return timeFlowList;
+            _timeFlowList = CalculateFlowRate(Medicine);
 
+            return _timeFlowList;
         }
 
         public List<List<double>> CalculateFlowRate(Medicine m)
         {
+            // disse skal hentes fra dto_infusionplan
             int intervaltime = Medicine.IntervalTime;
             int fulltime = Medicine.Fulltime;
             double factor = Medicine.Factor;
