@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO_Library;
 
 namespace ICA_Model
 {
     public interface IInfusionPlan
     {
         List<List<double>> MakeInfusionPlan();
-        List<List<double>> CalculateFlowRate(Medicine m);
+        List<List<double>> CalculateFlowRate(DTO_Infusionplan dtoInfusionplan);
     }
 }

@@ -41,10 +41,11 @@ namespace ICA_Model
         public List<List<double>> CalculateFlowRate(DTO_Infusionplan m)
         {
             // disse skal hentes fra dto_infusionplan
-            int intervaltime = Medicine.IntervalTime;
-            int fulltime = Medicine.Fulltime;
-            double factor = Medicine.Factor;
-            int maxDosis = Medicine.MaxDosis;
+            int intervaltime = InfusionData.IntervalTime;
+            int fulltime = InfusionData.Fulltime;
+            double factor = InfusionData.Factor;
+            double maxDosis = InfusionData.MaxDoseage;
+            double concentration = InfusionData.Concentration;
 
             double accFactor = factor;
 
@@ -59,7 +60,7 @@ namespace ICA_Model
             for (int i = 0; i < listCapacity; i++)
             {
                 time = time + intervaltime; // lægger tid til for hvert interval
-                flow = ((Weight * accFactor * intervaltime)/ intervaltime) / konc; 
+                flow = ((Weight * accFactor * intervaltime)/ intervaltime) / concentration; 
                 // flow/konc = ml
 
                 if (accFactor < maxDosis) // sikrer at der ikke gives mere end maxdosis

@@ -6,12 +6,12 @@ namespace DTO_Library
 {
     public class DTO_Infusionplan
     {
-       public string MedicineName { get; set; }
+        public string MedicineName { get; set; }
         public string Name { get; set; }
         public int CPR { get; set; }
         public double Weight { get; set; }
         public int MachineID { get; set; }
-        public double Fulltime { get; set; }
+        public int Fulltime { get; set; }
         public double Factor { get; set; } //opgives i mg
         public double MaxDoseage { get; set; }
         public int IntervalTime { get; set; }

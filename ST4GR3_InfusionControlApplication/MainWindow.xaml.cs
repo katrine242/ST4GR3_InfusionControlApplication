@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ICA_Model;
 
 namespace ST4GR3_InfusionControlApplication
 {
@@ -23,6 +24,11 @@ namespace ST4GR3_InfusionControlApplication
       public MainWindow()
       {
          InitializeComponent();
-      }
-   }
+         //Test
+         Medicine medicine = new Medicine("Iloprost", 0.5, 30, 2, 360);
+         InfusionPlan infusionPlan = new InfusionPlan(medicine, "Erik", 0912771825, 80.0, 1234, 30, 1000);
+         infusionPlan.MakeInfusionPlan();
+         //Console.WriteLine(Convert.ToString(infusionPlan.CalculateFlowRate(medicine)));
+        }
+    }
 }
