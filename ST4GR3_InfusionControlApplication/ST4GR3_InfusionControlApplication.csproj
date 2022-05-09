@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DTO_Library\DTO_Library.csproj" />
     <ProjectReference Include="..\ICA_BusinessLogicLayer\ICA_Model.csproj" />
   </ItemGroup>
 

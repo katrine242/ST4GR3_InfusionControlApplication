@@ -10,10 +10,10 @@ namespace ICA_Model
     {
         private readonly InfusionPlan _infusionPlan;
 
-        public async Task<IEnumerable<InfusionPlan>> GetAllInfusionPlans()
-        {
+        //public async Task<IEnumerable<InfusionPlan>> GetAllInfusionPlans()
+        //{
 
-        }
+        //}
 
         public async Task CreateInfusionPlan(InfusionPlan infusionPlan)
         {
