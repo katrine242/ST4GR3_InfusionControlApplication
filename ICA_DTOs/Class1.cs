@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ICA_DataAccessLayer
+namespace ICA_DTOs
 {
     public class Class1
     {

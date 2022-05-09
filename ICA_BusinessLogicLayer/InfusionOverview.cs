@@ -8,16 +8,21 @@ namespace ICA_Model
 {
     public class InfusionOverview
     {
-        private readonly InfusionPlan _infusionPlan;
+        private readonly InfusionPlanBook _infusionPlanBook;
+
+        public InfusionOverview(InfusionPlanBook infusionPlanBook)
+        {
+            _infusionPlanBook = infusionPlanBook;
+        }
 
         public async Task<IEnumerable<InfusionPlan>> GetAllInfusionPlans()
         {
-
+            return await _infusionPlanBook.GetAllInfusionPlans();
         }
 
         public async Task CreateInfusionPlan(InfusionPlan infusionPlan)
         {
-
+            await _infusionPlanBook.AddInfusionPlan(infusionPlan);
         }
     }
 }
