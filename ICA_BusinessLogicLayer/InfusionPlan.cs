@@ -12,7 +12,6 @@ namespace ICA_Model
     {
 
         //Gets Fulltime, Factor, IntervalLength, MaxDosis from Medicine
-        public Medicine Medicine { get; }
         public string MedicineName { get; set; }
         public string Name { get; }
         public int CPR { get; }
@@ -23,11 +22,10 @@ namespace ICA_Model
         public DTO_Infusionplan InfusionData { get; set; }
 
 
-        public InfusionPlan()
+        public InfusionPlan(DTO_Infusionplan dtoInfusionplan)
         {
             
-            InfusionData = new DTO_Infusionplan();
-            InfusionData.TimeFlowList = MakeInfusionPlan(); // sætter intervaller med tilhørende flow
+            InfusionData.TimeFlowList = MakeInfusionPlan();
 
         }
 
@@ -35,12 +33,12 @@ namespace ICA_Model
         {
             //sæt vægt i unit test
 
-            _timeFlowList = CalculateFlowRate(Medicine);
+            _timeFlowList = CalculateFlowRate(InfusionData);
 
             return _timeFlowList;
         }
 
-        public List<List<double>> CalculateFlowRate(Medicine m)
+        public List<List<double>> CalculateFlowRate(DTO_Infusionplan m)
         {
             // disse skal hentes fra dto_infusionplan
             int intervaltime = Medicine.IntervalTime;
