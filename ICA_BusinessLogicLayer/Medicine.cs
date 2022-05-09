@@ -13,19 +13,18 @@ namespace ICA_Model
         public double Factor { get; }
         public int IntervalTime { get; }
         public int Fulltime { get; }
-        public int MaxDosis { get; }
-        public int Concentration { get;  }
+        public double MaxDosis { get; }
+        public double Concentration { get;  }
 
         private DTO_Infusionplan dtoInfusionplan;
-        public Medicine(DTO_Infusionplan dtoInfusionplan)
+        public Medicine(DTO_Infusionplan dtoInfusionplan, Medicine_config config)
         {
-            dtoInfusionplan.MedicineName=Name;
-            dtoInfusionplan.Factor = Factor;
-            dtoInfusionplan.IntervalTime = IntervalTime;
-            dtoInfusionplan.MaxDoseage=MaxDosis;
-            dtoInfusionplan.Fulltime = Fulltime;
-            dtoInfusionplan.Concentration = Concentration;
-
+            dtoInfusionplan.MedicineName=Name=config.Name;
+            dtoInfusionplan.Factor = Factor=config.Factor;
+            dtoInfusionplan.IntervalTime = IntervalTime=config.IntervalTime;
+            dtoInfusionplan.MaxDoseage=MaxDosis=config.MaxDosis;
+            dtoInfusionplan.Fulltime = Fulltime=config.Fulltime;
+            dtoInfusionplan.Concentration = Concentration=config.Concentration;
         }
 
 

@@ -12,7 +12,7 @@ namespace ICA_Model
        public double Factor { get; }
        public int IntervalTime { get; }
        public int Fulltime { get; }
-       public int MaxDosis { get; }
+       public double MaxDosis { get; }
 
 
     }
