@@ -30,9 +30,7 @@ namespace ST4GR3_InfusionControlApplication
 
         }
 
-
-
-      protected override void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
       {
          List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
 
