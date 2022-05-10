@@ -11,11 +11,9 @@ namespace ICA_Model
     public class InfusionPlan : IInfusionPlan
     {
         
-        public DTO_Infusionplan InfusionData { get; set; }
+        public DTO_InfusionPlan InfusionData { get; set; }
        
-
-
-        public InfusionPlan(Medicine medicine, DTO_Infusionplan dtoInfusionplan)
+        public InfusionPlan(Medicine medicine, DTO_InfusionPlan dtoInfusionplan)
         {
             InfusionData = dtoInfusionplan;
             
