@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DTO_Library\DTO_Library.csproj" />
+    <ProjectReference Include="..\ICA_DataAccessLayer\ICA_DataAccessLayer.csproj" />
   </ItemGroup>
 
 </Project>
