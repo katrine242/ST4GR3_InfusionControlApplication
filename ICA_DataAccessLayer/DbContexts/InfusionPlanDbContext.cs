@@ -11,7 +11,6 @@ namespace ICA_DataAccessLayer.DbContexts
     public class InfusionPlanDbContext : DbContext
     {
         public DbSet<DTO_Infusionplan> InfusionPlan { get; set; }
-        public InfusionPlanDbContext() { }
 
         public InfusionPlanDbContext(DbContextOptions options) : base(options) { }
 
