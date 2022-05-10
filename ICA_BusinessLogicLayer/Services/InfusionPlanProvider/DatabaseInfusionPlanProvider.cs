@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ICA_DataAccessLayer.DbContexts;
 using Microsoft.EntityFrameworkCore;
+using ICA_Model;
 
 namespace ICA_Model.Services.InfusionPlanProvider
 {
@@ -28,7 +29,7 @@ namespace ICA_Model.Services.InfusionPlanProvider
 
         private static InfusionPlan ToInfusionPlan(DTO_InfusionPlan i)
         {
-            return new InfusionPlan(i);
+            return new InfusionPlan(new Medicine(i.MedicineName, i.Factor, i.IntervalTime, i.Fulltime, i.MaxDoseage, i.Concentration),i);
         }
     }
 }
