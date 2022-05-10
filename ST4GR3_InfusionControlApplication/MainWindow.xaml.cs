@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DTO_Library;
 using ICA_Model;
 
 namespace ST4GR3_InfusionControlApplication
@@ -24,6 +25,9 @@ namespace ST4GR3_InfusionControlApplication
       public MainWindow()
       {
          InitializeComponent();
+
+         List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
+         
       }
    }
 }
