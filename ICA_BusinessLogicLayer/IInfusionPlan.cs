@@ -9,7 +9,7 @@ namespace ICA_Model
 {
     public interface IInfusionPlan
     {
-        List<List<double>> MakeInfusionPlan();
+        void MakeInfusionPlan();
         List<List<double>> CalculateFlowRate(DTO_Infusionplan dtoInfusionplan);
     }
 }

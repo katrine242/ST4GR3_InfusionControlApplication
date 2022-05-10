@@ -26,18 +26,13 @@ namespace ICA_Model
         public InfusionPlan(DTO_Infusionplan dtoInfusionplan)
         {
             InfusionData = dtoInfusionplan;
-           
-            InfusionData.TimeFlowList = MakeInfusionPlan();
-
+            
         }
 
-        public List<List<double>> MakeInfusionPlan() 
+        public void MakeInfusionPlan() 
         {
-            //sæt vægt i unit test
+            InfusionData.TimeFlowList = CalculateFlowRate(InfusionData);
 
-            _timeFlowList = CalculateFlowRate(InfusionData);
-
-            return _timeFlowList;
         }
 
         
