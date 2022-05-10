@@ -10,15 +10,7 @@ namespace ICA_Model
 {
     public class InfusionPlan : IInfusionPlan
     {
-
-        //Gets Fulltime, Factor, IntervalLength, MaxDosis from Medicine
-        public string MedicineName { get; set; }
-        public string Name { get; }
-        public int CPR { get; }
-        public double Weight { get; set; }
-        public int MachineID { get; }
-
-        private List<List<double>> _timeFlowList;
+        
         public DTO_Infusionplan InfusionData { get; set; }
        
 
