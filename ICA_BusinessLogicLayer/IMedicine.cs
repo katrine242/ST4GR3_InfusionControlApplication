@@ -13,7 +13,7 @@ namespace ICA_Model
        public int IntervalTime { get; }
        public int Fulltime { get; }
        public double MaxDosis { get; }
+       public double Concentration { get; }
 
-
-    }
+   }
 }
