@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace ICA_DataAccessLayer.DbContext
+namespace ICA_DataAccessLayer.DbContexts
 {
-    public class InfusionPlanTimeDbContextFactory
+    public class InfusionPlanDesignTimeDbContextFactory: IDesignTimeDbContextFactory<InfusionPlanDbContext>
     {
         public InfusionPlanDbContext CreateDbContext(string[] args)
         {
-            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite("Data Source=InfusionPlan.db").Options;
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite("Data Source=infusionPlan.db").Options;
 
             return new InfusionPlanDbContext(options);
         }
