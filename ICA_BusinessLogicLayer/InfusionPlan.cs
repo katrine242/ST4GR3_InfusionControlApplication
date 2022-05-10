@@ -20,11 +20,13 @@ namespace ICA_Model
 
         private List<List<double>> _timeFlowList;
         public DTO_Infusionplan InfusionData { get; set; }
+       
 
 
         public InfusionPlan(DTO_Infusionplan dtoInfusionplan)
         {
-            
+            InfusionData = dtoInfusionplan;
+           
             InfusionData.TimeFlowList = MakeInfusionPlan();
 
         }
@@ -38,14 +40,16 @@ namespace ICA_Model
             return _timeFlowList;
         }
 
+        
         public List<List<double>> CalculateFlowRate(DTO_Infusionplan m)
         {
             // disse skal hentes fra dto_infusionplan
-            int intervaltime = InfusionData.IntervalTime;
-            int fulltime = InfusionData.Fulltime;
-            double factor = InfusionData.Factor;
-            double maxDosis = InfusionData.MaxDoseage;
-            double concentration = InfusionData.Concentration;
+            int intervaltime = m.IntervalTime;
+            int fulltime = m.Fulltime;
+            double factor = m.Factor;
+            double maxDosis = m.MaxDoseage;
+            double concentration = m.Concentration;
+            double weight = m.Weight;
 
             double accFactor = factor;
 
@@ -54,13 +58,14 @@ namespace ICA_Model
             // List of lists
             List<List<double>> myList = new List<List<double>>();
 
-            double time = -30;
+            double time = -intervaltime;
             double flow;
 
             for (int i = 0; i < listCapacity; i++)
             {
+                
                 time = time + intervaltime; // lægger tid til for hvert interval
-                flow = ((Weight * accFactor * intervaltime)/ intervaltime) / concentration; 
+                flow = ((weight * accFactor * intervaltime)/ intervaltime) / concentration; 
                 // flow/konc = ml
 
                 if (accFactor < maxDosis) // sikrer at der ikke gives mere end maxdosis
