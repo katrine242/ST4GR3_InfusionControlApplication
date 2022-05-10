@@ -14,6 +14,7 @@ namespace ST4GR3_test_ICA
         //private DTO_Infusionplan _dtoInfusionplan;
         
         private List<List<double>> _actualList;
+      private IMedicine medicine;
         
         
 
@@ -24,7 +25,7 @@ namespace ST4GR3_test_ICA
 
           
           _actualList = new List<List<double>>();
-
+         medicine = Substitute.For<IMedicine>();
       }
 
       [Test]
@@ -33,7 +34,7 @@ namespace ST4GR3_test_ICA
       {
           DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan()
               {Weight = 65, Factor = 1.0, Concentration = 100, Fulltime = 330, IntervalTime = 40, MaxDoseage = 3.0};
-          _uut = new InfusionPlan(dtoInfusionplan);
+          _uut = new InfusionPlan(medicine,dtoInfusionplan);
           _uut.MakeInfusionPlan();
           Assert.That(dtoInfusionplan.TimeFlowList, Is.EqualTo(_uut.CalculateFlowRate(dtoInfusionplan)));
 
@@ -43,7 +44,7 @@ namespace ST4GR3_test_ICA
       {
           
             DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60, Factor = 0.5, Concentration = 50, Fulltime = 180, IntervalTime = 20, MaxDoseage = 2.0};
-            _uut = new InfusionPlan(dtoInfusionplan);
+            _uut = new InfusionPlan(medicine, dtoInfusionplan);
 
             List<List<double>> myList = new List<List<double>>();
           myList.Add(new List<double> {0, 0.6});
@@ -66,7 +67,7 @@ namespace ST4GR3_test_ICA
       {
 
           DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
-          _uut = new InfusionPlan(dtoInfusionplan);
+          _uut = new InfusionPlan(medicine,dtoInfusionplan);
 
           List<List<double>> myList = new List<List<double>>();
           myList.Add(new List<double> { 0, 0.63 });
@@ -88,7 +89,7 @@ namespace ST4GR3_test_ICA
       {
 
           DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 80, Factor = 2.0, Concentration = 200, Fulltime = 300, IntervalTime = 60, MaxDoseage = 6.0 };
-          _uut = new InfusionPlan(dtoInfusionplan);
+          _uut = new InfusionPlan(medicine, dtoInfusionplan);
 
           List<List<double>> myList = new List<List<double>>();
           myList.Add(new List<double> { 0, 0.8 });

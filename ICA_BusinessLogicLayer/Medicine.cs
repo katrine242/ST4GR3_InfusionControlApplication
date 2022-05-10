@@ -16,7 +16,7 @@ namespace ICA_Model
         public double MaxDosis { get; }
         public double Concentration { get;  }
 
-        private DTO_Infusionplan dtoInfusionplan;
+        private DTO_InfusionPlan dtoInfusionplan;
         public Medicine(string name, double factor, int intervaltime, int fulltime, double maxDosis, double concentration)
         {
             Name = name;
