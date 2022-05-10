@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO_Library;
 
-namespace ICA_DataAccessLayer.Services.InfusionPlanCreator
+namespace ICA_Model.Services.InfusionPlanCreator
 {
     public interface IInfusionPlanCreator
     {
+        Task CreateInfusionPlan(InfusionPlan infusionPlan);
     }
 }

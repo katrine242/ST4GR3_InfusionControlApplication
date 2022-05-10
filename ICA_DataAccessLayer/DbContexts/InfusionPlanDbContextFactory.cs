@@ -9,17 +9,17 @@ namespace ICA_DataAccessLayer.DbContexts
 {
     public class InfusionPlanDbContextFactory
     {
-        //private readonly string _connectingString;
+        private readonly string _connectingString;
 
-        //public InfusionPlanDbContextFactory(string connectingString)
-        //{
-        //    _connectingString = connectingString;
-        //}
-        //public InfusionPlanDbContext CreateDbContext()
-        //{
-        //    DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(_connectingString).Options;
+        public InfusionPlanDbContextFactory(string connectingString)
+        {
+            _connectingString = connectingString;
+        }
+        public InfusionPlanDbContext CreateDbContext()
+        {
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(_connectingString).Options;
 
-        //    return new InfusionPlanDbContext(options);
-        //}
+            return new InfusionPlanDbContext(options);
+        }
     }
 }

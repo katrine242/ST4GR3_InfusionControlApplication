@@ -29,7 +29,7 @@ namespace ST4GR3_InfusionControlApplication
       {
          InitializeComponent();
 
-         DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan() { Weight = 60, Factor = 0.5, Concentration = 50, Fulltime = 180, IntervalTime = 20, MaxDoseage = 2.0 };
+         DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60, Factor = 0.5, Concentration = 50, Fulltime = 180, IntervalTime = 20, MaxDoseage = 2.0 };
          _uut = new InfusionPlan(dtoInfusionplan);
 
          List<List<double>> myList = new List<List<double>>();

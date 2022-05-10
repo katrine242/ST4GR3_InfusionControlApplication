@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using ST4GR3_InfusionControlApplication.Stores;
 using ICA_Model;
+using ICA_Model.Services.InfusionPlanCreator;
+using ICA_Model.Services.InfusionPlanProvider;
 
 namespace ST4GR3_InfusionControlApplication
 {
@@ -15,7 +17,19 @@ namespace ST4GR3_InfusionControlApplication
    /// </summary>
    public partial class App : Application
    {
+        private readonly InfusionOverview _infusionOverview;
+        private readonly InfusionPlanBook _infusionPlanBook;
         private readonly NavigationStore _navigationStore;
+        private readonly IInfusionPlanCreator _infusionPlanCreator;
+        private readonly IInfusionPlanProvider infusionPlanProvider;
+        private const string CONNECTION_STRING = "Data Source=infusionPlan.db";
+
+        public App()
+        {
+            
+
+        }
+
 
 
       protected override void OnStartup(StartupEventArgs e)

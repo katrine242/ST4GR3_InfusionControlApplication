@@ -16,12 +16,12 @@ namespace ICA_Model
             _infusionPlanBook = infusionPlanBook;
         }
 
-        public async Task<IEnumerable<DTO_Infusionplan>> GetAllInfusionPlans()
+        public async Task<IEnumerable<InfusionPlan>> GetAllInfusionPlans()
         {
             return await _infusionPlanBook.GetAllInfusionPlans();
         }
 
-        public async Task CreateInfusionPlan(DTO_Infusionplan infusionPlan)
+        public async Task CreateInfusionPlan(InfusionPlan infusionPlan)
         {
             await _infusionPlanBook.AddInfusionPlan(infusionPlan);
         }

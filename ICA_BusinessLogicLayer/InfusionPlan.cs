@@ -28,7 +28,7 @@ namespace ICA_Model
         }
 
         
-        public List<List<double>> CalculateFlowRate(DTO_Infusionplan m)
+        public List<List<double>> CalculateFlowRate(DTO_InfusionPlan m)
         {
             // disse skal hentes fra dto_infusionplan
             int intervaltime = m.IntervalTime;
