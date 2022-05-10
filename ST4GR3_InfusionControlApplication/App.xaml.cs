@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using ST4GR3_InfusionControlApplication.Stores;
+using ICA_Model;
 
 namespace ST4GR3_InfusionControlApplication
 {
@@ -17,7 +18,13 @@ namespace ST4GR3_InfusionControlApplication
         private readonly NavigationStore _navigationStore;
 
 
+      protected override void OnStartup(StartupEventArgs e)
+      {
+         List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
 
 
-    }
+         base.OnStartup(e);
+      }
+
+   }
 }

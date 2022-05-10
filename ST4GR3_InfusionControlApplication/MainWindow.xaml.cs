@@ -47,7 +47,6 @@ namespace ST4GR3_InfusionControlApplication
 
         }
 
-         List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
          
       }
    }
