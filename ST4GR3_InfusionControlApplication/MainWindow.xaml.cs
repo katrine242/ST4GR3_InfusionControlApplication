@@ -46,5 +46,9 @@ namespace ST4GR3_InfusionControlApplication
          _actualList = _uut.CalculateFlowRate(dtoInfusionplan);
 
         }
+
+         List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
+         
+      }
    }
 }
