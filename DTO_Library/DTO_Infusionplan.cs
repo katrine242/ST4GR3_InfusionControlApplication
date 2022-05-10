@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace DTO_Library
 {
-    public class DTO_Infusionplan
+    public class DTO_InfusionPlan
     {
+        [Key] //En key attribut
         public string MedicineName { get; set; }
         public string Name { get; set; }
         public int CPR { get; set; }

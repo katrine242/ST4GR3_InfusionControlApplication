@@ -31,7 +31,7 @@ namespace ST4GR3_test_ICA
 
       public void DtoPropertyTimeFlowListIsSetTest()
       {
-          DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan()
+          DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan()
               {Weight = 65, Factor = 1.0, Concentration = 100, Fulltime = 330, IntervalTime = 40, MaxDoseage = 3.0};
           _uut = new InfusionPlan(dtoInfusionplan);
           _uut.MakeInfusionPlan();
@@ -42,7 +42,7 @@ namespace ST4GR3_test_ICA
       public void MedicineListOfListCheckTest1()
       {
           
-            DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan() { Weight = 60, Factor = 0.5, Concentration = 50, Fulltime = 180, IntervalTime = 20, MaxDoseage = 2.0};
+            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60, Factor = 0.5, Concentration = 50, Fulltime = 180, IntervalTime = 20, MaxDoseage = 2.0};
             _uut = new InfusionPlan(dtoInfusionplan);
 
             List<List<double>> myList = new List<List<double>>();
@@ -65,7 +65,7 @@ namespace ST4GR3_test_ICA
       public void MedicineListOfListCheckTest2()
       {
 
-          DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
+          DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
           _uut = new InfusionPlan(dtoInfusionplan);
 
           List<List<double>> myList = new List<List<double>>();
@@ -87,7 +87,7 @@ namespace ST4GR3_test_ICA
       public void MedicineListOfListCheckTest3()
       {
 
-          DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan() { Weight = 80, Factor = 2.0, Concentration = 200, Fulltime = 300, IntervalTime = 60, MaxDoseage = 6.0 };
+          DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 80, Factor = 2.0, Concentration = 200, Fulltime = 300, IntervalTime = 60, MaxDoseage = 6.0 };
           _uut = new InfusionPlan(dtoInfusionplan);
 
           List<List<double>> myList = new List<List<double>>();

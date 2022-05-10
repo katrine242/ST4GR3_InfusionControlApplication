@@ -16,8 +16,8 @@ namespace ICA_Model
         public double MaxDosis { get; }
         public double Concentration { get;  }
 
-        private DTO_Infusionplan dtoInfusionplan;
-        public Medicine(DTO_Infusionplan dtoInfusionplan, Medicine_config config)
+        private DTO_InfusionPlan dtoInfusionplan;
+        public Medicine(DTO_InfusionPlan dtoInfusionplan, Medicine_config config)
         {
             dtoInfusionplan.MedicineName=Name=config.Name;
             dtoInfusionplan.Factor = Factor=config.Factor;

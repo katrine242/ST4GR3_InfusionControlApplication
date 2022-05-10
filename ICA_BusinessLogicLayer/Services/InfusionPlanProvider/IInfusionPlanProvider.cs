@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO_Library;
 
-namespace ICA_DataAccessLayer.Services.InfusionPlanProvider
+namespace ICA_Model.Services.InfusionPlanProvider
 {
     public interface IInfusionPlanProvider
     {
-        Task<IEnumerable<DTO_Infusionplan>> GetAllInfusionPlans();
+        Task<IEnumerable<InfusionPlan>> GetAllInfusionPlans();
     }
 }
