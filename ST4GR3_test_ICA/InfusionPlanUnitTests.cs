@@ -11,28 +11,39 @@ namespace ST4GR3_test_ICA
     public class InfusionPlanUnitTest
     {
         private InfusionPlan _uut;
-        private DTO_Infusionplan _dtoInfusionplan;
+        //private DTO_Infusionplan _dtoInfusionplan;
         
         private List<List<double>> _actualList;
+        
+        
 
-       [SetUp]
+        [SetUp]
       public void Setup()
       {
-          _dtoInfusionplan = Substitute.For<DTO_Infusionplan>();
-          _uut = new InfusionPlan(_dtoInfusionplan);
+          //_dtoInfusionplan = Substitute.For<DTO_Infusionplan>();
+
+          
           _actualList = new List<List<double>>();
 
       }
 
       [Test]
-      public void Medicine1ListOfListCheck()
+
+      public void DtoPropertyTimeFlowListIsSetTest()
       {
-          _dtoInfusionplan.Weight = 60;
-          _dtoInfusionplan.Factor = 0.5;
-          _dtoInfusionplan.Concentration = 50;
-          _dtoInfusionplan.Fulltime = 180;
-          _dtoInfusionplan.IntervalTime = 20;
-          _dtoInfusionplan.MaxDoseage = 2.0;
+          DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan()
+              {Weight = 65, Factor = 1.0, Concentration = 100, Fulltime = 330, IntervalTime = 40, MaxDoseage = 3.0};
+          _uut = new InfusionPlan(dtoInfusionplan);
+          _uut.MakeInfusionPlan();
+          Assert.That(dtoInfusionplan.TimeFlowList, Is.EqualTo(_uut.CalculateFlowRate(dtoInfusionplan)));
+
+      }
+        [Test]
+      public void MedicineListOfListCheckTest1()
+      {
+          
+            DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan() { Weight = 60, Factor = 0.5, Concentration = 50, Fulltime = 180, IntervalTime = 20, MaxDoseage = 2.0};
+            _uut = new InfusionPlan(dtoInfusionplan);
 
             List<List<double>> myList = new List<List<double>>();
           myList.Add(new List<double> {0, 0.6});
@@ -45,9 +56,51 @@ namespace ST4GR3_test_ICA
           myList.Add(new List<double> { 140, 2.4 });
           myList.Add(new List<double> { 160, 2.4 });
           
-           _actualList = _uut.CalculateFlowRate(_dtoInfusionplan);
+           _actualList = _uut.CalculateFlowRate(dtoInfusionplan);
           CollectionAssert.AreEqual(myList, _actualList);
           
+      }
+
+      [Test]
+      public void MedicineListOfListCheckTest2()
+      {
+
+          DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
+          _uut = new InfusionPlan(dtoInfusionplan);
+
+          List<List<double>> myList = new List<List<double>>();
+          myList.Add(new List<double> { 0, 0.63 });
+          myList.Add(new List<double> { 30, 1.26 });
+          myList.Add(new List<double> { 60, 1.89 });
+          myList.Add(new List<double> { 90, 2.52 });
+          myList.Add(new List<double> { 120, 2.52 });
+          myList.Add(new List<double> { 150, 2.52 });
+          myList.Add(new List<double> { 180, 2.52 });
+          myList.Add(new List<double> { 210, 2.52 });
+
+          _actualList = _uut.CalculateFlowRate(dtoInfusionplan);
+          CollectionAssert.AreEqual(myList, _actualList);
+
+      }
+
+      [Test]
+      public void MedicineListOfListCheckTest3()
+      {
+
+          DTO_Infusionplan dtoInfusionplan = new DTO_Infusionplan() { Weight = 80, Factor = 2.0, Concentration = 200, Fulltime = 300, IntervalTime = 60, MaxDoseage = 6.0 };
+          _uut = new InfusionPlan(dtoInfusionplan);
+
+          List<List<double>> myList = new List<List<double>>();
+          myList.Add(new List<double> { 0, 0.8 });
+          myList.Add(new List<double> { 60, 1.6 });
+          myList.Add(new List<double> { 120, 2.4 });
+          myList.Add(new List<double> { 180, 2.4 });
+          myList.Add(new List<double> { 240, 2.4 });
+         
+
+          _actualList = _uut.CalculateFlowRate(dtoInfusionplan);
+          CollectionAssert.AreEqual(myList, _actualList);
+
       }
     }
 }
