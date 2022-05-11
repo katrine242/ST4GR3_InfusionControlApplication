@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:ST4GR3_InfusionControlApplication"
         xmlns:views="clr-namespace:ST4GR3_InfusionControlApplication.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <views:CreateInfusionView/>
+        Title="MainWindow" Height="550" Width="1000" Background="#D9D9D9">
+    <Grid  Margin="20 20 20 20" MaxWidth="800"  >
+        <views:InfusionPlanView/>
     </Grid>
 </Window>
