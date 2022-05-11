@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ST4GR3_InfusionControlApplication.Views
 {
    /// <summary>
-   /// Interaction logic for MenuWindowView.xaml
+   /// Interaction logic for InfusionPlanView.xaml
    /// </summary>
-   public partial class MenuWindowView : UserControl
+   public partial class InfusionPlanView : UserControl
    {
-      public MenuWindowView()
+      public InfusionPlanView()
       {
          InitializeComponent();
       }
