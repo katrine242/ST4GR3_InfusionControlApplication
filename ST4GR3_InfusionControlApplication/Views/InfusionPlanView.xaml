@@ -21,7 +21,7 @@
         <Grid Margin="10 50 30 10">
             <TextBlock Text="Patient:" FontWeight="Bold" FontSize="18"></TextBlock>
             <TextBlock Grid.Row="0" Text="Hans Hansen" TextAlignment="Right" FontSize="18" Margin="110 0 470 0" Background="White" />
-            <Button Content="Back" Margin="600 0 0 0" Background="LightPink" ></Button>
+            <Button Content="Back" Margin="600,0,-23,-11" Background="LightPink" ></Button>
         </Grid>
 
         <Grid Grid.Row="1" Margin="10 0 350 10">
