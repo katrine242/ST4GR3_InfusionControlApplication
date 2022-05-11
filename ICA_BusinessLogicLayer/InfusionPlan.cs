@@ -24,12 +24,15 @@ namespace ICA_BusinessLogicLayer
 
         public void MakeInfusionPlan() 
         {
-            InfusionData.TimeFlowLists = CalculateFlowRate(InfusionData);
+            //InfusionData.TimeFlowLists = CalculateFlowRate(InfusionData);
+            InfusionData.DtoTimeflow = CalculateFlowRate(InfusionData);
 
         }
 
         
-        public List<DTO_TimeFlowList> CalculateFlowRate(DTO_InfusionPlan m)
+
+
+        public DTO_TimeFlow CalculateFlowRate(DTO_InfusionPlan m)
         {
          // disse skal hentes fra dto_infusionplan
          //int intervaltime = m.IntervalTime;
@@ -52,6 +55,7 @@ namespace ICA_BusinessLogicLayer
 
             // List of lists
             List<DTO_TimeFlowList> myList = new List<DTO_TimeFlowList>();
+            DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
 
             double time = -intervaltime;
             double flow;
@@ -65,23 +69,29 @@ namespace ICA_BusinessLogicLayer
 
                 if (accFactor < maxDosis) // sikrer at der ikke gives mere end maxdosis
                 {
-                    DTO_TimeFlowList dto = new DTO_TimeFlowList();
-                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
-                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
-                    myList.Add(dto); // dosis pr. interval
+                    //DTO_TimeFlowList dto = new DTO_TimeFlowList();
+                    //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
+                    //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
+                    //myList.Add(dto); // dosis pr. interval
+                    dtoTimeFlow.Time.Add(time);
+                    dtoTimeFlow.Flow.Add(flow);
+
                     accFactor = accFactor + factor; // adderer faktor for hvert interval
                 }
                 else
                 {
-                    DTO_TimeFlowList dto = new DTO_TimeFlowList();
-                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
-                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
-                    myList.Add(dto);
+                    dtoTimeFlow.Time.Add(time);
+                    dtoTimeFlow.Flow.Add(flow);
+                    //DTO_TimeFlowList dto = new DTO_TimeFlowList();
+                    //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
+                    //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
+                    //myList.Add(dto);
+
                 }
             }
 
-            return myList;
-            
+            return dtoTimeFlow;
+
         }
     }
 
