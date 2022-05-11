@@ -15,8 +15,7 @@ namespace ICA_BusinessLogicLayer
         public int Fulltime { get; }
         public double MaxDosis { get; }
         public double Concentration { get;  }
-
-        private DTO_InfusionPlan dtoInfusionplan;
+      
         public Medicine(string name, double factor, int intervaltime, int fulltime, double maxDosis, double concentration)
         {
             Name = name;
@@ -24,13 +23,6 @@ namespace ICA_BusinessLogicLayer
             IntervalTime = intervaltime;
             MaxDosis = maxDosis;
             Concentration = concentration;
-
-            //dtoInfusionplan.MedicineName=Name=config.Name;
-            //dtoInfusionplan.Factor = Factor=config.Factor;
-            //dtoInfusionplan.IntervalTime = IntervalTime=config.IntervalTime;
-            //dtoInfusionplan.MaxDoseage=MaxDosis=config.MaxDosis;
-            //dtoInfusionplan.Fulltime = Fulltime=config.Fulltime;
-            //dtoInfusionplan.Concentration = Concentration=config.Concentration;
         }
 
       public override string ToString()

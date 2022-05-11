@@ -12,11 +12,14 @@ namespace ICA_BusinessLogicLayer
     {
         
         public DTO_InfusionPlan InfusionData { get; set; }
-       
+        public IMedicine Medicine { get; }
+        
         public InfusionPlan(IMedicine medicine, DTO_InfusionPlan dtoInfusionplan)
         {
             InfusionData = dtoInfusionplan;
-            
+            Medicine = medicine;
+            dtoInfusionplan.MedicineName = medicine.Name;
+             
         }
 
         public void MakeInfusionPlan() 
@@ -28,15 +31,22 @@ namespace ICA_BusinessLogicLayer
         
         public List<DTO_TimeFlowList> CalculateFlowRate(DTO_InfusionPlan m)
         {
-            // disse skal hentes fra dto_infusionplan
-            int intervaltime = m.IntervalTime;
-            int fulltime = m.Fulltime;
-            double factor = m.Factor;
-            double maxDosis = m.MaxDoseage;
-            double concentration = m.Concentration;
-            double weight = m.Weight;
+         // disse skal hentes fra dto_infusionplan
+         //int intervaltime = m.IntervalTime;
+         //int fulltime = m.Fulltime;
+         //double factor = m.Factor;
+         //double maxDosis = m.MaxDoseage;
+         //double concentration = m.Concentration;
+         //double weight = m.Weight;
 
-            double accFactor = factor;
+         int intervaltime = Medicine.IntervalTime;
+         int fulltime = Medicine.Fulltime;
+         double factor = Medicine.Factor;
+         double maxDosis = Medicine.MaxDosis;
+         double concentration = Medicine.Concentration;
+         double weight = m.Weight;
+
+         double accFactor = factor;
 
             int listCapacity = fulltime / intervaltime;
 
