@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ICA_BusinessLogicLayer\ICA_Model.csproj" />
+    <ProjectReference Include="..\ICA_BusinessLogicLayer\ICA_BusinessLogicLayer.csproj" />
   </ItemGroup>
 
 </Project>

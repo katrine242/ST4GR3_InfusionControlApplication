@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO_Library;
-using ICA_Model.Services.InfusionPlanProvider;
-using ICA_Model.Services.InfusionPlanCreator;
+using ICA_BusinessLogicLayer.Services.InfusionPlanCreator;
+using ICA_BusinessLogicLayer.Services.InfusionPlanProvider;
 
-namespace ICA_Model
+namespace ICA_BusinessLogicLayer
 {
     public class InfusionPlanBook
     {

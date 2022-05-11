@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DTO_Library
 {
     public class DTO_InfusionPlan
     {
-        [Key] //En key attribut
+        public long CPR { get; set; }
         public string MedicineName { get; set; }
-        public int CPR { get; set; }
         public double Weight { get; set; }
         public int MachineID { get; set; }
         public int Fulltime { get; set; }
@@ -18,7 +18,7 @@ namespace DTO_Library
         public int IntervalTime { get; set; }
         public double Concentration { get; set; } //opgives i mg/ml
 
-   
-      public List<List<double>> TimeFlowList { get; set; }
+        public List<DTO_TimeFlowList>? TimeFlowLists { get; set; }
+        //public List<List<double>> TimeFlowList { get; set; }
     }
 }

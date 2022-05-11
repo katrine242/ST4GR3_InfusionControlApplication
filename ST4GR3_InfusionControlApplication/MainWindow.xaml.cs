@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DTO_Library;
-using ICA_Model;
+using ICA_BusinessLogicLayer;
 
 namespace ST4GR3_InfusionControlApplication
 {
