@@ -6,7 +6,7 @@
     <Application.Resources>
         <Style TargetType="Button">
             <Setter Property="Padding" Value="10 5"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontWeight" Value="Bold" />
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Padding" Value="2"/>
