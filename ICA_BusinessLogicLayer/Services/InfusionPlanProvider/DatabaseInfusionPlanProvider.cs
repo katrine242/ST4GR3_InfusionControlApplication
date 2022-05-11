@@ -6,15 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using ICA_DataAccessLayer.DbContexts;
 using Microsoft.EntityFrameworkCore;
+using ICA_BusinessLogicLayer;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace ICA_Model.Services.InfusionPlanProvider
+namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
 {
     public class DatabaseInfusionPlanProvider : IInfusionPlanProvider
     {
         private readonly InfusionPlanDbContextFactory _dbContextFactory;
-        public DatabaseInfusionPlanProvider(InfusionPlanDbContextFactory DbContextFactory)
+        public DatabaseInfusionPlanProvider(string connectionString)
         {
-            _dbContextFactory = DbContextFactory;
+            _dbContextFactory = new InfusionPlanDbContextFactory(connectionString);
         }
 
         public async Task<IEnumerable<InfusionPlan>> GetAllInfusionPlans()
@@ -28,7 +30,7 @@ namespace ICA_Model.Services.InfusionPlanProvider
 
         private static InfusionPlan ToInfusionPlan(DTO_InfusionPlan i)
         {
-            return new InfusionPlan(i);
+            return new InfusionPlan(new Medicine(i.MedicineName, i.Factor, i.IntervalTime, i.Fulltime, i.MaxDoseage, i.Concentration),i);
         }
     }
 }

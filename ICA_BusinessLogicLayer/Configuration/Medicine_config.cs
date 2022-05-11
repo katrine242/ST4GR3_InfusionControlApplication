@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ICA_Model
+namespace ICA_BusinessLogicLayer
 {
    public class Medicine_config
    {

@@ -6,42 +6,52 @@ using System.Threading.Tasks;
 using DTO_Library;
 
 
-namespace ICA_Model
+namespace ICA_BusinessLogicLayer
 {
     public class InfusionPlan : IInfusionPlan
     {
         
         public DTO_InfusionPlan InfusionData { get; set; }
-       
+        public IMedicine Medicine { get; }
+        
         public InfusionPlan(IMedicine medicine, DTO_InfusionPlan dtoInfusionplan)
         {
             InfusionData = dtoInfusionplan;
-            
+            Medicine = medicine;
+            dtoInfusionplan.MedicineName = medicine.Name;
+             
         }
 
         public void MakeInfusionPlan() 
         {
-            InfusionData.TimeFlowList = CalculateFlowRate(InfusionData);
+            InfusionData.TimeFlowLists = CalculateFlowRate(InfusionData);
 
         }
 
         
-        public List<List<double>> CalculateFlowRate(DTO_InfusionPlan m)
+        public List<DTO_TimeFlowList> CalculateFlowRate(DTO_InfusionPlan m)
         {
-            // disse skal hentes fra dto_infusionplan
-            int intervaltime = m.IntervalTime;
-            int fulltime = m.Fulltime;
-            double factor = m.Factor;
-            double maxDosis = m.MaxDoseage;
-            double concentration = m.Concentration;
-            double weight = m.Weight;
+         // disse skal hentes fra dto_infusionplan
+         //int intervaltime = m.IntervalTime;
+         //int fulltime = m.Fulltime;
+         //double factor = m.Factor;
+         //double maxDosis = m.MaxDoseage;
+         //double concentration = m.Concentration;
+         //double weight = m.Weight;
 
-            double accFactor = factor;
+         int intervaltime = Medicine.IntervalTime;
+         int fulltime = Medicine.Fulltime;
+         double factor = Medicine.Factor;
+         double maxDosis = Medicine.MaxDosis;
+         double concentration = Medicine.Concentration;
+         double weight = m.Weight;
+
+         double accFactor = factor;
 
             int listCapacity = fulltime / intervaltime;
 
             // List of lists
-            List<List<double>> myList = new List<List<double>>();
+            List<DTO_TimeFlowList> myList = new List<DTO_TimeFlowList>();
 
             double time = -intervaltime;
             double flow;
@@ -55,12 +65,19 @@ namespace ICA_Model
 
                 if (accFactor < maxDosis) // sikrer at der ikke gives mere end maxdosis
                 {
-                    myList.Add(new List<double> { time, flow }); // dosis pr. interval
+                    DTO_TimeFlowList dto = new DTO_TimeFlowList();
+                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
+                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
+                    myList.Add(dto); // dosis pr. interval
                     accFactor = accFactor + factor; // adderer faktor for hvert interval
-
                 }
                 else
-                    myList.Add(new List<double> { time, flow });
+                {
+                    DTO_TimeFlowList dto = new DTO_TimeFlowList();
+                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
+                    dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
+                    myList.Add(dto);
+                }
             }
 
             return myList;

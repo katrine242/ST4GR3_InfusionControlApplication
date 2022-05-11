@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ICA_Model
+namespace ICA_BusinessLogicLayer
 {
     public interface IMedicine
     {
@@ -13,7 +13,7 @@ namespace ICA_Model
        public int IntervalTime { get; }
        public int Fulltime { get; }
        public double MaxDosis { get; }
+       public double Concentration { get; }
 
-
-    }
+   }
 }

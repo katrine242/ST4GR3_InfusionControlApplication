@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DTO_Library;
 
-namespace ICA_Model
+namespace ICA_BusinessLogicLayer
 {
    public class ConfigurationSerialization
    {

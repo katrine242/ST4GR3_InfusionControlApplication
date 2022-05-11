@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace ICA_Model.Services.InfusionPlanCreator
+namespace ICA_BusinessLogicLayer.Services.InfusionPlanCreator
 {
     public class DatabaseInfusionPlanCreator : IInfusionPlanCreator
     {
         private readonly InfusionPlanDbContextFactory _dbContextFactory;
         
-        public DatabaseInfusionPlanCreator(InfusionPlanDbContextFactory dbContextFactory)
+        public DatabaseInfusionPlanCreator(string connectionString)
         {
-            _dbContextFactory = dbContextFactory;
+            _dbContextFactory = new InfusionPlanDbContextFactory(connectionString);
+
         }
 
         public async Task CreateInfusionPlan(InfusionPlan infusionPlan)
@@ -31,6 +34,14 @@ namespace ICA_Model.Services.InfusionPlanCreator
         private DTO_InfusionPlan ToInfusionPlanDTO(InfusionPlan infusionPlan)
         {
             return infusionPlan.InfusionData;
+        }
+
+        public void MigrateToDataBase()
+        {
+            using (InfusionPlanDbContext dbContext = _dbContextFactory.CreateDbContext())
+            {
+                dbContext.Database.Migrate();
+            }
         }
     }
 }

@@ -12,26 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DTO_Library;
-using ICA_BusinessLogicLayer;
 
-namespace ST4GR3_InfusionControlApplication
+namespace ST4GR3_InfusionControlApplication.Views
 {
    /// <summary>
-   /// Interaction logic for MainWindow.xaml
+   /// Interaction logic for InfusionPlanView.xaml
    /// </summary>
-   public partial class MainWindow : Window
+   public partial class InfusionPlanView : UserControl
    {
-       private readonly InfusionPlan _uut;
-       private readonly List<List<double>> _actualList;
-
-       public MainWindow()
+      public InfusionPlanView()
       {
          InitializeComponent();
-
-        
-
-         
       }
    }
 }
