@@ -10,11 +10,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST4GR3_InfusionControlAppli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST4GR3_test_ICA", "ST4GR3_test_ICA\ST4GR3_test_ICA.csproj", "{AF96ED36-DCE2-4376-A857-3E3480998E0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICA_Model", "ICA_BusinessLogicLayer\ICA_Model.csproj", "{624054C0-66B6-482D-9E32-4BB8C637A612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICA_BusinessLogicLayer", "ICA_BusinessLogicLayer\ICA_BusinessLogicLayer.csproj", "{624054C0-66B6-482D-9E32-4BB8C637A612}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICA_DataAccessLayer", "ICA_DataAccessLayer\ICA_DataAccessLayer.csproj", "{48B8A122-018E-4E1E-92C2-CFEF20542209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO_Library", "DTO_Library\DTO_Library.csproj", "{D2A12BD9-25B9-46C6-971D-78AC2336EE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO_Library", "DTO_Library\DTO_Library.csproj", "{D2A12BD9-25B9-46C6-971D-78AC2336EE1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

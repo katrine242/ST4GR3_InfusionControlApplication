@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO_Library;
 
-namespace ICA_Model
+namespace ICA_BusinessLogicLayer
 {
    public class NestedConfiguration
    {
