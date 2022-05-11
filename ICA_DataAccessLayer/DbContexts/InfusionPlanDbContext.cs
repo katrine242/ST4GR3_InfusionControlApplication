@@ -14,13 +14,21 @@ namespace ICA_DataAccessLayer.DbContexts
         public DbSet<DTO_TimeFlowList> TimeFlowLists { get; set; }
 
         public DbSet<DTO_TimeFlowListItem> TimeFlowListItems { get; set; }
+        public InfusionPlanDbContext()
+        {
+
+        }
 
         public InfusionPlanDbContext(DbContextOptions options) : base(options)
         {
         }
 
-        public InfusionPlanDbContext()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("Data Source=infusionPlan.db");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) //Her siger jeg hvad de forskellige DTOs primary key er og nedenunder hvad deres forerign key er. 
