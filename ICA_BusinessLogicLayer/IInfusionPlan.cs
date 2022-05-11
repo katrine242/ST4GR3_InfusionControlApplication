@@ -10,6 +10,6 @@ namespace ICA_BusinessLogicLayer
     public interface IInfusionPlan
     {
         void MakeInfusionPlan();
-        DTO_TimeFlow CalculateFlowRate(DTO_InfusionPlan dtoInfusionplan);
+        List<DTO_TimeFlow> CalculateFlowRate(DTO_InfusionPlan dtoInfusionplan);
     }
 }

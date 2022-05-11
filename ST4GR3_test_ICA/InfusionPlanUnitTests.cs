@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Castle.Core.Internal;
 using ICA_BusinessLogicLayer;
 using NUnit.Framework;
 using NSubstitute;
@@ -14,7 +15,7 @@ namespace ST4GR3_test_ICA
         //private DTO_Infusionplan _dtoInfusionplan;
 
         //private List<List<double>> _actualList; --- Rettet af Nadia grundet ny DTO
-        private List<DTO_TimeFlowList> _actualList;
+        private List<DTO_TimeFlow> _actualList;
         private IMedicine medicine;
 
 
@@ -26,7 +27,7 @@ namespace ST4GR3_test_ICA
 
 
             //_actualList = new List<List<double>>(); --- Rettet af Nadia grundet ny DTO
-            _actualList = new List<DTO_TimeFlowList>();
+            _actualList = new List<DTO_TimeFlow>();
             medicine = Substitute.For<IMedicine>();
         }
 
@@ -51,36 +52,24 @@ namespace ST4GR3_test_ICA
             medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
             _uut = new InfusionPlan(medicine, dtoInfusionplan);
 
-            DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
-            DTO_TimeFlow _actualTimeFlow = new DTO_TimeFlow();
+            //DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
+            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
+            List<DTO_TimeFlow> actualTimeFlowList;
             //List<List<double>> myList = new List<List<double>>();
-            dtoTimeFlow.Time.Add(0);
-            dtoTimeFlow.Time.Add(20);
-            dtoTimeFlow.Time.Add(40);
-            dtoTimeFlow.Time.Add(60);
-            dtoTimeFlow.Time.Add(80);
-            dtoTimeFlow.Time.Add(100);
-            dtoTimeFlow.Time.Add(120);
-            dtoTimeFlow.Time.Add(140);
-            dtoTimeFlow.Time.Add(160);
 
-            dtoTimeFlow.Flow.Add(0.6);
-            dtoTimeFlow.Flow.Add(1.2);
-            dtoTimeFlow.Flow.Add(1.8);
-            dtoTimeFlow.Flow.Add(2.4);
-            //myList.Add(new List<double> { 0, 0.6 });
-            //myList.Add(new List<double> { 20, 1.2 });
-            //myList.Add(new List<double> { 40, 1.8 });
-            //myList.Add(new List<double> { 60, 2.4 });
-            //myList.Add(new List<double> { 80, 2.4 });
-            //myList.Add(new List<double> { 100, 2.4 });
-            //myList.Add(new List<double> { 120, 2.4 });
-            //myList.Add(new List<double> { 140, 2.4 });
-            //myList.Add(new List<double> { 160, 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow {Time = 0, Flow = 0.6});
+            timeFlowList.Add(new DTO_TimeFlow { Time = 20, Flow = 1.2 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 40, Flow = 1.8 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 60, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 80, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 100, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 140, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
+            
+            actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
 
-             _uut.CalculateFlowRate(dtoInfusionplan);
-            //CollectionAssert.AreEqual(dtoTimeFlow, _actualList);
-            Assert.AreEqual(dtoTimeFlow, _actualTimeFlow);
+            Assert.AreEqual(timeFlowList, actualTimeFlowList);
 
 
         }

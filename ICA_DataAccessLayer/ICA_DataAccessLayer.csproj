@@ -21,8 +21,4 @@
     <ProjectReference Include="..\DTO_Library\DTO_Library.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="TCP\" />
-  </ItemGroup>
-
 </Project>

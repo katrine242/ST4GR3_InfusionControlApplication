@@ -24,15 +24,14 @@ namespace ICA_BusinessLogicLayer
 
         public void MakeInfusionPlan() 
         {
-            //InfusionData.TimeFlowLists = CalculateFlowRate(InfusionData);
-            InfusionData.DtoTimeflow = CalculateFlowRate(InfusionData);
+            InfusionData.DtoTimeFlowList = CalculateFlowRate(InfusionData);
 
         }
 
         
 
 
-        public DTO_TimeFlow CalculateFlowRate(DTO_InfusionPlan m)
+        public List<DTO_TimeFlow> CalculateFlowRate(DTO_InfusionPlan m)
         {
          // disse skal hentes fra dto_infusionplan
          //int intervaltime = m.IntervalTime;
@@ -54,8 +53,8 @@ namespace ICA_BusinessLogicLayer
             int listCapacity = fulltime / intervaltime;
 
             // List of lists
-            List<DTO_TimeFlowList> myList = new List<DTO_TimeFlowList>();
-            DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
+            //List<DTO_TimeFlowList> myList = new List<DTO_TimeFlowList>();
+           List<DTO_TimeFlow> dtoTimeFlowList = new List<DTO_TimeFlow>();
 
             double time = -intervaltime;
             double flow;
@@ -66,6 +65,7 @@ namespace ICA_BusinessLogicLayer
                 time = time + intervaltime; // lægger tid til for hvert interval
                 flow = ((weight * accFactor * intervaltime)/ intervaltime) / concentration; 
                 // flow/konc = ml
+                DTO_TimeFlow localdtoTimeFlow = new DTO_TimeFlow{Time = time,Flow = flow};
 
                 if (accFactor < maxDosis) // sikrer at der ikke gives mere end maxdosis
                 {
@@ -73,15 +73,14 @@ namespace ICA_BusinessLogicLayer
                     //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
                     //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
                     //myList.Add(dto); // dosis pr. interval
-                    dtoTimeFlow.Time.Add(time);
-                    dtoTimeFlow.Flow.Add(flow);
+
+                    dtoTimeFlowList.Add(localdtoTimeFlow);
 
                     accFactor = accFactor + factor; // adderer faktor for hvert interval
                 }
                 else
                 {
-                    dtoTimeFlow.Time.Add(time);
-                    dtoTimeFlow.Flow.Add(flow);
+                    dtoTimeFlowList.Add(localdtoTimeFlow);
                     //DTO_TimeFlowList dto = new DTO_TimeFlowList();
                     //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem(){ TimeFlowListItemType = time});
                     //dto.TimeFlowListItems.Add(new DTO_TimeFlowListItem() { TimeFlowListItemType = flow});
@@ -90,7 +89,7 @@ namespace ICA_BusinessLogicLayer
                 }
             }
 
-            return dtoTimeFlow;
+            return dtoTimeFlowList;
 
         }
     }

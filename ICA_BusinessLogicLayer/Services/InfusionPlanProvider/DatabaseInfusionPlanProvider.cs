@@ -23,7 +23,7 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
         {
             using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
             {
-                IEnumerable<DTO_InfusionPlan> infusionPlanDtos = await context.InfusionPlans.ToListAsync();
+                IEnumerable<DTO_InfusionPlan> infusionPlanDtos = await context.InfusionPlans.Include(i=>i.DtoTimeFlowList).ToListAsync();
                 return infusionPlanDtos.Select(i => ToInfusionPlan(i)); //Her tager vi data fra fra DTO til InfusionPlan
             }
         }

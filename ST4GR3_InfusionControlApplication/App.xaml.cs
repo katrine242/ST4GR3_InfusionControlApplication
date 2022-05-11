@@ -19,7 +19,7 @@ namespace ST4GR3_InfusionControlApplication
    /// </summary>
    public partial class App : Application
    {
-        private readonly InfusionOverview _infusionOverview;
+        //private readonly InfusionOverview _infusionOverview;
         private readonly NavigationStore _navigationStore;
         private readonly IInfusionPlanProvider _infusionPlanProvider;
         private readonly IInfusionPlanCreator _infusionPlanCreator;
@@ -32,7 +32,7 @@ namespace ST4GR3_InfusionControlApplication
 
             InfusionPlanBook infusionPlanBook = new InfusionPlanBook(_infusionPlanProvider, _infusionPlanCreator);
 
-            _infusionOverview = new InfusionOverview(infusionPlanBook);
+            //_infusionOverview = new InfusionOverview(infusionPlanBook);
             _navigationStore = new NavigationStore();
         }
 
