@@ -18,7 +18,9 @@ namespace DTO_Library
         public int IntervalTime { get; set; }
         public double Concentration { get; set; } //opgives i mg/ml
 
-        public List<DTO_TimeFlowList>? TimeFlowLists { get; set; }
+        public DTO_TimeFlow DtoTimeflow { get; set; }
+        public List<DTO_TimeFlowList>? TimeList { get; set; }
+        public List<DTO_TimeFlowList>? FlowList { get; set; }
         //public List<List<double>> TimeFlowList { get; set; }
     }
 }

@@ -21,128 +21,134 @@
         <Grid Margin="10 50 30 10">
             <TextBlock Text="Patient:" FontWeight="Bold" FontSize="18"></TextBlock>
             <TextBox Grid.Row="0" Text="" Margin="110 0 470 0"></TextBox>
-            <Button Content="Back" Margin="600 0 0 0" Background="LightPink" ></Button>
+            <Button Content="Tilbage" Command="{Binding BackCommand}" Margin="600 0 0 0" Background="LightPink"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="10 0 350 10">
             <TextBlock Text="CPR:" FontWeight="Bold" FontSize="18"></TextBlock>
             <TextBox Grid.Row="1" Text="" Margin="110 00 150 0"></TextBox>
         </Grid>
-        
+
         <Grid Grid.Row="2" Margin="10 0 350 10">
             <TextBlock Text="Højde:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBox Grid.Row="2" Text="" Margin="110 00 150 0"></TextBox>
         </Grid>
-        <Grid Grid.Row="3" Margin="10 0 350 10">
+        <Grid Grid.Row="3" Margin="10 0 30 10">
             <TextBlock Text="Vægt:" FontWeight="Bold" FontSize="18" ></TextBlock>
-            <TextBox Grid.Row="3" Text="" Margin="110 00 150 0"></TextBox>
+            <TextBox Grid.Row="3" Text="" Margin="110 00 470 0"></TextBox>
+            
         </Grid>
 
-        <Grid Grid.Row="4" Margin="10 20 350 10">
+        <Grid Grid.Row="4" Margin="10 20 30 10">
             <TextBlock Text="Medicin:" FontWeight="Bold" FontSize="18" ></TextBlock>
-            <TextBox Grid.Row="4" Text="" Margin="110 00 150 0"></TextBox>
+            <TextBox Grid.Row="4" Text="" Margin="110 00 470 0"></TextBox>
+            <Button Content="Brugerdefinér" Command="{Binding UserChoice}" Margin="600,0,0,0" Background="White" Grid.Column="1" ></Button>
         </Grid>
         <Grid Grid.Row="5" Margin="10 0 30 10">
-            <TextBlock Text="Batch ID:" FontWeight="Bold" FontSize="18" ></TextBlock>
-            <TextBox Grid.Row="5" Text="" Margin="110 00 470 0"></TextBox>
-            <Button Content="Brugerdefinér" Margin="600 0 0 0" Background="White" ></Button>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="91*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Batch ID:" FontWeight="Bold" FontSize="18" Grid.ColumnSpan="2" ></TextBlock>
+            <TextBox Text="" Margin="78,0,470,0" Grid.Column="1"/>
+            <Button Content="Opret Plan" Command="{Binding CreatePlan}" Margin="568,0,0,0" Background="White" Grid.Column="1" ></Button>
         </Grid>
 
         <Grid Grid.Row="6" Margin="10 20 30 10">
             <TextBlock Text="ID-Maskine:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBox Grid.Row="6" Text="" Margin="110 00 470 0"></TextBox>
-            <Button Content="Opret Infusion" Margin="600 0 0 0"></Button>
+            <Button Content="Opret Infusion" Command="{Binding CreateInfusionPlan}" Margin="600 0 0 0"></Button>
         </Grid>
 
         <Grid Grid.Row="7" Margin="10 15 50 0">
             <TextBlock Text="Plan:" FontWeight="Bold" FontSize="18" Margin="0,0,0,-20"></TextBlock>
         </Grid>
 
-            <ListView Grid.Row="8" Margin="10 25 10 0">
-                <ListViewItem/>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Tid (min)" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
+        <ListView Grid.Row="8" Margin="10 25 10 0">
+            <ListViewItem/>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tid (min)" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
                                 <TextBlock Text="Flow ml/min" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid1" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow1" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid2" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow2" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid3" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow3" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid4" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow4" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid5" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow5" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid6" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow6" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid7" Width="85">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow7" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Intervaltid8" Width="90">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="BindFlow8" HorizontalAlignment="Center"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid1" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow1" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid2" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow2" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid3" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow3" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid4" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow4" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid5" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow5" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid6" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow6" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid7" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow7" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Intervaltid8" Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="BindFlow8" HorizontalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
 
 
 
 
                 </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
-        
+            </ListView.View>
+        </ListView>
+    </Grid>
 
 
-    
-    
-    
+
+
+
+
 </UserControl>

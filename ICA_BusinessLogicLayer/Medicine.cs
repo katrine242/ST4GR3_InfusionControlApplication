@@ -23,6 +23,7 @@ namespace ICA_BusinessLogicLayer
             IntervalTime = intervaltime;
             MaxDosis = maxDosis;
             Concentration = concentration;
+            Fulltime = fulltime;
         }
 
       public override string ToString()
