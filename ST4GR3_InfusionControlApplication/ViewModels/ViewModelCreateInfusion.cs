@@ -112,5 +112,10 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand UserChoice { get; }
         public ICommand CreatePlan { get; }
         public ICommand CreateInfusionPlan { get; }
+
+        public ViewModelCreateInfusion()
+        {
+            
+        }
     }
 }
