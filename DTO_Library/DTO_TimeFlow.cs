@@ -8,7 +8,16 @@ namespace DTO_Library
 {
     public class DTO_TimeFlow
     {
-        public List<double> Time { get; set; }
-        public List<double> Flow { get; set; }
+        public int Id { get; set; }
+        public double Time { get; set; }
+        public double Flow { get; set; }
+
+        public DTO_InfusionPlan DtoInfusionPlan { get; set; }
+        public long DtoInfusionPlanCpr { get; set; }
+
+
+
+        //public List<double> Time { get; set; }
+        //public List<double> Flow { get; set; }
     }
 }

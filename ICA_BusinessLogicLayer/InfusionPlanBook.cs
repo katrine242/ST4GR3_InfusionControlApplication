@@ -9,7 +9,7 @@ using ICA_BusinessLogicLayer.Services.InfusionPlanProvider;
 
 namespace ICA_BusinessLogicLayer
 {
-    public class InfusionPlanBook
+    public class InfusionPlanBook:IInfusionPlanBook
     {
         private readonly IInfusionPlanProvider _infusionPlanProvider;
         private readonly IInfusionPlanCreator _infusionPlanCreator;

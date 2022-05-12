@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 
 
 namespace DTO_Library
@@ -18,8 +19,6 @@ namespace DTO_Library
         public int IntervalTime { get; set; }
         public double Concentration { get; set; } //opgives i mg/ml
 
-        public DTO_TimeFlow DtoTimeflow { get; set; }
-       
-        //public List<List<double>> TimeFlowList { get; set; }
+        public List<DTO_TimeFlow> DtoTimeFlowList { get; set; }
     }
 }
