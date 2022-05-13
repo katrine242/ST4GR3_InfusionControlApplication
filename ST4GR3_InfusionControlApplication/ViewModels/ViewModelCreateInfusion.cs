@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ST4GR3_InfusionControlApplication.Commands;
 
 namespace ST4GR3_InfusionControlApplication.ViewModels
 {
@@ -115,7 +116,7 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 
         public ViewModelCreateInfusion()
         {
-            
+            CreatePlan = new CreateInfusionViewCommand();
         }
     }
 }
