@@ -32,4 +32,8 @@
     <ProjectReference Include="..\ICA_BusinessLogicLayer\ICA_BusinessLogicLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PresentationLayer\" />
+  </ItemGroup>
+
 </Project>

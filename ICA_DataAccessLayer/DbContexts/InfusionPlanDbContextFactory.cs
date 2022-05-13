@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ICA_DataAccessLayer.DbContexts
 {
-    public class InfusionPlanDbContextFactory
+    public class InfusionPlanDbContextFactory:IInfusionPlanDbContextFactory
     {
         private readonly string _connectingString;
 
