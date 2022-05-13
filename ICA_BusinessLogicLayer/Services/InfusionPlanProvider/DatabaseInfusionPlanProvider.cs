@@ -32,6 +32,15 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
         {
             return new InfusionPlan(new Medicine(i.MedicineName, i.Factor, i.IntervalTime, i.Fulltime, i.MaxDoseage, i.Concentration),i);
         }
+
+        public DTO_InfusionPlan GetOneInfusionPlan(long WantedCPR)
+        {
+            using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
+            {
+                DTO_InfusionPlan infusionPlansDtos = context.InfusionPlans.Include(i => i.DtoTimeFlowList).Where(i => i.CPR == WantedCPR).FirstOrDefault();
+                return infusionPlansDtos;
+            }
+        }
     }
 }
 

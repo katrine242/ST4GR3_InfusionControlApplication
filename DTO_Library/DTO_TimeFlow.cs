@@ -13,7 +13,7 @@ namespace DTO_Library
         public double Flow { get; set; }
 
         public DTO_InfusionPlan DtoInfusionPlan { get; set; }
-        public long DtoInfusionPlanCpr { get; set; }
+        public int DtoInfusionPlanMachineId { get; set; }
 
 
 
