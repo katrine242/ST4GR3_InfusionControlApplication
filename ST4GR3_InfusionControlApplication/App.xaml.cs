@@ -18,7 +18,7 @@ namespace ST4GR3_InfusionControlApplication
    /// Interaction logic for App.xaml
    /// </summary>
    public partial class App : Application
-   {
+    {
         //private readonly InfusionOverview _infusionOverview;
         private readonly NavigationStore _navigationStore;
         private readonly IInfusionPlanProvider _infusionPlanProvider;
@@ -42,9 +42,9 @@ namespace ST4GR3_InfusionControlApplication
                 {DataContext = new MainViewModel()};
 
             MainWindow.Show();
-          List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
+          //List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
 
-          _infusionPlanCreator.MigrateToDataBase();
+          //_infusionPlanCreator.MigrateToDataBase();
 
           base.OnStartup(e);
       }

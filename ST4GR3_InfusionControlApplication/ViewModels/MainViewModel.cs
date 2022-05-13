@@ -8,6 +8,12 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class MainViewModel: ViewModelBase
     {
+        public ViewModelBase CurrentViewModel { get; }
+
+        public MainViewModel()
+        {
+            CurrentViewModel = new ViewModelCreateInfusion();
+        }
 
     }
 }
