@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Automation;
 using System.Windows.Input;
+using DTO_Library;
 using ICA_BusinessLogicLayer;
 using ST4GR3_InfusionControlApplication.Commands;
 
@@ -11,8 +14,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelCreateInfusion : ViewModelBase
     {
-        private string _patient;
-        public string Patient
+        private int _patient;
+        public int Patient
         {
             get
             {

@@ -20,7 +20,7 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
       public string MachineID => _infusionPlan.InfusionData.MachineID.ToString();
       public DateTime Fulltime => Convert.ToDateTime(_infusionPlan.InfusionData.Fulltime);
       public DateTime TimeLeft { get; }
-      public List<DTO_TimeFlow> DtoTimeFlowList { get;}
+      
 
       public ViewModelDataInfusionPlan(InfusionPlan infusionPlan)
       {
