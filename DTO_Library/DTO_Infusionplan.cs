@@ -9,10 +9,10 @@ namespace DTO_Library
 {
     public class DTO_InfusionPlan
     {
+        public int MachineID { get; set; }
         public long CPR { get; set; }
         public string MedicineName { get; set; }
         public double Weight { get; set; }
-        public int MachineID { get; set; }
         public int Fulltime { get; set; }
         public double Factor { get; set; } //opgives i mg
         public double MaxDoseage { get; set; }

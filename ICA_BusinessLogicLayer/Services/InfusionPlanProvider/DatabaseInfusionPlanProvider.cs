@@ -23,7 +23,8 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
         {
             using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
             {
-                IEnumerable<DTO_InfusionPlan> infusionPlanDtos = await context.InfusionPlans.Include(i=>i.DtoTimeFlowList).ToListAsync();
+                IEnumerable<DTO_InfusionPlan> infusionPlanDtos = await context.InfusionPlans
+                    .Include(i=>i.DtoTimeFlowList).ToListAsync();
                 return infusionPlanDtos.Select(i => ToInfusionPlan(i)); //Her tager vi data fra fra DTO til InfusionPlan
             }
         }
@@ -31,6 +32,17 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
         private static InfusionPlan ToInfusionPlan(DTO_InfusionPlan i)
         {
             return new InfusionPlan(new Medicine(i.MedicineName, i.Factor, i.IntervalTime, i.Fulltime, i.MaxDoseage, i.Concentration),i);
+        }
+
+        public DTO_InfusionPlan GetOneInfusionPlan(long WantedCPR)
+        {
+            using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
+            {
+                DTO_InfusionPlan infusionPlansDtos = context.InfusionPlans
+                    .Include(i => i.DtoTimeFlowList)
+                    .Where(i => i.CPR == WantedCPR).FirstOrDefault();
+                return infusionPlansDtos;
+            }
         }
     }
 }

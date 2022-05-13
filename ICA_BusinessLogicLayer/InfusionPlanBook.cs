@@ -24,9 +24,15 @@ namespace ICA_BusinessLogicLayer
             return await _infusionPlanProvider.GetAllInfusionPlans();
         }
 
+
         public async Task AddInfusionPlan(InfusionPlan infusionPlan)
         {
             await _infusionPlanCreator.CreateInfusionPlan(infusionPlan);
+        }
+
+        public DTO_InfusionPlan GetOneInfusionPlan(long WantedCPR)
+        {
+            return _infusionPlanProvider.GetOneInfusionPlan(WantedCPR);
         }
     }
 }

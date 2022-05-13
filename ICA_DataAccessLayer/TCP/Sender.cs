@@ -13,33 +13,31 @@ namespace ICA_DataAccessLayer.TCP
     public class Sender: ISender
     {
         private readonly string _iPAdress;
-        private readonly DTO_TimeFlow _dTOTimeFlow;
-        private readonly DTO_InfusionPlan _dTOInfusionPlan;
+        private BlockingCollection<double[]> _arrayQueue;
 
-        public Sender(string iPAdress, DTO_TimeFlow dToTimeFlow, DTO_InfusionPlan dToInfusionPlan)
+        public Sender(string iPAdress, BlockingCollection<double[]> aq)
         {
             _iPAdress = iPAdress;
-            _dTOTimeFlow = dToTimeFlow;
-            _dTOInfusionPlan = dToInfusionPlan;
+            _arrayQueue = aq;
         }
 
         public void Send()
         {
-            double[] timeAndFlowAndFullTime = new double[3];
+            double[] timeFlowAndFullTime;
             while (true)
             {
                 try
                 {
-                    timeAndFlowAndFullTime[0] = _dTOTimeFlow.Time;
-                    timeAndFlowAndFullTime[1] = _dTOTimeFlow.Flow;
-                    timeAndFlowAndFullTime[2] = _dTOInfusionPlan.Fulltime;
+                    timeFlowAndFullTime = _arrayQueue.Take();
 
                     TcpClient client = new TcpClient(_iPAdress, 13000);
 
                     NetworkStream stream = client.GetStream();
                     StreamWriter writer = new StreamWriter(stream);
 
-                    writer.WriteLine(timeAndFlowAndFullTime);
+                    string arrayTimeFlowAndFullTime = String.Join(",", timeFlowAndFullTime);
+
+                    writer.WriteLine(arrayTimeFlowAndFullTime);
                     writer.Flush();
                     Console.WriteLine("Time and Flow sent.");
 

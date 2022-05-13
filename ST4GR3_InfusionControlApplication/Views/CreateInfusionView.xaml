@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <Grid Margin="10 50 30 10">
             <TextBlock Text="Patient:" FontWeight="Bold" FontSize="18"></TextBlock>
-            <TextBox Grid.Row="0" Text="{Binding Patient, UpdateSourceTrigger=PropertyChanged}" Margin="110 0 470 0"/>
+            <TextBox Grid.Row="0" Text="{Binding Patient, UpdateSourceTrigger=PropertyChanged}" Margin="110 0 470 0" />
             <Button Content="Tilbage" Command="{Binding BackCommand}" Margin="600 0 0 0" Background="LightPink"/>
         </Grid>
 
