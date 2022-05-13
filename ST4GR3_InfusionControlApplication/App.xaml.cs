@@ -24,6 +24,8 @@ namespace ST4GR3_InfusionControlApplication
         private readonly IInfusionPlanProvider _infusionPlanProvider;
         private readonly IInfusionPlanCreator _infusionPlanCreator;
         private const string CONNECTION_STRING = "Data Source=infusionPlan.db";
+        private readonly InfusionOverview _infusionOverview;
+        private IInfusionPlanBook _planbook;
 
         public App()
         {
@@ -34,6 +36,7 @@ namespace ST4GR3_InfusionControlApplication
 
             //_infusionOverview = new InfusionOverview(infusionPlanBook);
             _navigationStore = new NavigationStore();
+            _infusionOverview = new InfusionOverview(_planbook=new InfusionPlanBook());
         }
 
         protected override void OnStartup(StartupEventArgs e)

@@ -117,6 +117,7 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ViewModelCreateInfusion()
         {
             CreatePlan = new CreateInfusionViewCommand();
+            
         }
     }
 }
