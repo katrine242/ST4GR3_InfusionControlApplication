@@ -13,13 +13,13 @@ namespace ICA_BusinessLogicLayer
 
        public DTO_InfusionPlan InfusionData { get; set; }
         public IMedicine Medicine { get; }
+        public double Weight { get; set; }
         
         public InfusionPlan(IMedicine medicine, DTO_InfusionPlan dtoInfusionplan)
         {
            InfusionData = dtoInfusionplan;
             Medicine = medicine;
-            dtoInfusionplan.MedicineName = medicine.Name;
-             
+
         }
 
         public void MakeInfusionPlan() 
@@ -46,7 +46,7 @@ namespace ICA_BusinessLogicLayer
          double factor = Medicine.Factor;
          double maxDosis = Medicine.MaxDosis;
          double concentration = Medicine.Concentration;
-         double weight = m.Weight;
+         double weight = Weight;
 
          double accFactor = factor;
 

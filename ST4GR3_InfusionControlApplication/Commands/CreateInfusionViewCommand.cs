@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,22 +17,43 @@ namespace ST4GR3_InfusionControlApplication.Commands
        private new DTO_InfusionPlan _infusionPlanDTO;
        private new Medicine _medicine;
 
-       public override void Execute(object parameter)
+       public CreateInfusionViewCommand(ViewModelCreateInfusion viewModelCreateInfusion, InfusionOverview infusionOverview)
+       {
+          _viewModelCreateInfusion = viewModelCreateInfusion;
+          _infusionOverview = infusionOverview;
+          _viewModelCreateInfusion.PropertyChanged += OnViewModelPropertyChanged;
+
+       }
+
+
+       public override bool CanExecute(object parameter)
+       {
+          return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>0 &&_viewModelCreateInfusion.Height>0&&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
+       }
+      public override void Execute(object parameter)
        {
           InfusionPlan infusionPlan =
              new InfusionPlan(new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine),
-                _infusionPlanDTO);
-          _infusionPlanDTO.Weight = _viewModelCreateInfusion.Weight;
+                new DTO_InfusionPlan());
+          infusionPlan.Weight = _viewModelCreateInfusion.Weight;
 
-          infusionPlan.MakeInfusionPlan();
+         
+          _infusionOverview.CreateInfusionPlan(infusionPlan);
+
        }
 
-        public CreateInfusionViewCommand(ViewModelCreateInfusion viewModelCreateInfusion, InfusionOverview infusionOverview)
-        {
-           _viewModelCreateInfusion = viewModelCreateInfusion;
-           _infusionOverview = infusionOverview;
-           _infusionPlanDTO = new DTO_InfusionPlan();
-           _medicine=new Medicine();
-        }
-    }
+      private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+      {
+         if (e.PropertyName == nameof(ViewModelCreateInfusion.Patient)|| e.PropertyName == nameof(ViewModelCreateInfusion.CPR)||e.PropertyName == nameof(ViewModelCreateInfusion.Height)|| e.PropertyName == nameof(ViewModelCreateInfusion.Weight)|| e.PropertyName == nameof(ViewModelCreateInfusion.Medicine)|| e.PropertyName == nameof(ViewModelCreateInfusion.BatchID)|| e.PropertyName == nameof(ViewModelCreateInfusion.MachineID))
+         {
+            OnCanExecutedChanged();
+         }
+      }
+
+
+   }
+
+
 }
+
+  
