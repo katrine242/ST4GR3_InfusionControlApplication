@@ -21,6 +21,7 @@ namespace DTO_Library
 
         public int  BatchId { get; set; }
         public int  Height { get; set; }
+        public string PatientName { get; set; }
 
         public List<DTO_TimeFlow> DtoTimeFlowList { get; set; }
     }
