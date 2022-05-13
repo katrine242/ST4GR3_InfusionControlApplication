@@ -14,8 +14,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelCreateInfusion : ViewModelBase
     {
-        private int _patient;
-        public int Patient
+        private string _patient;
+        public string Patient
         {
             get
             {

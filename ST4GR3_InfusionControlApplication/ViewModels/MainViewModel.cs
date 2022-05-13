@@ -11,11 +11,7 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
     {
         public ViewModelBase CurrentViewModel { get; }
 
-        public MainViewModel()
-        {
-            CurrentViewModel = new ViewModelCreateInfusion();
-        }
-
+       
        public MainViewModel(InfusionOverview infusionOverview)
        {
           CurrentViewModel = new ViewModelCreateInfusion(infusionOverview);
