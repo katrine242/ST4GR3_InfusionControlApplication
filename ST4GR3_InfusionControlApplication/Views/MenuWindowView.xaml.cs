@@ -24,5 +24,7 @@ namespace ST4GR3_InfusionControlApplication.Views
         {
             InitializeComponent();
         }
+
+        
     }
 }

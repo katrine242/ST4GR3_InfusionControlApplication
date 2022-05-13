@@ -37,7 +37,11 @@ namespace ST4GR3_InfusionControlApplication
         }
 
         protected override void OnStartup(StartupEventArgs e)
-      {
+        {
+            MainWindow = new MainWindow()
+                {DataContext = new MainViewModel()};
+
+            MainWindow.Show();
           List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
 
           _infusionPlanCreator.MigrateToDataBase();
