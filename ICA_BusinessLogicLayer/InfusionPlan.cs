@@ -10,13 +10,13 @@ namespace ICA_BusinessLogicLayer
 {
     public class InfusionPlan : IInfusionPlan
     {
-        
-        public DTO_InfusionPlan InfusionData { get; set; }
+
+       public DTO_InfusionPlan InfusionData { get; set; }
         public IMedicine Medicine { get; }
         
         public InfusionPlan(IMedicine medicine, DTO_InfusionPlan dtoInfusionplan)
         {
-            InfusionData = dtoInfusionplan;
+           InfusionData = dtoInfusionplan;
             Medicine = medicine;
             dtoInfusionplan.MedicineName = medicine.Name;
              

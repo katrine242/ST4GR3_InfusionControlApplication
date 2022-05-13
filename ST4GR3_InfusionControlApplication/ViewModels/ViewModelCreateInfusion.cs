@@ -14,26 +14,6 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelCreateInfusion : ViewModelBase
     {
-        private readonly ObservableCollection<ViewModelDataInfusionPlan> _infusionPlans;
-        private readonly ObservableCollection<ViewModelDataTimeFlow> _timeFlows;
-
-        //IEnumerable anvendes så en klasse udenfor ikke kan tilgå denne property og adde eller fjerne items
-        public IEnumerable<ViewModelDataInfusionPlan> InfusionPlans => _infusionPlans;
-        public IEnumerable<ViewModelDataTimeFlow> TimeFlows;
-
-        public ViewModelCreateInfusion()
-        {
-            _infusionPlans = new ObservableCollection<ViewModelDataInfusionPlan>();
-            _timeFlows = new ObservableCollection<ViewModelDataTimeFlow>();
-            DTO_InfusionPlan dtoInfusionPlan = new DTO_InfusionPlan();
-            dtoInfusionPlan.Weight = 60;
-            Medicine medicine1 = new Medicine("Iloprost", 0.5, 30, 180, 2.0, 200);
-           
-
-            _timeFlows.Add(new ViewModelDataTimeFlow(new InfusionPlan(medicine1, dtoInfusionPlan)));
-           
-        }
-
         private string _patient;
         public string Patient
         {
@@ -98,7 +78,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
                 return _medicine;
             }
             set
-            { _medicine = value;
+            {
+                _medicine = value;
                 OnPropertyChanged(nameof(Medicine));
             }
         }
@@ -139,7 +120,9 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 
         public ViewModelCreateInfusion(InfusionOverview infusionOverview)
         {
-            CreatePlan = new CreateInfusionViewCommand(this,infusionOverview);
+           CreatePlan = new CreateInfusionViewCommand(this, infusionOverview);
+
+            CreateInfusionPlan = new CreateInfusionViewCommand(this,infusionOverview);
             
         }
     }
