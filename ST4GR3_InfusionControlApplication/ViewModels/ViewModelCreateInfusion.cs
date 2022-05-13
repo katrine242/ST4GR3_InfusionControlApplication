@@ -11,8 +11,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelCreateInfusion : ViewModelBase
     {
-        private int _patient;
-        public int Patient
+        private string _patient;
+        public string Patient
         {
             get
             {
@@ -67,8 +67,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             }
         }
 
-        private int _medicine;
-        public int Medicine
+        private string _medicine;
+        public string Medicine
         {
             get
             {
@@ -117,7 +117,9 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 
         public ViewModelCreateInfusion(InfusionOverview infusionOverview)
         {
-            CreatePlan = new CreateInfusionViewCommand(this,infusionOverview);
+           CreatePlan = new CreateInfusionViewCommand(this, infusionOverview);
+
+            CreateInfusionPlan = new CreateInfusionViewCommand(this,infusionOverview);
             
         }
     }

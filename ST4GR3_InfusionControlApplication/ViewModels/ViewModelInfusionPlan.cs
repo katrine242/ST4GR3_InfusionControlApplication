@@ -24,7 +24,7 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 
       public int Weight { get; set; }
 
-      public int Medicine { get; set; }
+      public string Medicine { get; set; }
 
       public int BatchID { get; set; }
 

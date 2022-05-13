@@ -15,5 +15,7 @@ namespace ICA_BusinessLogicLayer
        public double MaxDosis { get; }
        public double Concentration { get; }
 
-   }
+       public Medicine GetMedicine(List<Medicine_config> medicinelist, string name);
+
+    }
 }
