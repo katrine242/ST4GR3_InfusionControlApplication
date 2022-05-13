@@ -36,7 +36,7 @@ namespace ST4GR3_InfusionControlApplication
 
             //_infusionOverview = new InfusionOverview(infusionPlanBook);
             _navigationStore = new NavigationStore();
-            _infusionOverview = new InfusionOverview(_planbook=new InfusionPlanBook());
+
         }
 
         protected override void OnStartup(StartupEventArgs e)

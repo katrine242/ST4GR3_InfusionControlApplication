@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ICA_BusinessLogicLayer;
 using ST4GR3_InfusionControlApplication.Commands;
 
 namespace ST4GR3_InfusionControlApplication.ViewModels
@@ -114,9 +115,9 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand CreatePlan { get; }
         public ICommand CreateInfusionPlan { get; }
 
-        public ViewModelCreateInfusion()
+        public ViewModelCreateInfusion(InfusionOverview infusionOverview)
         {
-            CreatePlan = new CreateInfusionViewCommand();
+            CreatePlan = new CreateInfusionViewCommand(this,infusionOverview);
             
         }
     }
