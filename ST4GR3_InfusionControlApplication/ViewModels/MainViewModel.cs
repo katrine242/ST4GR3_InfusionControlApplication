@@ -15,5 +15,9 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             CurrentViewModel = new ViewModelCreateInfusion();
         }
 
+       public MainViewModel()
+       {
+          CurrentViewModel = new ViewModelInfusionPlan();
+       }
     }
 }
