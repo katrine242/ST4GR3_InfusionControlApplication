@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Automation;
 using System.Windows.Input;
+using DTO_Library;
+using ICA_BusinessLogicLayer;
+using ST4GR3_InfusionControlApplication.Commands;
 
 namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelCreateInfusion : ViewModelBase
     {
-        private int _patient;
-        public int Patient
+        private string _patient;
+        public string Patient
         {
             get
             {
@@ -65,8 +70,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             }
         }
 
-        private int _medicine;
-        public int Medicine
+        private string _medicine;
+        public string Medicine
         {
             get
             {
@@ -113,8 +118,11 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand CreatePlan { get; }
         public ICommand CreateInfusionPlan { get; }
 
-        public ViewModelCreateInfusion()
+        public ViewModelCreateInfusion(InfusionOverview infusionOverview)
         {
+           CreatePlan = new CreateInfusionViewCommand(this, infusionOverview);
+
+            CreateInfusionPlan = new CreateInfusionViewCommand(this,infusionOverview);
             
         }
     }

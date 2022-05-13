@@ -18,12 +18,15 @@ namespace ST4GR3_InfusionControlApplication
    /// Interaction logic for App.xaml
    /// </summary>
    public partial class App : Application
-   {
+    {
         //private readonly InfusionOverview _infusionOverview;
         private readonly NavigationStore _navigationStore;
         private readonly IInfusionPlanProvider _infusionPlanProvider;
         private readonly IInfusionPlanCreator _infusionPlanCreator;
         private const string CONNECTION_STRING = "Data Source=infusionPlan.db";
+        private IInfusionPlanBook _planbook;
+        private readonly InfusionOverview _infusionOverview;
+        private List<Medicine_config> configList;
 
         public App()
         {
@@ -31,16 +34,21 @@ namespace ST4GR3_InfusionControlApplication
             _infusionPlanCreator = new DatabaseInfusionPlanCreator(CONNECTION_STRING);
 
             InfusionPlanBook infusionPlanBook = new InfusionPlanBook(_infusionPlanProvider, _infusionPlanCreator);
-
-            //_infusionOverview = new InfusionOverview(infusionPlanBook);
+            configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
+         _infusionOverview = new InfusionOverview(infusionPlanBook, configList);
             _navigationStore = new NavigationStore();
+
         }
 
         protected override void OnStartup(StartupEventArgs e)
-      {
-          List<Medicine_config> configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
+        {
+            MainWindow = new MainWindow()
+                {DataContext = new MainViewModel(_infusionOverview)};
 
-          _infusionPlanCreator.MigrateToDataBase();
+            MainWindow.Show();
+           
+
+          //_infusionPlanCreator.MigrateToDataBase();
 
           base.OnStartup(e);
       }

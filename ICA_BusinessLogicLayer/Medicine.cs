@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DTO_Library;
@@ -16,6 +17,7 @@ namespace ICA_BusinessLogicLayer
         public double MaxDosis { get; }
         public double Concentration { get;  }
       
+        public Medicine(){}
         public Medicine(string name, double factor, int intervaltime, int fulltime, double maxDosis, double concentration)
         {
             Name = name;
@@ -43,6 +45,24 @@ namespace ICA_BusinessLogicLayer
       public override int GetHashCode()
       {
          return HashCode.Combine(Name, Factor, IntervalTime, MaxDosis, Concentration);
+      }
+
+      public Medicine GetMedicine(List<Medicine_config> medicinelist, string name)
+      {
+         Medicine _medicine=new Medicine();
+
+         foreach (Medicine_config medicineConfig in medicinelist)
+         {
+            if (medicineConfig.Name == name)
+            {
+               _medicine = new Medicine(medicineConfig.Name, medicineConfig.Factor, medicineConfig.IntervalTime,
+                  medicineConfig.Fulltime, medicineConfig.MaxDosis, medicineConfig.Concentration);
+            }
+            
+         }
+
+         return _medicine;
+         
       }
 
 
