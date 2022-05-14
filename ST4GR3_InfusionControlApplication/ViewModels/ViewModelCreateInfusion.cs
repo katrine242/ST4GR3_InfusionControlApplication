@@ -8,6 +8,7 @@ using System.Windows.Automation;
 using System.Windows.Input;
 using DTO_Library;
 using ICA_BusinessLogicLayer;
+using ICA_BusinessLogicLayer.Services;
 using ST4GR3_InfusionControlApplication.Commands;
 using ST4GR3_InfusionControlApplication.Stores;
 
@@ -119,13 +120,15 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand CreatePlan { get; }
         public ICommand CreateInfusionPlanCommand { get; }
 
-        public ViewModelCreateInfusion(InfusionOverview infusionOverview, NavigationStore navigationStore, Func<ViewModelMenuWindow> createViewModelCreateMenuWindow) // har slettet InfusionOverview
+        public ViewModelCreateInfusion(InfusionOverview infusionOverview,  NavigationService menuViewNavigationService) // har slettet InfusionOverview
         {
-            CreateInfusionPlanCommand = new CreateInfusionViewCommand(this, infusionOverview);
+            CreateInfusionPlanCommand = new CreateInfusionViewCommand(this, infusionOverview, menuViewNavigationService);
             //CreateInfusionPlanCommand = new CreateInfusionViewCommand(this,infusionOverview);
 
-            BackCommand = new NavigateCommand(navigationStore, createViewModelCreateMenuWindow);
+            BackCommand = new NavigateCommand(menuViewNavigationService);
 
         }
+
+        
     }
 }

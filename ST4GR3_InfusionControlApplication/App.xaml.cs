@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using ST4GR3_InfusionControlApplication.Stores;
 using ICA_BusinessLogicLayer;
+using ICA_BusinessLogicLayer.Services;
 using ICA_BusinessLogicLayer.Services.InfusionPlanCreator;
 using ICA_BusinessLogicLayer.Services.InfusionPlanProvider;
 using Microsoft.Extensions.DependencyInjection;
@@ -58,12 +59,12 @@ namespace ST4GR3_InfusionControlApplication
 
         private ViewModelMenuWindow CreateMakeViewModelMenuWindow()
         {
-            return new ViewModelMenuWindow(_navigationStore, CreateViewModelMenuWindow);
+            return new ViewModelMenuWindow(_infusionOverview, new NavigationService(_navigationStore, CreateViewModelMenuWindow));
         }
 
         private ViewModelCreateInfusion CreateViewModelMenuWindow()
         {
-            return new ViewModelCreateInfusion(_infusionOverview, _navigationStore, CreateMakeViewModelMenuWindow);
+            return new ViewModelCreateInfusion(_infusionOverview, new NavigationService(_navigationStore, CreateMakeViewModelMenuWindow));
         }
 
 

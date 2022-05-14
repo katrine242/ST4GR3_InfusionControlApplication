@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO_Library;
 using ICA_BusinessLogicLayer;
+using ICA_BusinessLogicLayer.Services;
 using ST4GR3_InfusionControlApplication.ViewModels;
 
 namespace ST4GR3_InfusionControlApplication.Commands
@@ -14,13 +15,15 @@ namespace ST4GR3_InfusionControlApplication.Commands
     {
        private readonly ViewModelCreateInfusion _viewModelCreateInfusion;
        private readonly InfusionOverview _infusionOverview;
+       private readonly NavigationService _menuViewNavigationService;
        private new DTO_InfusionPlan _infusionPlanDTO;
        private new Medicine _medicine;
 
-       public CreateInfusionViewCommand(ViewModelCreateInfusion viewModelCreateInfusion, InfusionOverview infusionOverview)
+       public CreateInfusionViewCommand(ViewModelCreateInfusion viewModelCreateInfusion, InfusionOverview infusionOverview, NavigationService menuViewNavigationService)
        {
           _viewModelCreateInfusion = viewModelCreateInfusion;
           _infusionOverview = infusionOverview;
+          _menuViewNavigationService = menuViewNavigationService;
           _viewModelCreateInfusion.PropertyChanged += OnViewModelPropertyChanged;
 
        }
@@ -39,6 +42,8 @@ namespace ST4GR3_InfusionControlApplication.Commands
 
          
           _infusionOverview.CreateInfusionPlan(infusionPlan);
+
+          _menuViewNavigationService.Navigate();
 
        }
 
