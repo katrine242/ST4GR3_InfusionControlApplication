@@ -44,7 +44,7 @@ namespace ST4GR3_InfusionControlApplication
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = new ViewModelCreateInfusion(_navigationStore);
+            _navigationStore.CurrentViewModel = CreateViewModelMenuWindow();
             MainWindow = new MainWindow()
                 {DataContext = new MainViewModel(_navigationStore)};
 
@@ -56,5 +56,16 @@ namespace ST4GR3_InfusionControlApplication
           base.OnStartup(e);
       }
 
-   }
+        private ViewModelMenuWindow CreateMakeViewModelMenuWindow()
+        {
+            return new ViewModelMenuWindow(_navigationStore, CreateViewModelMenuWindow);
+        }
+
+        private ViewModelCreateInfusion CreateViewModelMenuWindow()
+        {
+            return new ViewModelCreateInfusion(_infusionOverview, _navigationStore, CreateMakeViewModelMenuWindow);
+        }
+
+
+    }
 }

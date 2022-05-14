@@ -15,9 +15,10 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand MenuCreateInfusionCommand { get; }
         public ICommand MenuLogOutCommand { get; }
 
-        public ViewModelMenuWindow(NavigationStore navigationStore)
+        public ViewModelMenuWindow(NavigationStore navigationStore, Func<ViewModelCreateInfusion> createViewModelCreateInfusion)
         {
-            MenuCreateInfusionCommand = new NavigateCommand(navigationStore);
+            MenuCreateInfusionCommand = new NavigateCommand(navigationStore, createViewModelCreateInfusion);
+            
         }
     }
 }

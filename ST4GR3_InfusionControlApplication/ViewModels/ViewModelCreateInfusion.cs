@@ -119,10 +119,12 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand CreatePlan { get; }
         public ICommand CreateInfusionPlanCommand { get; }
 
-        public ViewModelCreateInfusion(NavigationStore navigationStore) // har slettet InfusionOverview
+        public ViewModelCreateInfusion(InfusionOverview infusionOverview, NavigationStore navigationStore, Func<ViewModelMenuWindow> createViewModelCreateMenuWindow) // har slettet InfusionOverview
         {
-            CreateInfusionPlanCommand = new NavigateCommand(navigationStore);
+            CreateInfusionPlanCommand = new CreateInfusionViewCommand(this, infusionOverview);
             //CreateInfusionPlanCommand = new CreateInfusionViewCommand(this,infusionOverview);
+
+            BackCommand = new NavigateCommand(navigationStore, createViewModelCreateMenuWindow);
 
         }
     }

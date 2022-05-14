@@ -35,7 +35,7 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
       public ViewModelInfusionPlan(NavigationStore navigationStore)
       {
          // _DataInfusionPlan = new ViewModelDataInfusionPlan(infusionPlan);
-         BackCommand = new NavigateCommand(navigationStore);
+         //BackCommand = new NavigateCommand(navigationStore,);
       }
 
 

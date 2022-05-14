@@ -14,15 +14,17 @@ namespace ST4GR3_InfusionControlApplication.Commands
     {
         // Lige nu Binder Opret Infusionsplan-knappen (MenuWindovwViewModel) til denne command
         private readonly NavigationStore _navigationStore;
+        private readonly Func<ViewModelBase> _createViewModel;
 
-        public NavigateCommand(NavigationStore navigationStore)
+        public NavigateCommand(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
         {
             _navigationStore = navigationStore;
+            _createViewModel = createViewModel;
         }
         public override void Execute(object parameter)
         {
-            
-            _navigationStore.CurrentViewModel = new ViewModelMenuWindow(_navigationStore); //Når trykket på knappen, ledes til dette View
+
+            _navigationStore.CurrentViewModel = _createViewModel(); //Når trykket på knappen, ledes til dette View
         }
     }
 }
