@@ -21,11 +21,12 @@ namespace ST4GR3_InfusionControlApplication
     {
         //private readonly InfusionOverview _infusionOverview;
         private readonly NavigationStore _navigationStore;
+        private readonly InfusionOverview _infusionOverview;
+
         private readonly IInfusionPlanProvider _infusionPlanProvider;
         private readonly IInfusionPlanCreator _infusionPlanCreator;
         private const string CONNECTION_STRING = "Data Source=infusionPlan.db";
         private IInfusionPlanBook _planbook;
-        private readonly InfusionOverview _infusionOverview;
         private List<Medicine_config> configList;
 
         public App()
@@ -35,15 +36,17 @@ namespace ST4GR3_InfusionControlApplication
 
             InfusionPlanBook infusionPlanBook = new InfusionPlanBook(_infusionPlanProvider, _infusionPlanCreator);
             configList = ConfigurationSerialization.LoadList("Ledogbindevæv_auh.xml");
-         _infusionOverview = new InfusionOverview(infusionPlanBook, configList);
+            _infusionOverview = new InfusionOverview(infusionPlanBook, configList);
+
             _navigationStore = new NavigationStore();
 
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            _navigationStore.CurrentViewModel = new ViewModelCreateInfusion(_navigationStore);
             MainWindow = new MainWindow()
-                {DataContext = new MainViewModel(_infusionOverview)};
+                {DataContext = new MainViewModel(_navigationStore)};
 
             MainWindow.Show();
            

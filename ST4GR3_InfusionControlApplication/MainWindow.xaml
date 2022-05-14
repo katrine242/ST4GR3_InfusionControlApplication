@@ -12,11 +12,27 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:ViewModelCreateInfusion}">
+                <views:CreateInfusionView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ViewModelMenuWindow}">
+                <views:MenuWindowView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ViewModelInfusionPlan}">
+                <views:InfusionPlanView/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+       
 
         <Grid Grid.Row="0" Margin="600,0,-23,-11" Width="183" Height="34.94">
-            <TextBlock  Text="ID: 12345" FontSize="18"  Background="#A6A6A6" TextAlignment="Center" Margin="-10,-182,10,190" Height="27"/>
+            <TextBlock  Text="ID: 12345" FontSize="18"  Background="#A6A6A6" TextAlignment="Center" Margin="-10,-182,33,168" Height="27"/>
         </Grid>
-        <views:CreateInfusionView DataContext="{Binding CurrentViewModel}"/>
-
     </Grid>
+    <!--<views:CreateInfusionView DataContext="{Binding CurrentViewModel}"/>-->
+    <!--<Grid>
+        
+    </Grid>-->
+  
 </Window>

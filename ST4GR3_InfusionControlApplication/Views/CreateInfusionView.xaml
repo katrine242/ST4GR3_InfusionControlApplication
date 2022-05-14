@@ -60,7 +60,7 @@
         <Grid Grid.Row="6" Margin="10 20 30 10">
             <TextBlock Text="ID-Maskine:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBox Text="{Binding MachineID, UpdateSourceTrigger=PropertyChanged}" Margin="110 00 470 0" />
-            <Button Content="Opret Infusion" Command="{Binding CreateInfusionPlan}" Margin="600 0 0 0"></Button>
+            <Button Content="Opret Infusion" Command="{Binding CreateInfusionPlanCommand}" Margin="600 0 0 0"></Button>
         </Grid>
 
         <Grid Grid.Row="7" Margin="10 15 50 0" >

@@ -9,6 +9,7 @@ using DTO_Library;
 using ICA_BusinessLogicLayer;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ST4GR3_InfusionControlApplication.Commands;
+using ST4GR3_InfusionControlApplication.Stores;
 
 namespace ST4GR3_InfusionControlApplication.ViewModels
 {
@@ -31,10 +32,10 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
       public int MachineID { get; set; }
 
       public ICommand BackCommand { get; }
-      public ViewModelInfusionPlan()
+      public ViewModelInfusionPlan(NavigationStore navigationStore)
       {
          // _DataInfusionPlan = new ViewModelDataInfusionPlan(infusionPlan);
-         BackCommand = new ReturnCommand();
+         BackCommand = new NavigateCommand(navigationStore);
       }
 
 

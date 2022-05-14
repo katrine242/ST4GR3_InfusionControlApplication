@@ -11,7 +11,7 @@ namespace ST4GR3_InfusionControlApplication.Stores
     {
         private ViewModelBase _currentViewModel;
 
-        public event Action CurrentViewModelChanged;
+       
         public ViewModelBase CurrentViewModel
         {
             get => _currentViewModel;
@@ -21,6 +21,8 @@ namespace ST4GR3_InfusionControlApplication.Stores
                 OnCurrentViewModelChanged();
             }
         }
+
+        public event Action CurrentViewModelChanged;
 
         private void OnCurrentViewModelChanged()
         {

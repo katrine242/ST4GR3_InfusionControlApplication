@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ST4GR3_InfusionControlApplication.Commands;
+using ST4GR3_InfusionControlApplication.Stores;
 
 namespace ST4GR3_InfusionControlApplication.ViewModels
 {
@@ -14,9 +15,9 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand MenuCreateInfusionCommand { get; }
         public ICommand MenuLogOutCommand { get; }
 
-        public ViewModelMenuWindow()
+        public ViewModelMenuWindow(NavigationStore navigationStore)
         {
-            MenuCreateInfusionCommand = new MenuCreateInfusionCommand();
+            MenuCreateInfusionCommand = new NavigateCommand(navigationStore);
         }
     }
 }
