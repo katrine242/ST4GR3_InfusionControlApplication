@@ -16,6 +16,7 @@ namespace ST4GR3_test_ICA
 
         //private List<List<double>> _actualList; --- Rettet af Nadia grundet ny DTO
         private List<DTO_TimeFlow> _actualList;
+        private List<DTO_TimeFlow> _actualTimeFlowList;
         private IMedicine medicine;
 
 
@@ -28,34 +29,33 @@ namespace ST4GR3_test_ICA
 
             //_actualList = new List<List<double>>(); --- Rettet af Nadia grundet ny DTO
             _actualList = new List<DTO_TimeFlow>();
+            _actualTimeFlowList = new List<DTO_TimeFlow>();
             medicine = Substitute.For<IMedicine>();
         }
 
-        [Test]
+        //[Test]
 
-        public void DtoPropertyTimeFlowListIsSetTest()
-        {
-            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 65 };
-            medicine = new Medicine("Iloprost", 1.0, 40, 360, 3.0, 100);
-            DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
+        //public void DtoPropertyTimeFlowListIsSetTest()
+        //{
+        //    DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 65 };
+        //    medicine = new Medicine("Iloprost", 1.0, 40, 360, 3.0, 100);
+        //    List<DTO_TimeFlow> dtoTimeFlow = new List<DTO_TimeFlow>();
             
-            _uut = new InfusionPlan(medicine, dtoInfusionplan);
-            _uut.MakeInfusionPlan();
-            Assert.That(dtoTimeFlow, Is.EqualTo(_uut.CalculateFlowRate(dtoInfusionplan)));
+        //    _uut = new InfusionPlan(medicine, dtoInfusionplan);
+        //    _uut.MakeInfusionPlan();
+        //    Assert.That(dtoTimeFlow, Is.EqualTo(_uut.CalculateFlowRate(dtoInfusionplan)));
 
-        }
+        //}
         [Test]
-        public void MedicineListOfListCheckTest1()
+        public void NumberOfDTOsIsCorrect()
         {
 
-            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60};
+            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60,};
             medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
             _uut = new InfusionPlan(medicine, dtoInfusionplan);
-
-            //DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
+            
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
-            List<DTO_TimeFlow> actualTimeFlowList;
-            //List<List<double>> myList = new List<List<double>>();
+            
 
             timeFlowList.Add(new DTO_TimeFlow {Time = 0, Flow = 0.6});
             timeFlowList.Add(new DTO_TimeFlow { Time = 20, Flow = 1.2 });
@@ -66,14 +66,45 @@ namespace ST4GR3_test_ICA
             timeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.4 });
             timeFlowList.Add(new DTO_TimeFlow { Time = 140, Flow = 2.4 });
             timeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
-            
-            actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
 
-            Assert.AreEqual(timeFlowList, actualTimeFlowList);
+            
+            _actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
+
+            CollectionAssert.AreEqual(new[] {timeFlowList.Count}, new[] {_actualTimeFlowList.Count});
+           
 
 
         }
 
+        [Test]
+        public void MedicineListOfListCheckTest1()
+        {
+            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60, };
+            medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
+            _uut = new InfusionPlan(medicine, dtoInfusionplan);
+
+            //DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
+            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
+
+            //List<List<double>> myList = new List<List<double>>();
+
+            timeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.6 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 20, Flow = 1.2 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 40, Flow = 1.8 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 60, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 80, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 100, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 140, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
+
+
+            _actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
+
+            CollectionAssert.AreEqual(timeFlowList, _actualTimeFlowList);
+            //Assert.That(timeFlowList, Is.EqualTo(_actualTimeFlowList));
+
+        }
         [Test]
         public void MedicineListOfListCheckTest2()
         {

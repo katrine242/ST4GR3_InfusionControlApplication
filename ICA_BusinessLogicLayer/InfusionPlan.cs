@@ -46,7 +46,7 @@ namespace ICA_BusinessLogicLayer
          double factor = Medicine.Factor;
          double maxDosis = Medicine.MaxDosis;
          double concentration = Medicine.Concentration;
-         double weight = Weight;
+         double weight = m.Weight;
 
          double accFactor = factor;
 
