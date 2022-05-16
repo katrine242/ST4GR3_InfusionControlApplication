@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Castle.Core.Internal;
 using ICA_BusinessLogicLayer;
 using NUnit.Framework;
@@ -77,16 +78,15 @@ namespace ST4GR3_test_ICA
         }
 
         [Test]
-        public void MedicineListOfListCheckTest1()
+        public void MedicineCorrectTimeAndFlowsTest1()
         {
             DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60, };
             medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
             _uut = new InfusionPlan(medicine, dtoInfusionplan);
 
-            //DTO_TimeFlow dtoTimeFlow = new DTO_TimeFlow();
+           
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
-            //List<List<double>> myList = new List<List<double>>();
 
             timeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.6 });
             timeFlowList.Add(new DTO_TimeFlow { Time = 20, Flow = 1.2 });
@@ -101,52 +101,69 @@ namespace ST4GR3_test_ICA
 
             _actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
 
-            CollectionAssert.AreEqual(timeFlowList, _actualTimeFlowList);
-            //Assert.That(timeFlowList, Is.EqualTo(_actualTimeFlowList));
+            for (int i = 0; i < timeFlowList.Count; i++)
+            {
+                Assert.AreEqual(timeFlowList[i].Time, _actualTimeFlowList[i].Time);
+                Assert.AreEqual(timeFlowList[i].Flow, _actualTimeFlowList[i].Flow);
+            }
+            
 
         }
         [Test]
-        public void MedicineListOfListCheckTest2()
+        public void MedicineCorrectTimeAndFlowsTest2()
         {
 
             DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
+            medicine = new Medicine("NameHere", 0.9, 30, 240, 3.6, 100);
             _uut = new InfusionPlan(medicine, dtoInfusionplan);
 
-            List<List<double>> myList = new List<List<double>>();
-            myList.Add(new List<double> { 0, 0.63 });
-            myList.Add(new List<double> { 30, 1.26 });
-            myList.Add(new List<double> { 60, 1.89 });
-            myList.Add(new List<double> { 90, 2.52 });
-            myList.Add(new List<double> { 120, 2.52 });
-            myList.Add(new List<double> { 150, 2.52 });
-            myList.Add(new List<double> { 180, 2.52 });
-            myList.Add(new List<double> { 210, 2.52 });
+            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
-            //_actualList = _uut.CalculateFlowRate(dtoInfusionplan);
-            //CollectionAssert.AreEqual(myList, _actualList);
-            _uut.CalculateFlowRate(dtoInfusionplan);
-            //Assert.AreEqual(dtoTimeFlow, _actualTimeFlow);
+            
+            timeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.63 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 30, Flow = 1.26 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 60, Flow = 1.89 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 90, Flow = 2.52 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.52 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 150, Flow = 2.52 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 180, Flow = 2.52 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 210, Flow = 2.52 });
+         
+
+            _actualTimeFlowList =_uut.CalculateFlowRate(dtoInfusionplan);
+
+            for (int i = 0; i < timeFlowList.Count; i++)
+            {
+                Assert.AreEqual(timeFlowList[i].Time, _actualTimeFlowList[i].Time);
+                Assert.AreEqual(timeFlowList[i].Flow, _actualTimeFlowList[i].Flow);
+            }
         }
 
         [Test]
-        public void MedicineListOfListCheckTest3()
+        public void MedicineCorrectTimeAndFlowsTest3()
         {
-
-            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 80, Factor = 2.0, Concentration = 200, Fulltime = 300, IntervalTime = 60, MaxDoseage = 6.0 };
+            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 80, };
+            medicine = new Medicine("NameHere", 2.0, 60, 300, 6.0, 200);
+            
             _uut = new InfusionPlan(medicine, dtoInfusionplan);
 
-            List<List<double>> myList = new List<List<double>>();
-            myList.Add(new List<double> { 0, 0.8 });
-            myList.Add(new List<double> { 60, 1.6 });
-            myList.Add(new List<double> { 120, 2.4 });
-            myList.Add(new List<double> { 180, 2.4 });
-            myList.Add(new List<double> { 240, 2.4 });
+            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
 
-            //_actualList = _uut.CalculateFlowRate(dtoInfusionplan);
-            //CollectionAssert.AreEqual(myList, _actualList);
-            _uut.CalculateFlowRate(dtoInfusionplan);
-            //Assert.AreEqual(dtoTimeFlow, _actualTimeFlow);
+            timeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.8 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 60, Flow = 1.6 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 180, Flow = 2.4 });
+            timeFlowList.Add(new DTO_TimeFlow { Time = 240, Flow = 2.4 });
+
+            _actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
+
+            for (int i = 0; i < timeFlowList.Count; i++)
+            {
+                Assert.AreEqual(timeFlowList[i].Time, _actualTimeFlowList[i].Time);
+                Assert.AreEqual(timeFlowList[i].Flow, _actualTimeFlowList[i].Flow);
+            }
+
         }
     }
 }
