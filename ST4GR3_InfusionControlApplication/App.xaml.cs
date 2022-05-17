@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using ST4GR3_InfusionControlApplication.Stores;
 using ICA_BusinessLogicLayer;
+using ICA_BusinessLogicLayer.Configuration;
 using ICA_BusinessLogicLayer.Services;
 using ICA_BusinessLogicLayer.Services.InfusionPlanCreator;
 using ICA_BusinessLogicLayer.Services.InfusionPlanProvider;
