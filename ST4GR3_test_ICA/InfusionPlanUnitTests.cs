@@ -50,11 +50,10 @@ namespace ST4GR3_test_ICA
         [Test]
         public void NumberOfDTOsIsCorrect()
         {
-
-            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60,};
+           _uut.InfusionData= new DTO_InfusionPlan() { Weight = 60,};
             medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
-                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
+            _uut = new InfusionPlan(medicine, _uut.InfusionData.MachineID, _uut.InfusionData.BatchId
+                , _uut.InfusionData.CPR, _uut.InfusionData.Weight, _uut.InfusionData.PatientName);
             
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
             
@@ -70,7 +69,7 @@ namespace ST4GR3_test_ICA
             timeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
 
             
-            _actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
+            _actualTimeFlowList = _uut.CalculateFlowRate();
 
             CollectionAssert.AreEqual(new[] {timeFlowList.Count}, new[] {_actualTimeFlowList.Count});
            
@@ -81,13 +80,13 @@ namespace ST4GR3_test_ICA
         [Test]
         public void MedicineCorrectTimeAndFlowsTest1()
         {
-            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60, };
-            medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
-                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
+           _uut.InfusionData = new DTO_InfusionPlan() { Weight = 60, };
+           medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
+           _uut = new InfusionPlan(medicine, _uut.InfusionData.MachineID, _uut.InfusionData.BatchId
+              , _uut.InfusionData.CPR, _uut.InfusionData.Weight, _uut.InfusionData.PatientName);
 
-           
-            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
+
+         List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
 
             timeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.6 });
@@ -101,7 +100,7 @@ namespace ST4GR3_test_ICA
             timeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
 
 
-            _actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
+            _actualTimeFlowList = _uut.CalculateFlowRate();
 
             for (int i = 0; i < timeFlowList.Count; i++)
             {
@@ -114,13 +113,12 @@ namespace ST4GR3_test_ICA
         [Test]
         public void MedicineCorrectTimeAndFlowsTest2()
         {
+           _uut.InfusionData = new DTO_InfusionPlan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
+           medicine = new Medicine("NameHere", 0.9, 30, 240, 3.6, 100);
+           _uut = new InfusionPlan(medicine, _uut.InfusionData.MachineID, _uut.InfusionData.BatchId
+              , _uut.InfusionData.CPR, _uut.InfusionData.Weight, _uut.InfusionData.PatientName);
 
-            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
-            medicine = new Medicine("NameHere", 0.9, 30, 240, 3.6, 100);
-            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
-                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
-
-            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
+           List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
             
             timeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.63 });
@@ -133,7 +131,7 @@ namespace ST4GR3_test_ICA
             timeFlowList.Add(new DTO_TimeFlow { Time = 210, Flow = 2.52 });
          
 
-            _actualTimeFlowList =_uut.CalculateFlowRate(dtoInfusionplan);
+            _actualTimeFlowList =_uut.CalculateFlowRate();
 
             for (int i = 0; i < timeFlowList.Count; i++)
             {
@@ -145,12 +143,12 @@ namespace ST4GR3_test_ICA
         [Test]
         public void MedicineCorrectTimeAndFlowsTest3()
         {
-            DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 80, };
-            medicine = new Medicine("NameHere", 2.0, 60, 300, 6.0, 200);
-            
-            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
-                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
+           _uut.InfusionData = new DTO_InfusionPlan() { Weight = 80, };
+           medicine = new Medicine("NameHere", 2.0, 60, 300, 6.0, 200);
+           _uut = new InfusionPlan(medicine, _uut.InfusionData.MachineID, _uut.InfusionData.BatchId
+              , _uut.InfusionData.CPR, _uut.InfusionData.Weight, _uut.InfusionData.PatientName);
 
+        
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
 
@@ -160,7 +158,7 @@ namespace ST4GR3_test_ICA
             timeFlowList.Add(new DTO_TimeFlow { Time = 180, Flow = 2.4 });
             timeFlowList.Add(new DTO_TimeFlow { Time = 240, Flow = 2.4 });
 
-            _actualTimeFlowList = _uut.CalculateFlowRate(dtoInfusionplan);
+            _actualTimeFlowList = _uut.CalculateFlowRate();
 
             for (int i = 0; i < timeFlowList.Count; i++)
             {

@@ -26,6 +26,7 @@ namespace ICA_BusinessLogicLayer
 
         public async Task CreateInfusionPlan(InfusionPlan infusionPlan)
         {
+           infusionPlan.MakeInfusionPlan();
             await _infusionPlanBook.AddInfusionPlan(infusionPlan);
         }
     }
