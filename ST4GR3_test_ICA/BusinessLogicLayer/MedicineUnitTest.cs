@@ -64,8 +64,7 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer
          
          _configlist = new List<Medicine_config>() { medicine_config_ };
 
-         Medicine medicine= _uut.GetMedicine(_configlist, "Iloprost");
-         Assert.That(medicine, Is.EqualTo(new Medicine(name, factor, intervaltime, fulltime, maxdosage, concentration)));
+         Assert.That(_uut.GetMedicine(_configlist, "Iloprost"), Is.EqualTo(new Medicine(name, factor, intervaltime, fulltime, maxdosage, concentration)));
       }
 
       [TestCase("Iloprost", 0.02, "Perifære Vaskulære", 0.0005, 360, 30, 0.002)]
