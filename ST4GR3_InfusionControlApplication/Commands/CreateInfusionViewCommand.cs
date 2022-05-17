@@ -42,8 +42,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
          {
             InfusionPlan infusionPlan =
                new InfusionPlan(
-                  new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine),
-                  new DTO_InfusionPlan());
+                  new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine),_viewModelCreateInfusion.MachineID,_viewModelCreateInfusion.BatchID,_viewModelCreateInfusion.CPR,_viewModelCreateInfusion.Weight,_viewModelCreateInfusion.Patient);
             infusionPlan.Weight = _viewModelCreateInfusion.Weight;
             _infusionOverview.CreateInfusionPlan(infusionPlan);
             _menuViewNavigationService.Navigate();
