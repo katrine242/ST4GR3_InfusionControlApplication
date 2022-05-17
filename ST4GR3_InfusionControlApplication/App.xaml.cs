@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using ST4GR3_InfusionControlApplication.Stores;
 using ICA_BusinessLogicLayer;
+using ICA_BusinessLogicLayer.Configuration;
 using ICA_BusinessLogicLayer.Services;
 using ICA_BusinessLogicLayer.Services.InfusionPlanCreator;
 using ICA_BusinessLogicLayer.Services.InfusionPlanProvider;
@@ -45,7 +46,7 @@ namespace ST4GR3_InfusionControlApplication
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = CreateViewModelMenuWindow();
+            _navigationStore.CurrentViewModel = CreateMakeViewModelMenuWindow();
             MainWindow = new MainWindow()
                 {DataContext = new MainViewModel(_navigationStore)};
 
@@ -59,10 +60,10 @@ namespace ST4GR3_InfusionControlApplication
 
         private ViewModelMenuWindow CreateMakeViewModelMenuWindow()
         {
-            return new ViewModelMenuWindow(_infusionOverview, new NavigationService(_navigationStore, CreateViewModelMenuWindow));
+            return new ViewModelMenuWindow(_infusionOverview, new NavigationService(_navigationStore, CreateViewCreateInfusion));
         }
 
-        private ViewModelCreateInfusion CreateViewModelMenuWindow()
+        private ViewModelCreateInfusion CreateViewCreateInfusion()
         {
             return new ViewModelCreateInfusion(_infusionOverview, new NavigationService(_navigationStore, CreateMakeViewModelMenuWindow));
         }

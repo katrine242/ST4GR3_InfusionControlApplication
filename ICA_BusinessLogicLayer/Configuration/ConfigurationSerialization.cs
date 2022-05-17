@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DTO_Library;
 
-namespace ICA_BusinessLogicLayer
+
+namespace ICA_BusinessLogicLayer.Configuration
 {
    public class ConfigurationSerialization
    {
-      
-      public static void SaveList(string path, List<Medicine_config> configlist)
-      {
-         FileStream fs = new FileStream(path, FileMode.Create);
-         XmlSerializer serializer = new XmlSerializer(typeof(List<Medicine>));
-         serializer.Serialize(fs, configlist);
-         fs.Close();
-      }
+      //Bruges til at oprette XML-filen
+      //public static void SaveList(string path, List<Medicine_config> configlist)
+      //{
+      //   FileStream fs = new FileStream(path, FileMode.Create);
+      //   XmlSerializer serializer = new XmlSerializer(typeof(List<Medicine>));
+      //   serializer.Serialize(fs, configlist);
+      //   fs.Close();
+      //}
       public static List<Medicine_config> LoadList(string path)
       {
          FileStream fs = new FileStream(path, FileMode.Open);
@@ -26,5 +27,6 @@ namespace ICA_BusinessLogicLayer
          List<Medicine_config> configurationlist = (List<Medicine_config>)serializer.Deserialize(fs);
          return configurationlist;
       }
+
    }
 }

@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DTO_Library;
+using ICA_BusinessLogicLayer.Exception;
 
 namespace ICA_BusinessLogicLayer
 {
@@ -16,7 +17,9 @@ namespace ICA_BusinessLogicLayer
         public int Fulltime { get; }
         public double MaxDosis { get; }
         public double Concentration { get;  }
-      
+        private Medicine _medicine;
+
+
         public Medicine(){}
         public Medicine(string name, double factor, int intervaltime, int fulltime, double maxDosis, double concentration)
         {
@@ -49,7 +52,6 @@ namespace ICA_BusinessLogicLayer
 
       public Medicine GetMedicine(List<Medicine_config> medicinelist, string name)
       {
-         Medicine _medicine=new Medicine();
 
          foreach (Medicine_config medicineConfig in medicinelist)
          {
@@ -58,7 +60,8 @@ namespace ICA_BusinessLogicLayer
                _medicine = new Medicine(medicineConfig.Name, medicineConfig.Factor, medicineConfig.IntervalTime,
                   medicineConfig.Fulltime, medicineConfig.MaxDosis, medicineConfig.Concentration);
             }
-            
+            else throw new InvalidMedicineNameConflictException(medicineConfig.Name);
+
          }
 
          return _medicine;

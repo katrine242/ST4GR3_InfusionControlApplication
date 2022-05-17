@@ -9,7 +9,8 @@ namespace ICA_BusinessLogicLayer
 {
    public class NestedConfiguration
    {
-      public List<Medicine_config> Configlist { get; set; } = new List<Medicine_config>();
+      //Bruges til at oprette Xmml fil med en liste
+      //public List<Medicine_config> Configlist { get; set; } = new List<Medicine_config>();
 
    }
 }
