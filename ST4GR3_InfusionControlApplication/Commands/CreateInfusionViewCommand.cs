@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using DTO_Library;
 using ICA_BusinessLogicLayer;
+using ICA_BusinessLogicLayer.Exception;
 using ICA_BusinessLogicLayer.Services;
 using ST4GR3_InfusionControlApplication.ViewModels;
 
@@ -34,16 +36,24 @@ namespace ST4GR3_InfusionControlApplication.Commands
           return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>0 &&_viewModelCreateInfusion.Height>0&&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
        }
       public override void Execute(object parameter)
-       {
-          InfusionPlan infusionPlan =
-             new InfusionPlan(new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine),
-                new DTO_InfusionPlan());
-          infusionPlan.Weight = _viewModelCreateInfusion.Weight;
-
+      {
          
-          _infusionOverview.CreateInfusionPlan(infusionPlan);
+         try
+         {
+            InfusionPlan infusionPlan =
+               new InfusionPlan(
+                  new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine),
+                  new DTO_InfusionPlan());
+            infusionPlan.Weight = _viewModelCreateInfusion.Weight;
+            _infusionOverview.CreateInfusionPlan(infusionPlan);
+            _menuViewNavigationService.Navigate();
 
-          _menuViewNavigationService.Navigate();
+         }
+         catch (InvalidMedicineNameConflictException ex)
+         {
+            MessageBox.Show("Medicin ikke tilgængeligt","Fejlmeddelelse", MessageBoxButton.OK,MessageBoxImage.Error);
+         }
+
 
        }
 

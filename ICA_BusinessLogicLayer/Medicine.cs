@@ -59,9 +59,12 @@ namespace ICA_BusinessLogicLayer
             {
                _medicine = new Medicine(medicineConfig.Name, medicineConfig.Factor, medicineConfig.IntervalTime,
                   medicineConfig.Fulltime, medicineConfig.MaxDosis, medicineConfig.Concentration);
+               break;
             }
-            else throw new InvalidMedicineNameConflictException(medicineConfig.Name);
-
+            else if (medicineConfig.Name != name)
+            {
+               throw new InvalidMedicineNameConflictException(medicineConfig.Name);
+            }
          }
 
          return _medicine;
