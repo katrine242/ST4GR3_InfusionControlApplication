@@ -24,10 +24,9 @@ namespace ICA_BusinessLogicLayer
 
         #endregion
 
-        public InfusionPlan(IMedicine medicine, int machineId, int batchId, long cpr, double weight, string patientName)
+        public InfusionPlan(IMedicine medicine, in int machineId, int batchId, long cpr, double weight, string patientName)
         {
             Medicine = medicine;
-
             MachineID = machineId;
             BatchId = batchId;
             CPR = cpr;
@@ -37,28 +36,24 @@ namespace ICA_BusinessLogicLayer
 
         public void MakeInfusionPlan() 
         {
-            InfusionData.DtoTimeFlowList = CalculateFlowRate(InfusionData);
+            InfusionData.DtoTimeFlowList = CalculateFlowRate();
+            InfusionData.MachineID = MachineID;
+            InfusionData.BatchId = BatchId;
+            InfusionData.Weight = Weight;
+            InfusionData.CPR = CPR;
+            InfusionData.PatientName = PatientName;
 
         }
 
         
-        public List<DTO_TimeFlow> CalculateFlowRate(DTO_InfusionPlan m)
+        public List<DTO_TimeFlow> CalculateFlowRate()
         {
-         // disse skal hentes fra dto_infusionplan
-         //int intervaltime = m.IntervalTime;
-         //int fulltime = m.Fulltime;
-         //double factor = m.Factor;
-         //double maxDosis = m.MaxDoseage;
-         //double concentration = m.Concentration;
-         //double weight = m.Weight;
 
-         int intervaltime = Medicine.IntervalTime;
+           int intervaltime = Medicine.IntervalTime;
          int fulltime = Medicine.Fulltime;
          double factor = Medicine.Factor;
          double maxDosis = Medicine.MaxDosis;
          double concentration = Medicine.Concentration;
-         double weight = m.Weight;
-
          double accFactor = factor;
 
             int listCapacity = fulltime / intervaltime;
@@ -74,7 +69,7 @@ namespace ICA_BusinessLogicLayer
             {
                 
                 time = time + intervaltime; // lægger tid til for hvert interval
-                flow = ((weight * accFactor * intervaltime)/ intervaltime) / concentration; 
+                flow = ((Weight * accFactor * intervaltime)/ intervaltime) / concentration; 
                 // flow/konc = ml
                 DTO_TimeFlow localdtoTimeFlow = new DTO_TimeFlow{Time = time,Flow = flow};
 
