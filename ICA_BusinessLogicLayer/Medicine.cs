@@ -63,7 +63,7 @@ namespace ICA_BusinessLogicLayer
             }
             else if (medicineConfig.Name != name)
             {
-               throw new InvalidMedicineNameConflictException(medicineConfig.Name);
+               throw new InvalidMedicineNameConflictException(name);
             }
          }
 

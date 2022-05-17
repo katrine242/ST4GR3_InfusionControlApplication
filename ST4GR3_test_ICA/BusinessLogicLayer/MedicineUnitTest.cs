@@ -52,36 +52,43 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer
          Assert.Throws<InvalidMedicineNameConflictException>(() => _uut.GetMedicine(_configlist, "panodil"));
       }
 
-      //[TestCase()]
+      [TestCase("Iloprost", 0.02, "Perifære Vaskulære", 0.0005,360,30,0.002)]
 
-      //public void TestGetMedicineReturnRightMedicine(string name, double concentration, string disease )
-      //{
-      //   iloprost = new Medicine_config()
-      //   {
-      //      Name = "Iloprost",
-      //      Concentration = 0.02,
-      //      Disease = "Perifære Vaskulære",
-      //      Factor = 0.0005,
-      //      Fulltime = 360,
-      //      IntervalTime = 30,
-      //      MaxDosis = 0.002
-      //   };
-      //   infliximab_1til4 = new Medicine_config()
-      //   {
-      //      Name = "Infliximab_1til4",
-      //      Concentration = 0,
-      //      Disease = "Reumatoid artritis",
-      //      Factor = 5,
-      //      Fulltime = 120,
-      //      IntervalTime = 0,
-      //      MaxDosis = 10
-      //   };
-      //   _configlist = new List<Medicine_config>() { iloprost, infliximab_1til4 };
+      public void TestGetMedicineReturnRightMedicine(string name, double concentration, string disease, double factor,int fulltime,int intervaltime,double maxdosage)
+      {
+         Medicine_config medicine_config_ = new Medicine_config()
+         {
+            Concentration = concentration, Disease = disease, Factor = factor, Fulltime = fulltime,
+            IntervalTime = intervaltime, MaxDosis = maxdosage, Name = name
+         };
+         
+         _configlist = new List<Medicine_config>() { medicine_config_ };
 
-      //   Medicine medicine=_uut.GetMedicine(_configlist,"Iloprost");
-      //   Assert.That(medicine, Is.EqualTo(new Medicine("Iloprost", 0.0005, 30, 360, 0.002, 0.02)));
-      //}
+         Medicine medicine= _uut.GetMedicine(_configlist, "Iloprost");
+         Assert.That(medicine, Is.EqualTo(new Medicine(name, factor, intervaltime, fulltime, maxdosage, concentration)));
+      }
 
+      [TestCase("Iloprost", 0.02, "Perifære Vaskulære", 0.0005, 360, 30, 0.002)]
+
+      public void throws_Rightexception_whennamewrong(string name, double concentration, string disease, double factor, int fulltime, int intervaltime, double maxdosage)
+      {
+         Medicine_config medicine_config_ = new Medicine_config()
+         {
+            Concentration = concentration,
+            Disease = disease,
+            Factor = factor,
+            Fulltime = fulltime,
+            IntervalTime = intervaltime,
+            MaxDosis = maxdosage,
+            Name = name
+         };
+
+         _configlist = new List<Medicine_config>() { medicine_config_ };
+
+         Assert.That(() => _uut.GetMedicine(_configlist, "panodil"),
+            Throws.TypeOf<InvalidMedicineNameConflictException>().With.Property("MedicineName").EqualTo("panodil"));
+
+      }
 
    }
 }
