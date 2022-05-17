@@ -31,7 +31,8 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
 
         private static InfusionPlan ToInfusionPlan(DTO_InfusionPlan i)
         {
-            return new InfusionPlan(new Medicine(i.MedicineName, i.Factor, i.IntervalTime, i.Fulltime, i.MaxDoseage, i.Concentration),i);
+            return new InfusionPlan(new Medicine(i.MedicineName, i.Factor, i.IntervalTime, i.Fulltime, i.MaxDoseage, i.Concentration)
+                , i.MachineID, i.BatchId, i.CPR, i.Weight, i.PatientName);
         }
 
         public DTO_InfusionPlan GetOneInfusionPlan(long WantedCPR)
