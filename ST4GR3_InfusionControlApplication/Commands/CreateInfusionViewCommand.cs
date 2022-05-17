@@ -33,7 +33,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
 
        public override bool CanExecute(object parameter)
        {
-          return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>0 &&_viewModelCreateInfusion.Height>0&&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
+          return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>=0 &&_viewModelCreateInfusion.Height>0&&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
        }
       public override void Execute(object parameter)
       {
@@ -42,7 +42,9 @@ namespace ST4GR3_InfusionControlApplication.Commands
          {
             InfusionPlan infusionPlan =
                new InfusionPlan(
-                  new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine),_viewModelCreateInfusion.MachineID,_viewModelCreateInfusion.BatchID,_viewModelCreateInfusion.CPR,_viewModelCreateInfusion.Weight,_viewModelCreateInfusion.Patient);
+                  new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine)
+                  ,_viewModelCreateInfusion.MachineID,_viewModelCreateInfusion.BatchID,_viewModelCreateInfusion.CPR
+                  ,_viewModelCreateInfusion.Weight,_viewModelCreateInfusion.Patient);
             _infusionOverview.CreateInfusionPlan(infusionPlan);
             _menuViewNavigationService.Navigate();
 

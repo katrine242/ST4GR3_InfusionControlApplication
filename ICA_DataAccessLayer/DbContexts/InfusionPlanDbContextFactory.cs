@@ -27,7 +27,7 @@ namespace ICA_DataAccessLayer.DbContexts
         public InfusionPlanDbContext CreateDbContext()
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(_connectingString).Options;
-            return new InfusionPlanDbContext(/*options*/);
+            return new InfusionPlanDbContext(options);
         }
     }
 }

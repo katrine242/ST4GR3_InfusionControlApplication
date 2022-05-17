@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ICA_DataAccessLayer.Migrations
 {
     [DbContext(typeof(InfusionPlanDbContext))]
-    [Migration("20220511124633_Initial")]
+    [Migration("20220517123620_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,8 +19,14 @@ namespace ICA_DataAccessLayer.Migrations
 
             modelBuilder.Entity("DTO_Library.DTO_InfusionPlan", b =>
                 {
-                    b.Property<long>("CPR")
+                    b.Property<int>("MachineID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BatchId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("CPR")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Concentration")
@@ -32,10 +38,10 @@ namespace ICA_DataAccessLayer.Migrations
                     b.Property<int>("Fulltime")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IntervalTime")
+                    b.Property<int>("Height")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("MachineID")
+                    b.Property<int>("IntervalTime")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("MaxDoseage")
@@ -44,80 +50,52 @@ namespace ICA_DataAccessLayer.Migrations
                     b.Property<string>("MedicineName")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PatientName")
+                        .HasColumnType("TEXT");
+
                     b.Property<double>("Weight")
                         .HasColumnType("REAL");
 
-                    b.HasKey("CPR");
+                    b.HasKey("MachineID");
 
                     b.ToTable("InfusionPlans");
                 });
 
-            modelBuilder.Entity("DTO_Library.DTO_TimeFlowList", b =>
+            modelBuilder.Entity("DTO_Library.DTO_TimeFlow", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("DtoInfusionPlanCpr")
+                    b.Property<int>("DtoInfusionPlanMachineId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id", "DtoInfusionPlanCpr");
-
-                    b.HasIndex("DtoInfusionPlanCpr");
-
-                    b.ToTable("TimeFlowLists");
-                });
-
-            modelBuilder.Entity("DTO_Library.DTO_TimeFlowListItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("DtoTimeFlowListId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("DtoTimeFlowListDtoInfusionPlanCpr")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("TimeFlowListItemType")
+                    b.Property<double>("Flow")
                         .HasColumnType("REAL");
 
-                    b.HasKey("Id", "DtoTimeFlowListId", "DtoTimeFlowListDtoInfusionPlanCpr");
+                    b.Property<double>("Time")
+                        .HasColumnType("REAL");
 
-                    b.HasIndex("DtoTimeFlowListId", "DtoTimeFlowListDtoInfusionPlanCpr");
+                    b.HasKey("Id", "DtoInfusionPlanMachineId");
 
-                    b.ToTable("TimeFlowListItems");
+                    b.HasIndex("DtoInfusionPlanMachineId");
+
+                    b.ToTable("TimeFlows");
                 });
 
-            modelBuilder.Entity("DTO_Library.DTO_TimeFlowList", b =>
+            modelBuilder.Entity("DTO_Library.DTO_TimeFlow", b =>
                 {
                     b.HasOne("DTO_Library.DTO_InfusionPlan", "DtoInfusionPlan")
-                        .WithMany("TimeFlowLists")
-                        .HasForeignKey("DtoInfusionPlanCpr")
+                        .WithMany("DtoTimeFlowList")
+                        .HasForeignKey("DtoInfusionPlanMachineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DtoInfusionPlan");
                 });
 
-            modelBuilder.Entity("DTO_Library.DTO_TimeFlowListItem", b =>
-                {
-                    b.HasOne("DTO_Library.DTO_TimeFlowList", "DtoTimeFlowList")
-                        .WithMany("TimeFlowListItems")
-                        .HasForeignKey("DtoTimeFlowListId", "DtoTimeFlowListDtoInfusionPlanCpr")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DtoTimeFlowList");
-                });
-
             modelBuilder.Entity("DTO_Library.DTO_InfusionPlan", b =>
                 {
-                    b.Navigation("TimeFlowLists");
-                });
-
-            modelBuilder.Entity("DTO_Library.DTO_TimeFlowList", b =>
-                {
-                    b.Navigation("TimeFlowListItems");
+                    b.Navigation("DtoTimeFlowList");
                 });
 #pragma warning restore 612, 618
         }
