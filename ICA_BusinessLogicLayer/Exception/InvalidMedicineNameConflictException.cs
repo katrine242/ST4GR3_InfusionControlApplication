@@ -14,5 +14,7 @@ namespace ICA_BusinessLogicLayer.Exception
       {
          MedicineName = medicineName;
       }
+
+
    }
 }
