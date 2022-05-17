@@ -37,13 +37,7 @@ namespace ICA_BusinessLogicLayer
 
         public void MakeInfusionPlan() 
         {
-            InfusionData.DtoTimeFlowList = CalculateFlowRate();
-            InfusionData.MachineID = MachineID;
-            InfusionData.BatchId = BatchId;
-            InfusionData.Weight = Weight;
-            InfusionData.CPR = CPR;
-            InfusionData.PatientName = PatientName;
-
+            DtoTimeFlowList = CalculateFlowRate();
         }
 
         

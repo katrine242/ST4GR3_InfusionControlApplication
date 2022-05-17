@@ -45,7 +45,8 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanCreator
                 MaxDoseage = infusionPlan.Medicine.MaxDosis,
                 IntervalTime = infusionPlan.Medicine.IntervalTime,
                 Concentration = infusionPlan.Medicine.Concentration,
-                DtoTimeFlowList = infusionPlan.DtoTimeFlowList
+                DtoTimeFlowList = infusionPlan.DtoTimeFlowList,
+                MedicineName = infusionPlan.Medicine.Name
             };
         }
 
