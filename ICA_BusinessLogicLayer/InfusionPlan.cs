@@ -32,6 +32,7 @@ namespace ICA_BusinessLogicLayer
             CPR = cpr;
             Weight = weight;
             PatientName = patientName;
+            InfusionData = new DTO_InfusionPlan();
         }
 
         public void MakeInfusionPlan() 
