@@ -33,7 +33,20 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanCreator
 
         private DTO_InfusionPlan ToInfusionPlanDTO(InfusionPlan infusionPlan)
         {
-            return infusionPlan.InfusionData;
+            return new DTO_InfusionPlan()
+            {
+                MachineID = infusionPlan.MachineID,
+                BatchId = infusionPlan.BatchId,
+                CPR = infusionPlan.CPR,
+                Weight = infusionPlan.Weight,
+                PatientName = infusionPlan.PatientName,
+                Fulltime = infusionPlan.Medicine.Fulltime,
+                Factor = infusionPlan.Medicine.Factor,
+                MaxDoseage = infusionPlan.Medicine.MaxDosis,
+                IntervalTime = infusionPlan.Medicine.IntervalTime,
+                Concentration = infusionPlan.Medicine.Concentration,
+                DtoTimeFlowList = infusionPlan.DtoTimeFlowList
+            };
         }
 
         public void MigrateToDataBase()

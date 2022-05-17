@@ -29,7 +29,9 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
 
             _dtoInfusionPlan = new DTO_InfusionPlan();
 
-            _infusionPlan = new InfusionPlan(_fakeMedicine,_dtoInfusionPlan);
+            _infusionPlan = new InfusionPlan(_fakeMedicine,_infusionPlan.MachineID,
+                _infusionPlan.BatchId, _infusionPlan.CPR, _infusionPlan.Weight
+                , _infusionPlan.PatientName);
             _uut = new DatabaseInfusionPlanCreator(_connectingstring);
         }
 

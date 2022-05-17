@@ -10,16 +10,29 @@ namespace ICA_BusinessLogicLayer
 {
     public class InfusionPlan : IInfusionPlan
     {
+        #region Properties
+        public DTO_InfusionPlan InfusionData { get; set; }
 
-       public DTO_InfusionPlan InfusionData { get; set; }
-        public IMedicine Medicine { get; }
+        public int MachineID { get; set; }
+        public int BatchId { get; set; }
+        public long CPR { get; set; }
         public double Weight { get; set; }
-        
-        public InfusionPlan(IMedicine medicine, DTO_InfusionPlan dtoInfusionplan)
+        public string PatientName { get; set; }
+        public IMedicine Medicine { get; }
+
+        public List<DTO_TimeFlow> DtoTimeFlowList { get; set; }
+
+        #endregion
+
+        public InfusionPlan(IMedicine medicine, int machineId, int batchId, long cpr, double weight, string patientName)
         {
-           InfusionData = dtoInfusionplan;
             Medicine = medicine;
 
+            MachineID = machineId;
+            BatchId = batchId;
+            CPR = cpr;
+            Weight = weight;
+            PatientName = patientName;
         }
 
         public void MakeInfusionPlan() 
@@ -29,8 +42,6 @@ namespace ICA_BusinessLogicLayer
         }
 
         
-
-
         public List<DTO_TimeFlow> CalculateFlowRate(DTO_InfusionPlan m)
         {
          // disse skal hentes fra dto_infusionplan

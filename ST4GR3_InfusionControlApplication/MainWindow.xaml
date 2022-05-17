@@ -9,9 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="1000" Background="#D9D9D9">
     <Grid  Margin="20 20 20 20" MaxWidth="800"  >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+      
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:ViewModelCreateInfusion}">
                 <views:CreateInfusionView/>
@@ -24,11 +22,9 @@
             </DataTemplate>
         </Grid.Resources>
         <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
-       
 
-        <Grid Grid.Row="0" Margin="600,0,-23,-11" Width="183" Height="34.94">
-            <TextBlock  Text="ID: 12345" FontSize="18"  Background="#A6A6A6" TextAlignment="Center" Margin="-10,-182,33,168" Height="27"/>
-        </Grid>
+        <TextBlock  Text="ID: 12345" FontSize="18"  Background="#A6A6A6" TextAlignment="Center" Margin="610 -400 30 00" Height="27"/>
+       
     </Grid>
     <!--<views:CreateInfusionView DataContext="{Binding CurrentViewModel}"/>-->
     <!--<Grid>

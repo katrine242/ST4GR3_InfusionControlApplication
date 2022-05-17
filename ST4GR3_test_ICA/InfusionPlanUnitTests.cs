@@ -53,7 +53,8 @@ namespace ST4GR3_test_ICA
 
             DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60,};
             medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-            _uut = new InfusionPlan(medicine, dtoInfusionplan);
+            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
+                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
             
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
             
@@ -82,7 +83,8 @@ namespace ST4GR3_test_ICA
         {
             DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 60, };
             medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-            _uut = new InfusionPlan(medicine, dtoInfusionplan);
+            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
+                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
 
            
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
@@ -115,7 +117,8 @@ namespace ST4GR3_test_ICA
 
             DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 70, Factor = 0.9, Concentration = 100, Fulltime = 240, IntervalTime = 30, MaxDoseage = 3.6 };
             medicine = new Medicine("NameHere", 0.9, 30, 240, 3.6, 100);
-            _uut = new InfusionPlan(medicine, dtoInfusionplan);
+            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
+                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
 
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
@@ -145,7 +148,8 @@ namespace ST4GR3_test_ICA
             DTO_InfusionPlan dtoInfusionplan = new DTO_InfusionPlan() { Weight = 80, };
             medicine = new Medicine("NameHere", 2.0, 60, 300, 6.0, 200);
             
-            _uut = new InfusionPlan(medicine, dtoInfusionplan);
+            _uut = new InfusionPlan(medicine, dtoInfusionplan.MachineID, dtoInfusionplan.BatchId
+                , dtoInfusionplan.CPR, dtoInfusionplan.Weight, dtoInfusionplan.PatientName);
 
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>();
 
