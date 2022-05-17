@@ -46,16 +46,16 @@ namespace ST4GR3_InfusionControlApplication
 
         protected override void OnStartup(StartupEventArgs e)
         {
+          _infusionPlanCreator.MigrateToDataBase();
+
             _navigationStore.CurrentViewModel = CreateMakeViewModelMenuWindow();
+
             MainWindow = new MainWindow()
                 {DataContext = new MainViewModel(_navigationStore)};
 
             MainWindow.Show();
-           
 
-          //_infusionPlanCreator.MigrateToDataBase();
-
-          base.OnStartup(e);
+            base.OnStartup(e);
       }
 
         private ViewModelMenuWindow CreateMakeViewModelMenuWindow()
