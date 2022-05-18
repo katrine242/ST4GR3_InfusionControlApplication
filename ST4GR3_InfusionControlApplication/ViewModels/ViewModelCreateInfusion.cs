@@ -17,7 +17,9 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelCreateInfusion : ViewModelBase
     {
+       private readonly ObservableCollection<ViewModelDataTimeFlow> _calculatedInfusionPlan;
         private string _patient;
+        public IEnumerable<ViewModelDataTimeFlow> Plan => _calculatedInfusionPlan;
         public string Patient
         {
             get
@@ -110,9 +112,9 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 
         public ViewModelCreateInfusion(InfusionOverview infusionOverview,  NavigationService menuViewNavigationService) // har slettet InfusionOverview
         {
+           _calculatedInfusionPlan = new ObservableCollection<ViewModelDataTimeFlow>();
+            CreatePlanCommand = new CreatePlanCommand(this, infusionOverview);
             CreateInfusionPlanCommand = new CreateInfusionViewCommand(this, infusionOverview, menuViewNavigationService);
-            //CreateInfusionPlanCommand = new CreateInfusionViewCommand(this,infusionOverview);
-
             BackCommand = new NavigateCommand(menuViewNavigationService);
 
         }
