@@ -45,7 +45,7 @@
         <Grid Grid.Row="4" Margin="10 20 30 10">
             <TextBlock Text="Medicin:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBox Text="{Binding Medicine, UpdateSourceTrigger=PropertyChanged}" Margin="110 00 470 0"/>
-            <Button Content="Brugerdefinér" Command="{Binding UserChoice}" Margin="600,0,0,0" Background="White" Grid.Column="1" ></Button>
+            <Button Content="Brugerdefinér" Command="{Binding UserChoiceCommand}" Margin="600,0,0,0" Background="White" Grid.Column="1" ></Button>
         </Grid>
         <Grid Grid.Row="5" Margin="10 0 30 10">
             <Grid.ColumnDefinitions>

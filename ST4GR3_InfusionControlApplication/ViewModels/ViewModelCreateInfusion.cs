@@ -116,8 +116,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 
         // Commands for Back, Brugerdefinér og Infusion
         public ICommand BackCommand { get; }
-        public ICommand UserChoice { get; }
-        public ICommand CreatePlan { get; }
+        public ICommand UserChoiceCommand { get; }
+        public ICommand CreatePlanCommand { get; }
         public ICommand CreateInfusionPlanCommand { get; }
 
         public ViewModelCreateInfusion(InfusionOverview infusionOverview,  NavigationService menuViewNavigationService) // har slettet InfusionOverview
