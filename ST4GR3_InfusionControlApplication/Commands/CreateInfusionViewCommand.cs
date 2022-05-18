@@ -33,7 +33,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
 
        public override bool CanExecute(object parameter)
        {
-          return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>=0 &&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
+          return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& !string.IsNullOrEmpty(_viewModelCreateInfusion.CPR) && !string.IsNullOrEmpty(_viewModelCreateInfusion.Weight)&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&& !string.IsNullOrEmpty(_viewModelCreateInfusion.BatchID)&& !string.IsNullOrEmpty(_viewModelCreateInfusion.MachineID) && base.CanExecute(parameter);
        }
       public override async Task ExecuteAsync(object parameter)
       {
@@ -43,8 +43,8 @@ namespace ST4GR3_InfusionControlApplication.Commands
             InfusionPlan infusionPlan =
                new InfusionPlan(
                   new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine)
-                  ,_viewModelCreateInfusion.MachineID,_viewModelCreateInfusion.BatchID,_viewModelCreateInfusion.CPR
-                  ,_viewModelCreateInfusion.Weight,_viewModelCreateInfusion.Patient);
+                     ,Convert.ToInt32(_viewModelCreateInfusion.MachineID), Convert.ToInt32(_viewModelCreateInfusion.BatchID),Convert.ToInt32(_viewModelCreateInfusion.CPR)
+                  , Convert.ToInt64(_viewModelCreateInfusion.Weight),_viewModelCreateInfusion.Patient);
            
             await _infusionOverview.CreateInfusionPlan(infusionPlan);
             MessageBox.Show("Infusionsplan oprettet","Information", MessageBoxButton.OK,MessageBoxImage.Information);
@@ -62,7 +62,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
 
       private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
       {
-         if (e.PropertyName == nameof(ViewModelCreateInfusion.Patient)|| e.PropertyName == nameof(ViewModelCreateInfusion.CPR)||e.PropertyName == nameof(ViewModelCreateInfusion.Height)|| e.PropertyName == nameof(ViewModelCreateInfusion.Weight)|| e.PropertyName == nameof(ViewModelCreateInfusion.Medicine)|| e.PropertyName == nameof(ViewModelCreateInfusion.BatchID)|| e.PropertyName == nameof(ViewModelCreateInfusion.MachineID))
+         if (e.PropertyName == nameof(ViewModelCreateInfusion.Patient)|| e.PropertyName == nameof(ViewModelCreateInfusion.CPR)||e.PropertyName == nameof(ViewModelCreateInfusion.Weight)|| e.PropertyName == nameof(ViewModelCreateInfusion.Medicine)|| e.PropertyName == nameof(ViewModelCreateInfusion.BatchID)|| e.PropertyName == nameof(ViewModelCreateInfusion.MachineID))
          {
             OnCanExecutedChanged();
          }

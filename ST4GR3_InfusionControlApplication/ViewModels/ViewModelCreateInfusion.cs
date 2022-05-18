@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Input;
+using System.Windows.Media.Converters;
 using DTO_Library;
 using ICA_BusinessLogicLayer;
 using ICA_BusinessLogicLayer.Services;
@@ -39,27 +40,14 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             }
             set
             {
-                _cpr = value;
+               _cpr = value;
                 OnPropertyChanged(nameof(CPR));
-            }
+         }
         }
 
-        private double _height;
-        public double Height
-        {
-            get
-            {
-                return _height;
-            }
-            set
-            {
-                _height = value;
-                OnPropertyChanged(nameof(Height));
-            }
-        }
 
-        private int _weight;
-        public int Weight
+        private string _weight;
+        public string Weight
         {
             get
             {
@@ -86,8 +74,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             }
         }
 
-        private int _batchID;
-        public int BatchID
+        private string _batchID;
+        public string BatchID
         {
             get
             {
@@ -100,8 +88,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             }
         }
 
-        private int _machineID;
-        public int MachineID
+        private string _machineID;
+        public string MachineID
         {
             get
             {

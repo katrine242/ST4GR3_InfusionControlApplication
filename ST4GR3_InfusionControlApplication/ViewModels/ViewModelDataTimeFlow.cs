@@ -17,10 +17,16 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             _infusionPlan = infusionPlan;
         }
 
+        
+        public string Time0 => _infusionPlan.DtoTimeFlowList[0].Time.ToString();
+        public string Flow0 => _infusionPlan.DtoTimeFlowList[0].Flow.ToString();
 
-        public string Time0 => _infusionPlan.InfusionData.DtoTimeFlowList[0].Time.ToString();
-        public string Flow0 => _infusionPlan.InfusionData.DtoTimeFlowList[0].Flow.ToString();
+        public string Time1 => _infusionPlan.DtoTimeFlowList[0].Time.ToString();
+        public string Flow1 => _infusionPlan.DtoTimeFlowList[0].Flow.ToString(); 
+        
+        public string Time2 => _infusionPlan.DtoTimeFlowList[0].Time.ToString();
+        public string Flow2 => _infusionPlan.DtoTimeFlowList[0].Flow.ToString();
 
 
-    }
+   }
 }
