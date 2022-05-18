@@ -17,7 +17,7 @@ namespace ICA_DataAccessLayer.Migrations
 
             modelBuilder.Entity("DTO_Library.DTO_InfusionPlan", b =>
                 {
-                    b.Property<int>("MachineID")
+                    b.Property<int>("InfusionPlanId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -42,6 +42,9 @@ namespace ICA_DataAccessLayer.Migrations
                     b.Property<int>("IntervalTime")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("MachineID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<double>("MaxDoseage")
                         .HasColumnType("REAL");
 
@@ -54,7 +57,7 @@ namespace ICA_DataAccessLayer.Migrations
                     b.Property<double>("Weight")
                         .HasColumnType("REAL");
 
-                    b.HasKey("MachineID");
+                    b.HasKey("InfusionPlanId");
 
                     b.ToTable("InfusionPlans");
                 });
@@ -62,9 +65,10 @@ namespace ICA_DataAccessLayer.Migrations
             modelBuilder.Entity("DTO_Library.DTO_TimeFlow", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("DtoInfusionPlanMachineId")
+                    b.Property<int>("DtoInfusionPlanId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Flow")
@@ -73,9 +77,9 @@ namespace ICA_DataAccessLayer.Migrations
                     b.Property<double>("Time")
                         .HasColumnType("REAL");
 
-                    b.HasKey("Id", "DtoInfusionPlanMachineId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("DtoInfusionPlanMachineId");
+                    b.HasIndex("DtoInfusionPlanId");
 
                     b.ToTable("TimeFlows");
                 });
@@ -84,7 +88,7 @@ namespace ICA_DataAccessLayer.Migrations
                 {
                     b.HasOne("DTO_Library.DTO_InfusionPlan", "DtoInfusionPlan")
                         .WithMany("DtoTimeFlowList")
-                        .HasForeignKey("DtoInfusionPlanMachineId")
+                        .HasForeignKey("DtoInfusionPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

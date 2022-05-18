@@ -32,15 +32,19 @@ namespace ICA_DataAccessLayer.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) //Her siger jeg hvad de forskellige DTOs primary key er og nedenunder hvad deres forerign key er. 
         {
-            modelBuilder.Entity<DTO_InfusionPlan>().HasKey(i => i.MachineID);
+            modelBuilder.Entity<DTO_InfusionPlan>().HasKey(i => i.InfusionPlanId);
 
-            modelBuilder.Entity<DTO_TimeFlow>().HasKey(i => new {i.Id, DtoInfusionPlanMachineID = i.DtoInfusionPlanMachineId});
+            modelBuilder.Entity<DTO_TimeFlow>().HasKey(t => t.Id);
 
             modelBuilder.Entity<DTO_InfusionPlan>().HasMany(i => i.DtoTimeFlowList)
-                .WithOne(i=>i.DtoInfusionPlan)
-                .HasForeignKey(i=>i.DtoInfusionPlanMachineId).IsRequired();
+                .WithOne(t => t.DtoInfusionPlan)
+                .HasForeignKey(i => i.DtoInfusionPlanId).IsRequired();
 
             //https://stackoverflow.com/questions/48435542/entity-framework-core-fluent-api-one-to-many-and-one-to-one-produces-duplicate-f 
         }
+
     }
 }
+
+
+

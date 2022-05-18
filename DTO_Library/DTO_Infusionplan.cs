@@ -9,8 +9,10 @@ namespace DTO_Library
 {
     public class DTO_InfusionPlan
     {
-        public int MachineID { get; set; }
+        [Key]
+        public int InfusionPlanId { get; set; }
         public long CPR { get; set; }
+        public int MachineID { get; set; }
         public string MedicineName { get; set; }
         public double Weight { get; set; }
         public int Fulltime { get; set; }
@@ -23,6 +25,7 @@ namespace DTO_Library
         public int  Height { get; set; }
         public string PatientName { get; set; }
 
+        // navigation properties
         public List<DTO_TimeFlow> DtoTimeFlowList { get; set; }
     }
 }

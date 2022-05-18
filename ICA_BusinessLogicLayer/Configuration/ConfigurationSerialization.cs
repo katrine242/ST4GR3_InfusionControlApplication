@@ -25,6 +25,9 @@ namespace ICA_BusinessLogicLayer.Configuration
          FileStream fs = new FileStream(path, FileMode.Open);
          XmlSerializer serializer = new XmlSerializer(typeof(List<Medicine_config>));
          List<Medicine_config> configurationlist = (List<Medicine_config>)serializer.Deserialize(fs);
+
+         fs.Close();
+
          return configurationlist;
       }
 

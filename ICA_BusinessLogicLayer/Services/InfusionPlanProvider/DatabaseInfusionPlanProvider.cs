@@ -40,12 +40,25 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
             using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
             {
                 DTO_InfusionPlan infusionPlansDtos = context.InfusionPlans
-                    .Where(i => i.CPR == WantedCPR).FirstOrDefault();
+                    .Where(i => i.CPR == WantedCPR)
+                    .Include(i => i.DtoTimeFlowList).FirstOrDefault();
                 return infusionPlansDtos;
             }
         }
+
     }
 }
+
+
+
+
+
+//using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
+//{
+//    DTO_InfusionPlan infusionPlansDtos = context.InfusionPlans
+//        .Where(i => i.CPR == WantedCPR).FirstOrDefault();
+//    return infusionPlansDtos;
+//}
 
 //DTO_InfusionPlan infusionPlansDtos = context.InfusionPlans
 //    .Where(i => i.CPR == WantedCPR).Include(i => i.DtoTimeFlowList).FirstOrDefault();
