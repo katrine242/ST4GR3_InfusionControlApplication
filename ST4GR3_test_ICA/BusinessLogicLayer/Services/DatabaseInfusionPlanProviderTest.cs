@@ -46,31 +46,31 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
             });
         }
 
-        [TestCase(0308980566)]
-        [TestCase(3112974344)]
-        [TestCase(0110982322)]
-        public void GetOneInfusionPlanTest(long CPRValue)
-        {
-            _fakeMedicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-            _infusionPlan = new InfusionPlan(_fakeMedicine, 123, 12345, CPRValue, 60, "Nadia");
+        //[TestCase(0308980566)]
+        //[TestCase(3112974344)]
+        //[TestCase(0110982322)]
+        //public void GetOneInfusionPlanTest(long CPRValue)
+        //{
+        //    _fakeMedicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
+        //    _infusionPlan = new InfusionPlan(_fakeMedicine, 123, 12345, CPRValue, 60, "Nadia");
 
-            _infusionPlan.DtoTimeFlowList = new List<DTO_TimeFlow>();
+        //    _infusionPlan.DtoTimeFlowList = new List<DTO_TimeFlow>();
 
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.6 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 20, Flow = 1.2 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 40, Flow = 1.8 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 60, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 80, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 100, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 140, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.6 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 20, Flow = 1.2 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 40, Flow = 1.8 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 60, Flow = 2.4 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 80, Flow = 2.4 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 100, Flow = 2.4 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.4 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 140, Flow = 2.4 });
+        //    _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
 
-            _creator.CreateInfusionPlan(_infusionPlan);
+        //    _creator.CreateInfusionPlan(_infusionPlan);
 
-           _dtoInfusionPlan = _uut.GetOneInfusionPlan(CPRValue);
+        //   _dtoInfusionPlan = _uut.GetOneInfusionPlan(CPRValue);
 
-           Assert.That(_dtoInfusionPlan.CPR, Is.EqualTo(CPRValue));
-        }
+        //   Assert.That(_dtoInfusionPlan.CPR, Is.EqualTo(CPRValue));
+        //}
     }
 }
