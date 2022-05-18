@@ -24,9 +24,11 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanCreator
         {
             using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
             {
+
                 DTO_InfusionPlan infusionPlanDto = ToInfusionPlanDTO(infusionPlan); //Her vil vi gå fra infusionPlan til DTO
 
                 context.InfusionPlans.Add(infusionPlanDto);
+
                 await context.SaveChangesAsync();
             }
         }

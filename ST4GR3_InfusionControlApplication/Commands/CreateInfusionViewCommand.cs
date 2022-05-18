@@ -13,7 +13,7 @@ using ST4GR3_InfusionControlApplication.ViewModels;
 
 namespace ST4GR3_InfusionControlApplication.Commands
 {
-    public class CreateInfusionViewCommand : CommandBase
+    public class CreateInfusionViewCommand : AsyncCommandBase
     {
        private readonly ViewModelCreateInfusion _viewModelCreateInfusion;
        private readonly InfusionOverview _infusionOverview;
@@ -35,7 +35,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
        {
           return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>=0 &&_viewModelCreateInfusion.Height>0&&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
        }
-      public override void Execute(object parameter)
+      public override async Task ExecuteAsync(object parameter)
       {
          
          try
@@ -45,7 +45,9 @@ namespace ST4GR3_InfusionControlApplication.Commands
                   new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine)
                   ,_viewModelCreateInfusion.MachineID,_viewModelCreateInfusion.BatchID,_viewModelCreateInfusion.CPR
                   ,_viewModelCreateInfusion.Weight,_viewModelCreateInfusion.Patient);
-            _infusionOverview.CreateInfusionPlan(infusionPlan);
+           
+            await _infusionOverview.CreateInfusionPlan(infusionPlan);
+
             _menuViewNavigationService.Navigate();
 
          }

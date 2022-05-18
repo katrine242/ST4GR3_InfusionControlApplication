@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,10 @@ namespace DTO_Library
         public double Time { get; set; }
         public double Flow { get; set; }
 
+        // navigation properties
         public DTO_InfusionPlan DtoInfusionPlan { get; set; }
-        public int DtoInfusionPlanMachineId { get; set; }
 
-
-
-        //public List<double> Time { get; set; }
-        //public List<double> Flow { get; set; }
+        //Foreign key
+        public int DtoInfusionPlanId { get; set; }
     }
 }

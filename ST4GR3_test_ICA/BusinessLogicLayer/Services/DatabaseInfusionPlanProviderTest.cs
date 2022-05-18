@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,6 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
     public class DatabaseInfusionPlanProviderTest
     {
         private DatabaseInfusionPlanProvider _uut;
-        private DatabaseInfusionPlanCreator _creator;
-        private InfusionPlan _infusionPlan;
         private IMedicine _fakeMedicine;
         private DTO_InfusionPlan _dtoInfusionPlan;
         private string _connectingstring = "Data Source=infusionPlan.db";
@@ -28,12 +27,18 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
         public void Setup()
         {
             _uut = new DatabaseInfusionPlanProvider(_connectingstring);
-            _creator = new DatabaseInfusionPlanCreator(_connectingstring);
             _fakeMedicine = Substitute.For<IMedicine>();
             _dtoInfusionPlan = new DTO_InfusionPlan();
-            _infusionPlan = new InfusionPlan(_fakeMedicine, _dtoInfusionPlan.MachineID
-                , _dtoInfusionPlan.BatchId, _dtoInfusionPlan.CPR
-                , _dtoInfusionPlan.Weight, _dtoInfusionPlan.PatientName);
+
+            IInfusionPlanCreator creator = new DatabaseInfusionPlanCreator(_connectingstring);
+            creator.MigrateToDataBase();
+
+        }
+
+        [TearDown]
+        public void AfterTest()
+        {
+            File.Delete("InfusionPlan.db");
         }
 
         [Test]
@@ -49,28 +54,29 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
         [TestCase(0308980566)]
         [TestCase(3112974344)]
         [TestCase(0110982322)]
-        public void GetOneInfusionPlanTest(long CPRValue)
+        public async Task GetOneInfusionPlanTest(long CPRValue)
         {
-            _fakeMedicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-            _infusionPlan = new InfusionPlan(_fakeMedicine, 123, 12345, CPRValue, 60, "Nadia");
 
-            _infusionPlan.DtoTimeFlowList = new List<DTO_TimeFlow>();
+            _dtoInfusionPlan = new DTO_InfusionPlan()
+            {
+                MedicineName = "Iloprost", Concentration = 0.2, Factor = 0.0005, IntervalTime = 30,
+                MaxDoseage = 0.002, Fulltime = 360, CPR = CPRValue, DtoTimeFlowList = new List<DTO_TimeFlow>(),
+                Height = 165, MachineID = 10, Weight = 60, BatchId = 156, PatientName = "Nadia"
+            };
 
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 0, Flow = 0.6 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 20, Flow = 1.2 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 40, Flow = 1.8 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 60, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 80, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 100, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 120, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 140, Flow = 2.4 });
-            _infusionPlan.DtoTimeFlowList.Add(new DTO_TimeFlow { Time = 160, Flow = 2.4 });
+            var infusionPlanDbContextFactory = new InfusionPlanDbContextFactory(_connectingstring);
 
-            _creator.CreateInfusionPlan(_infusionPlan);
+            using (var infusionPlanDbContext = infusionPlanDbContextFactory.CreateDbContext())
+            {
+                infusionPlanDbContext.InfusionPlans.Add(_dtoInfusionPlan);
+                infusionPlanDbContext.SaveChanges();
 
-           _dtoInfusionPlan = _uut.GetOneInfusionPlan(CPRValue);
+            }
 
-           Assert.That(_dtoInfusionPlan.CPR, Is.EqualTo(CPRValue));
+
+            _dtoInfusionPlan = _uut.GetOneInfusionPlan(CPRValue);
+
+            Assert.That(_dtoInfusionPlan.CPR, Is.EqualTo(CPRValue));
         }
     }
 }

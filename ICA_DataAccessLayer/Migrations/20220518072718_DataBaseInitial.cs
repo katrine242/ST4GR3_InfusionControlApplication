@@ -2,7 +2,7 @@
 
 namespace ICA_DataAccessLayer.Migrations
 {
-    public partial class Initial : Migration
+    public partial class DataBaseInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,9 +10,10 @@ namespace ICA_DataAccessLayer.Migrations
                 name: "InfusionPlans",
                 columns: table => new
                 {
-                    MachineID = table.Column<int>(type: "INTEGER", nullable: false)
+                    InfusionPlanId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CPR = table.Column<long>(type: "INTEGER", nullable: false),
+                    MachineID = table.Column<int>(type: "INTEGER", nullable: false),
                     MedicineName = table.Column<string>(type: "TEXT", nullable: true),
                     Weight = table.Column<double>(type: "REAL", nullable: false),
                     Fulltime = table.Column<int>(type: "INTEGER", nullable: false),
@@ -26,33 +27,34 @@ namespace ICA_DataAccessLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InfusionPlans", x => x.MachineID);
+                    table.PrimaryKey("PK_InfusionPlans", x => x.InfusionPlanId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TimeFlows",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false),
-                    DtoInfusionPlanMachineId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Time = table.Column<double>(type: "REAL", nullable: false),
-                    Flow = table.Column<double>(type: "REAL", nullable: false)
+                    Flow = table.Column<double>(type: "REAL", nullable: false),
+                    DtoInfusionPlanId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TimeFlows", x => new { x.Id, x.DtoInfusionPlanMachineId });
+                    table.PrimaryKey("PK_TimeFlows", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TimeFlows_InfusionPlans_DtoInfusionPlanMachineId",
-                        column: x => x.DtoInfusionPlanMachineId,
+                        name: "FK_TimeFlows_InfusionPlans_DtoInfusionPlanId",
+                        column: x => x.DtoInfusionPlanId,
                         principalTable: "InfusionPlans",
-                        principalColumn: "MachineID",
+                        principalColumn: "InfusionPlanId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TimeFlows_DtoInfusionPlanMachineId",
+                name: "IX_TimeFlows_DtoInfusionPlanId",
                 table: "TimeFlows",
-                column: "DtoInfusionPlanMachineId");
+                column: "DtoInfusionPlanId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

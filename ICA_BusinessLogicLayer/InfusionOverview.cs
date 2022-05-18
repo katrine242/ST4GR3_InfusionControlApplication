@@ -9,9 +9,9 @@ namespace ICA_BusinessLogicLayer
 {
    public class InfusionOverview //Denne her klasse skal muligvis slettes. Vi ser lige på det når vi har oprettet ViewModel
    {
-      private readonly InfusionPlanBook _infusionPlanBook;
+      private readonly IInfusionPlanBook _infusionPlanBook;
       public List<Medicine_config> Configlist { get; set; }
-      public InfusionOverview(InfusionPlanBook infusionPlanBook, List<Medicine_config> configlist)
+      public InfusionOverview(IInfusionPlanBook infusionPlanBook, List<Medicine_config> configlist)
       {
          _infusionPlanBook = infusionPlanBook;
          Configlist = configlist;
