@@ -43,7 +43,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
             InfusionPlan infusionPlan =
                new InfusionPlan(
                   new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine)
-                     ,Convert.ToInt32(_viewModelCreateInfusion.MachineID), Convert.ToInt32(_viewModelCreateInfusion.BatchID),Convert.ToInt32(_viewModelCreateInfusion.CPR)
+                     ,Convert.ToInt32(_viewModelCreateInfusion.MachineID), Convert.ToInt32(_viewModelCreateInfusion.BatchID),_viewModelCreateInfusion.CPR
                   , Convert.ToInt64(_viewModelCreateInfusion.Weight),_viewModelCreateInfusion.Patient);
            
             await _infusionOverview.CreateInfusionPlan(infusionPlan);
