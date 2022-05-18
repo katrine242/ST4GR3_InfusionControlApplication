@@ -8,7 +8,7 @@ using System.IO;
 
 namespace ICA_DataAccessLayer.TCP
 {
-    public class Listener:IListener
+    public class Listener:IListener //Denne klasse er ikke implementeret til resten af systemet
     {
         private readonly string _iPAdress;
 

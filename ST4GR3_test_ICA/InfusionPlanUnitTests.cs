@@ -52,7 +52,7 @@ namespace ST4GR3_test_ICA
         {
 
              medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-            _uut = new InfusionPlan(medicine, 123, 12345, 9999999999, 60, "Nadia");
+            _uut = new InfusionPlan(medicine, 123, 12345, "9999999999", 60, "Nadia");
 
 
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>(){ new DTO_TimeFlow { Time = 0, Flow = 0.6 } , new DTO_TimeFlow { Time = 20, Flow = 1.2 }, new DTO_TimeFlow { Time = 40, Flow = 1.8 }, new DTO_TimeFlow { Time = 60, Flow = 2.4 }, new DTO_TimeFlow { Time = 80, Flow = 2.4 }, new DTO_TimeFlow { Time = 100, Flow = 2.4 }, new DTO_TimeFlow { Time = 120, Flow = 2.4 }, new DTO_TimeFlow { Time = 140, Flow = 2.4 }, new DTO_TimeFlow { Time = 160, Flow = 2.4 }};
@@ -65,7 +65,7 @@ namespace ST4GR3_test_ICA
         public void MedicineCorrectTimeAndFlowsTest1()
         {
            medicine = new Medicine("NameHere", 0.5, 20, 180, 2.0, 50);
-           _uut = new InfusionPlan(medicine, 123, 12345, 9999999999, 60, "Nadia");
+           _uut = new InfusionPlan(medicine, 123, 12345, "9999999999", 60, "Nadia");
            
            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>() { new DTO_TimeFlow { Time = 0, Flow = 0.6 }, new DTO_TimeFlow { Time = 20, Flow = 1.2 }, new DTO_TimeFlow { Time = 40, Flow = 1.8 }, new DTO_TimeFlow { Time = 60, Flow = 2.4 }, new DTO_TimeFlow { Time = 80, Flow = 2.4 }, new DTO_TimeFlow { Time = 100, Flow = 2.4 }, new DTO_TimeFlow { Time = 120, Flow = 2.4 }, new DTO_TimeFlow { Time = 140, Flow = 2.4 }, new DTO_TimeFlow { Time = 160, Flow = 2.4 } };
 
@@ -83,7 +83,7 @@ namespace ST4GR3_test_ICA
         public void MedicineCorrectTimeAndFlowsTest2()
         {
               medicine = new Medicine("NameHere", 0.9, 30, 240, 3.6, 100);
-              _uut = new InfusionPlan(medicine, 123, 12345, 9999999999, 70, "Nadia");
+              _uut = new InfusionPlan(medicine, 123, 12345, "9999999999", 70, "Nadia");
 
 
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>(){ new DTO_TimeFlow { Time = 0, Flow = 0.63 } , new DTO_TimeFlow { Time = 30, Flow = 1.26 } , new DTO_TimeFlow { Time = 60, Flow = 1.89 }, new DTO_TimeFlow { Time = 90, Flow = 2.52 }, new DTO_TimeFlow { Time = 120, Flow = 2.52 }, new DTO_TimeFlow { Time = 150, Flow = 2.52 }, new DTO_TimeFlow { Time = 180, Flow = 2.52 } , new DTO_TimeFlow { Time = 210, Flow = 2.52 } };
@@ -101,7 +101,7 @@ namespace ST4GR3_test_ICA
         public void MedicineCorrectTimeAndFlowsTest3()
         {
               medicine = new Medicine("NameHere", 2.0, 60, 300, 6.0, 200);
-              _uut = new InfusionPlan(medicine, 123, 12345, 9999999999, 80, "Nadia");
+              _uut = new InfusionPlan(medicine, 123, 12345, "9999999999", 80, "Nadia");
 
 
             List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>(){ new DTO_TimeFlow { Time = 0, Flow = 0.8 } , new DTO_TimeFlow { Time = 60, Flow = 1.6 } , new DTO_TimeFlow { Time = 120, Flow = 2.4 } , new DTO_TimeFlow { Time = 180, Flow = 2.4 } , new DTO_TimeFlow { Time = 240, Flow = 2.4 } };
@@ -118,7 +118,7 @@ namespace ST4GR3_test_ICA
         public void DTOIsSetCorrectly()
         {
             medicine = new Medicine("NameHere", 2.0, 60, 300, 6.0, 200);
-            _uut = new InfusionPlan(medicine, 123, 12345, 9999999999, 80, "Nadia");
+            _uut = new InfusionPlan(medicine, 123, 12345, "9999999999", 80, "Nadia");
             List<DTO_TimeFlow> expectedTimeFlowList = new List<DTO_TimeFlow>() {new DTO_TimeFlow{ Time = 0, Flow = 0.8 }, new DTO_TimeFlow { Time = 60, Flow = 1.6 } , new DTO_TimeFlow { Time = 120, Flow = 2.4 } , new DTO_TimeFlow { Time = 180, Flow = 2.4 } , new DTO_TimeFlow { Time = 240, Flow = 2.4 } };
 
             _uut.MakeInfusionPlan();

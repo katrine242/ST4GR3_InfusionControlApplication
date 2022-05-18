@@ -15,7 +15,7 @@ namespace ICA_BusinessLogicLayer
 
         public int MachineID { get; set; }
         public int BatchId { get; set; }
-        public long CPR { get; set; }
+        public string CPR { get; set; }
         public double Weight { get; set; }
         public string PatientName { get; set; }
         public IMedicine Medicine { get; }
@@ -24,7 +24,7 @@ namespace ICA_BusinessLogicLayer
 
         #endregion
 
-        public InfusionPlan(IMedicine medicine, in int machineId, int batchId, long cpr, double weight, string patientName)
+        public InfusionPlan(IMedicine medicine, in int machineId, int batchId, string cpr, double weight, string patientName)
         {
             Medicine = medicine;
             MachineID = machineId;

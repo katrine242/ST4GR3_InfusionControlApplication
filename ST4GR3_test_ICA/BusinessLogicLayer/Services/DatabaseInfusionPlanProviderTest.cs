@@ -49,10 +49,10 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
             });
         }
 
-        [TestCase(0308980566)]
-        [TestCase(3112974344)]
-        [TestCase(0110982322)]
-        public async Task GetOneInfusionPlanTest(long CPRValue)
+        [TestCase("0308980566")]
+        [TestCase("3112974344")]
+        [TestCase("0110982322")]
+        public async Task GetOneInfusionPlanTest(string CPRValue)
         {
 
             _dtoInfusionPlan = new DTO_InfusionPlan()
@@ -70,7 +70,6 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
                 infusionPlanDbContext.SaveChanges();
 
             }
-
 
             _dtoInfusionPlan = _uut.GetOneInfusionPlan(CPRValue);
 
