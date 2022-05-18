@@ -110,8 +110,24 @@ namespace ST4GR3_test_ICA
             {
             Assert.AreEqual(_uut.CalculateFlowRate()[i].Time, timeFlowList[i].Time);
             Assert.AreEqual(_uut.CalculateFlowRate()[i].Flow, timeFlowList[i].Flow);
-         }
+            }
 
+        }
+
+        [Test]
+        public void DTOIsSetCorrectly()
+        {
+            medicine = new Medicine("NameHere", 2.0, 60, 300, 6.0, 200);
+            _uut = new InfusionPlan(medicine, 123, 12345, 9999999999, 80, "Nadia");
+            List<DTO_TimeFlow> expectedTimeFlowList = new List<DTO_TimeFlow>() {new DTO_TimeFlow{ Time = 0, Flow = 0.8 }, new DTO_TimeFlow { Time = 60, Flow = 1.6 } , new DTO_TimeFlow { Time = 120, Flow = 2.4 } , new DTO_TimeFlow { Time = 180, Flow = 2.4 } , new DTO_TimeFlow { Time = 240, Flow = 2.4 } };
+
+            _uut.MakeInfusionPlan();
+
+            for (int i = 0; i < expectedTimeFlowList.Count; i++)
+            {
+                Assert.AreEqual(expectedTimeFlowList[i].Time, _uut.DtoTimeFlowList[i].Time);
+                Assert.AreEqual(expectedTimeFlowList[i].Flow,_uut.DtoTimeFlowList[i].Flow);
+            }
         }
     }
 }
