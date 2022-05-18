@@ -24,7 +24,7 @@ namespace ICA_BusinessLogicLayer
 
         #endregion
 
-        public InfusionPlan(IMedicine medicine, in int machineId, int batchId, long cpr, double weight, string patientName)
+        public InfusionPlan(IMedicine medicine, int machineId, int batchId, long cpr, double weight, string patientName)
         {
             Medicine = medicine;
             MachineID = machineId;
