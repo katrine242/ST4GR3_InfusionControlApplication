@@ -11,15 +11,14 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
    public class ViewModelDataInfusionPlan : ViewModelBase
    {
       private readonly InfusionPlan _infusionPlan;
-      public string PatientName => _infusionPlan.InfusionData.PatientName;
-      public string CPR => _infusionPlan.InfusionData.CPR.ToString();
-      public string Height => _infusionPlan.InfusionData.Height.ToString();
-      public string Weight => _infusionPlan.InfusionData.Weight.ToString();
-      public string MedicineName => _infusionPlan.InfusionData.MedicineName;
-      public string BatchId => _infusionPlan.InfusionData.BatchId.ToString();
-      public string MachineID => _infusionPlan.InfusionData.MachineID.ToString();
-      public DateTime Fulltime => Convert.ToDateTime(_infusionPlan.InfusionData.Fulltime);
-      public DateTime TimeLeft { get; }
+      public string PatientName => _infusionPlan.PatientName;
+      public string CPR => _infusionPlan.CPR.ToString();
+      public string Weight => _infusionPlan.Weight.ToString();
+      public string MedicineName => _infusionPlan.Medicine.Name;
+      public string BatchId => _infusionPlan.BatchId.ToString();
+      public string MachineID => _infusionPlan.MachineID.ToString();
+      //public DateTime Fulltime => Convert.ToDateTime(_infusionPlan.InfusionData.Fulltime);
+      //public DateTime TimeLeft { get; }
       
 
       public ViewModelDataInfusionPlan(InfusionPlan infusionPlan)

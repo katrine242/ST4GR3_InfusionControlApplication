@@ -29,10 +29,7 @@
             <TextBlock Text="{Binding CPR}"  Grid.Row="1" TextAlignment="Right" FontSize="18" Margin="110 00 150 0" Background="White"></TextBlock>
         </Grid>
 
-        <Grid Grid.Row="2" Margin="10 0 350 10">
-            <TextBlock Text="Højde:" FontWeight="Bold" FontSize="18" ></TextBlock>
-            <TextBlock Text="{Binding Height}"  Grid.Row="2" TextAlignment="Right" FontSize="18" Background="White" Margin="110 00 150 0"></TextBlock>
-        </Grid>
+        <Grid Grid.Row="2" Margin="10 0 350 10"/>
         <Grid Grid.Row="3" Margin="10 0 350 10">
             <TextBlock Text="Vægt:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBlock Grid.Row="3" Background="White" TextAlignment="Right"  FontSize="18" Text="{Binding Weight}"   Margin="110 00 150 0"></TextBlock>

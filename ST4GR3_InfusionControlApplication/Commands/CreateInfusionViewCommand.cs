@@ -33,7 +33,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
 
        public override bool CanExecute(object parameter)
        {
-          return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>=0 &&_viewModelCreateInfusion.Height>0&&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
+          return !string.IsNullOrEmpty(_viewModelCreateInfusion.Patient)&& _viewModelCreateInfusion.CPR>=0 &&_viewModelCreateInfusion.Weight>0&& !string.IsNullOrEmpty(_viewModelCreateInfusion.Medicine)&&_viewModelCreateInfusion.BatchID>0&&_viewModelCreateInfusion.MachineID>0 && base.CanExecute(parameter);
        }
       public override async Task ExecuteAsync(object parameter)
       {
