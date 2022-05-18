@@ -61,9 +61,9 @@ namespace ICA_BusinessLogicLayer
                   medicineConfig.Fulltime, medicineConfig.MaxDosis, medicineConfig.Concentration);
                break;
             }
-            else if (medicineConfig.Name != name)
+            else
             {
-               throw new InvalidMedicineNameConflictException(medicineConfig.Name);
+               throw new InvalidMedicineNameConflictException(name);
             }
          }
 
