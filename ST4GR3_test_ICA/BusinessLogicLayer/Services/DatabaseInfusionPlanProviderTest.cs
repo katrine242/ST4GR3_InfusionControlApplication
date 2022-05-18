@@ -19,7 +19,6 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
     public class DatabaseInfusionPlanProviderTest
     {
         private DatabaseInfusionPlanProvider _uut;
-        private IMedicine _fakeMedicine;
         private DTO_InfusionPlan _dtoInfusionPlan;
         private string _connectingstring = "Data Source=infusionPlan.db";
 
@@ -27,7 +26,6 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer.Services
         public void Setup()
         {
             _uut = new DatabaseInfusionPlanProvider(_connectingstring);
-            _fakeMedicine = Substitute.For<IMedicine>();
             _dtoInfusionPlan = new DTO_InfusionPlan();
 
             IInfusionPlanCreator creator = new DatabaseInfusionPlanCreator(_connectingstring);
