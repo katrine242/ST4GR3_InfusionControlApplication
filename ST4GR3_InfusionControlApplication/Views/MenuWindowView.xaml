@@ -32,7 +32,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="CPR" Width="154.8">
+                    <GridViewColumn Header="CPR" Width="154.7">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Padding="0 0 20 0" Text="{Binding CPR}"/>
@@ -40,7 +40,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Behandling" Width="154.8">
+                    <GridViewColumn Header="Behandling" Width="154.7">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Padding="0 0 20 0" Text="{Binding MedicineName}"/>

@@ -30,7 +30,7 @@ namespace ICA_BusinessLogicLayer
             await _infusionPlanCreator.CreateInfusionPlan(infusionPlan);
         }
 
-        public DTO_InfusionPlan GetOneInfusionPlan(long WantedCPR)
+        public DTO_InfusionPlan GetOneInfusionPlan(string WantedCPR)
         {
             return _infusionPlanProvider.GetOneInfusionPlan(WantedCPR);
         }

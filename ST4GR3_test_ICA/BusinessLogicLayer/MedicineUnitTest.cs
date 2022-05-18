@@ -9,6 +9,7 @@ using NUnit.Framework;
 
 namespace ST4GR3_test_ICA.BusinessLogicLayer
 {
+    [TestFixture]
    public class MedicineUnitTest
    {
       private IMedicine _uut;

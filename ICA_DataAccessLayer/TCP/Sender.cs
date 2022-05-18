@@ -10,7 +10,7 @@ using DTO_Library;
 
 namespace ICA_DataAccessLayer.TCP
 {
-    public class Sender: ISender
+    public class Sender: ISender //Denne klasse er ikke implementeret til resten af systemet
     {
         private readonly string _iPAdress;
         private BlockingCollection<double[]> _arrayQueue;

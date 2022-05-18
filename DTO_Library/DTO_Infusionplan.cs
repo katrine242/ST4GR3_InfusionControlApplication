@@ -11,7 +11,7 @@ namespace DTO_Library
     {
         [Key]
         public int InfusionPlanId { get; set; }
-        public long CPR { get; set; }
+        public string CPR { get; set; }
         public int MachineID { get; set; }
         public string MedicineName { get; set; }
         public double Weight { get; set; }

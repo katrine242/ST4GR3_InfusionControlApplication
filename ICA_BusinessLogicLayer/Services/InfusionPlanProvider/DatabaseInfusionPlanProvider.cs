@@ -35,7 +35,7 @@ namespace ICA_BusinessLogicLayer.Services.InfusionPlanProvider
                 , i.MachineID, i.BatchId, i.CPR, i.Weight, i.PatientName);
         }
 
-        public DTO_InfusionPlan GetOneInfusionPlan(long WantedCPR)
+        public DTO_InfusionPlan GetOneInfusionPlan(string WantedCPR)
         {
             using (InfusionPlanDbContext context = _dbContextFactory.CreateDbContext())
             {
