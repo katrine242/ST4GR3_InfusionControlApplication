@@ -47,6 +47,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
                   ,_viewModelCreateInfusion.Weight,_viewModelCreateInfusion.Patient);
            
             await _infusionOverview.CreateInfusionPlan(infusionPlan);
+            MessageBox.Show("Infusionsplan oprettet","Information", MessageBoxButton.OK,MessageBoxImage.Information);
 
             _menuViewNavigationService.Navigate();
 
