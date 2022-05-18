@@ -30,8 +30,8 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
             }
         }
 
-        private int _cpr;
-        public int CPR
+        private long _cpr;
+        public long CPR
         {
             get
             {
