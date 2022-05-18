@@ -57,16 +57,19 @@ namespace ST4GR3_InfusionControlApplication
 
             base.OnStartup(e);
       }
-
-        private ViewModelMenuWindow CreateMakeViewModelMenuWindow()
-        {
-            return new ViewModelMenuWindow(_infusionOverview, new NavigationService(_navigationStore, CreateViewCreateInfusion));
-        }
-
         private ViewModelCreateInfusion CreateViewCreateInfusion()
         {
             return new ViewModelCreateInfusion(_infusionOverview, new NavigationService(_navigationStore, CreateMakeViewModelMenuWindow));
         }
+
+        private ViewModelMenuWindow CreateMakeViewModelMenuWindow()
+        {
+            //return new ViewModelMenuWindow(_infusionOverview, new NavigationService(_navigationStore, CreateViewCreateInfusion));
+
+            return ViewModelMenuWindow.LoadViewModel(_infusionOverview,
+                new NavigationService(_navigationStore, CreateViewCreateInfusion));
+        }
+
 
 
     }

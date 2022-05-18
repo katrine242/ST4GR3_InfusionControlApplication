@@ -51,7 +51,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Text="Batch ID:" FontWeight="Bold" FontSize="18" Grid.ColumnSpan="2"></TextBlock>
             <TextBox Margin="78,0,470,0" Text="{Binding BatchID, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1"/>
-            <Button Content="Opret Plan" Command="{Binding CreatePlanCommand}" Margin="568,0,0,0" Background="White" Grid.Column="1" ></Button>
+            <Button Content="Opret Plan" Command="{Binding CreatePlanCommand}" Margin="568,0,0,0" Background="White" Grid.Column="1" Click="Button_Click" ></Button>
         </Grid>
 
         <Grid Grid.Row="6" Margin="10 20 30 10">
