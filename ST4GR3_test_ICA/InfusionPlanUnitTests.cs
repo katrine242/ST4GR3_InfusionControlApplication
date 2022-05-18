@@ -69,8 +69,6 @@ namespace ST4GR3_test_ICA
            
            List<DTO_TimeFlow> timeFlowList = new List<DTO_TimeFlow>() { new DTO_TimeFlow { Time = 0, Flow = 0.6 }, new DTO_TimeFlow { Time = 20, Flow = 1.2 }, new DTO_TimeFlow { Time = 40, Flow = 1.8 }, new DTO_TimeFlow { Time = 60, Flow = 2.4 }, new DTO_TimeFlow { Time = 80, Flow = 2.4 }, new DTO_TimeFlow { Time = 100, Flow = 2.4 }, new DTO_TimeFlow { Time = 120, Flow = 2.4 }, new DTO_TimeFlow { Time = 140, Flow = 2.4 }, new DTO_TimeFlow { Time = 160, Flow = 2.4 } };
 
-
-
             for (int i = 0; i < timeFlowList.Count; i++)
             {
             
