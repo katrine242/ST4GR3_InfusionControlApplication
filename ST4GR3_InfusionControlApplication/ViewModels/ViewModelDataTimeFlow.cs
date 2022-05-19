@@ -10,16 +10,12 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelDataTimeFlow : ViewModelBase
     {
-        private readonly InfusionPlan _infusionPlan;
-
-        public ViewModelDataTimeFlow(InfusionPlan infusionPlan)
+       public ViewModelDataTimeFlow()
         {
-            _infusionPlan = infusionPlan;
         }
 
-        public string Time => _infusionPlan.DtoTimeFlowList[0].Time.ToString();
-        public string Flow => _infusionPlan.DtoTimeFlowList[0].Flow.ToString();
+        public double Time { get; set; }
+        public double Flow { get; set; }
 
-
-    }
+   }
 }

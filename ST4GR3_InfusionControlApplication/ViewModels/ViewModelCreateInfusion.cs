@@ -17,9 +17,7 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
 {
     public class ViewModelCreateInfusion : ViewModelBase
     {
-       private readonly ObservableCollection<ViewModelDataTimeFlow> _calculatedInfusionPlan;
         private string _patient;
-        public IEnumerable<ViewModelDataTimeFlow> Plan => _calculatedInfusionPlan;
         public string Patient
         {
             get
@@ -110,15 +108,32 @@ namespace ST4GR3_InfusionControlApplication.ViewModels
         public ICommand CreatePlanCommand { get; }
         public ICommand CreateInfusionPlanCommand { get; }
 
-        public ViewModelCreateInfusion(InfusionOverview infusionOverview,  NavigationService menuViewNavigationService) // har slettet InfusionOverview
+        private readonly ObservableCollection<ViewModelDataTimeFlow> _flowPlans;
+        public IEnumerable<ViewModelDataTimeFlow> FlowPlan => _flowPlans;
+
+      public ViewModelCreateInfusion(InfusionOverview infusionOverview,  NavigationService menuViewNavigationService) // har slettet InfusionOverview
         {
-           _calculatedInfusionPlan = new ObservableCollection<ViewModelDataTimeFlow>();
-            CreatePlanCommand = new CreatePlanCommand(this, infusionOverview);
+           _flowPlans = new ObservableCollection<ViewModelDataTimeFlow>();
+
+
+          CreatePlanCommand = new CreatePlanCommand(this, infusionOverview);
             CreateInfusionPlanCommand = new CreateInfusionViewCommand(this, infusionOverview, menuViewNavigationService);
             BackCommand = new NavigateCommand(menuViewNavigationService);
 
         }
+        public void LoadCollectionList(List<DTO_TimeFlow> timeFlows)
+        {
+           _flowPlans.Clear();
 
-        
-    }
+           foreach (DTO_TimeFlow timeFlow in timeFlows)
+           {
+              _flowPlans.Add(new ViewModelDataTimeFlow() { Time = timeFlow.Time, Flow = Math.Round(timeFlow.Flow,3)});
+           }
+           
+
+
+
+        }
+
+   }
 }

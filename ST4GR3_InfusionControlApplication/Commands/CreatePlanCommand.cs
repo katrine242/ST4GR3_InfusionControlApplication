@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using DTO_Library;
 using ICA_BusinessLogicLayer;
 using ICA_BusinessLogicLayer.Exception;
 using ST4GR3_InfusionControlApplication.ViewModels;
@@ -28,17 +29,18 @@ namespace ST4GR3_InfusionControlApplication.Commands
             InfusionPlan infusionPlan =
                new InfusionPlan(
                   new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine)
-                  , Convert.ToInt32(_viewModelCreateInfusion.MachineID), Convert.ToInt32(_viewModelCreateInfusion.BatchID), Convert.ToInt32(_viewModelCreateInfusion.CPR)
+                  , Convert.ToInt32(_viewModelCreateInfusion.MachineID), Convert.ToInt32(_viewModelCreateInfusion.BatchID), _viewModelCreateInfusion.CPR
                   , Convert.ToInt64(_viewModelCreateInfusion.Weight), _viewModelCreateInfusion.Patient);
 
             infusionPlan.MakeInfusionPlan();
-            
-
+            _viewModelCreateInfusion.LoadCollectionList(infusionPlan.DtoTimeFlowList);
          }
          catch (InvalidMedicineNameConflictException ex)
          {
             MessageBox.Show("Medicin ikke tilgængeligt", "Fejlmeddelelse", MessageBoxButton.OK, MessageBoxImage.Error);
          }
       }
+
+
    }
 }

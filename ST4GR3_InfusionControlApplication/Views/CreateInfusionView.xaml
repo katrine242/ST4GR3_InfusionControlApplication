@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ST4GR3_InfusionControlApplication.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Height="363">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
@@ -17,34 +16,39 @@
             <RowDefinition Height =" auto"/>
             <RowDefinition Height =" auto"/>
             <RowDefinition Height =" auto"/>
-            <RowDefinition Height =" auto"/>
-            <RowDefinition Height =" auto"/>
-            <RowDefinition Height =" auto"/>
         </Grid.RowDefinitions>
+
+        <DataGrid IsReadOnly="True" Margin="370,80,0,0" 
+                  x:Name="PlanGrid" HorizontalAlignment="Left" ItemsSource="{Binding FlowPlan}"
+                  HorizontalScrollBarVisibility="Disabled" ColumnWidth="100" Grid.RowSpan="7" HeadersVisibility="Column" AreRowDetailsFrozen="True" />
+
+
         <Grid Margin="10 50 30 10">
-            <TextBlock Text="Patient:" FontWeight="Bold" FontSize="18"></TextBlock>
+            <TextBlock Text="Patient:" FontWeight="Bold" FontSize="18" ></TextBlock>
+            <TextBlock Text="Plan:" FontWeight="Bold" FontSize="18" Margin="360 0 0 0"></TextBlock>
             <TextBox Grid.Row="0" Text="{Binding Patient, UpdateSourceTrigger=PropertyChanged}" Margin="110 0 470 0" />
             <Button Content="Tilbage" Command="{Binding BackCommand }" Margin="600 0 0 0" Background="LightPink"/>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="10 0 350 10">
-            <TextBlock Text="CPR:" FontWeight="Bold" FontSize="18"></TextBlock>
-            <TextBox Text="{Binding CPR, UpdateSourceTrigger=PropertyChanged}" Margin="110 00 150 0"/>
-        </Grid>
-
-        <Grid Grid.Row="2" Margin="10 0 350 10"/>
-        <Grid Grid.Row="3" Margin="10 0 30 10">
-            <TextBlock Text="Vægt:" FontWeight="Bold" FontSize="18" ></TextBlock>
-            <TextBox  Text="{Binding Weight, UpdateSourceTrigger=PropertyChanged}" Margin="110 00 470 0"/>
+        <Grid Grid.Row="1" Margin="10 0 30 10">
+ 
+            <TextBlock Text="CPR:" FontWeight="Bold" FontSize="18" ></TextBlock>
+            <TextBox Text="{Binding CPR, UpdateSourceTrigger=PropertyChanged}"  Margin="110 00 470 0"/>
             
         </Grid>
 
-        <Grid Grid.Row="4" Margin="10 20 30 10">
+        <Grid Grid.Row="2" Margin="10 0 30 10">
+            <TextBlock Text="Vægt:" FontWeight="Bold" FontSize="18" ></TextBlock>
+            <TextBox  Text="{Binding Weight, UpdateSourceTrigger=PropertyChanged}" Margin="110 00 470 0"/>
+
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="10 20 30 10">
             <TextBlock Text="Medicin:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBox Text="{Binding Medicine, UpdateSourceTrigger=PropertyChanged}" Margin="110 00 470 0"/>
             <Button Content="Brugerdefinér" Command="{Binding UserChoiceCommand}" Margin="600,0,0,0" Background="White" Grid.Column="1" ></Button>
         </Grid>
-        <Grid Grid.Row="5" Margin="10 0 30 10">
+        <Grid Grid.Row="4" Margin="10 0 30 10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="91*"/>
@@ -54,90 +58,11 @@
             <Button Content="Opret Plan" Command="{Binding CreatePlanCommand}" Margin="568,0,0,0" Background="White" Grid.Column="1" Click="Button_Click" ></Button>
         </Grid>
 
-        <Grid Grid.Row="6" Margin="10 20 30 10">
+        <Grid Grid.Row="5" Margin="10 20 30 10">
             <TextBlock Text="ID-Maskine:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBox Text="{Binding MachineID, UpdateSourceTrigger=PropertyChanged}" Margin="110 00 470 0" />
             <Button Content="Opret Infusion" Command="{Binding CreateInfusionPlanCommand}" Margin="600 0 0 0"></Button>
         </Grid>
 
-        <Grid Grid.Row="7" Margin="10 15 50 0" >
-            <TextBlock Text="Plan:" FontWeight="Bold" FontSize="18" Margin="0,0,0,-20"></TextBlock>
-        </Grid>
-
-        <ListView Grid.Row="8"  Margin="10 25 10 0" ItemsSource="{Binding Plan}">
-            <!--<Skal også binde til InfusionPlans">-->
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Tid (min)" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="Bind Flow0" HorizontalAlignment="Center"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Bind Time1" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="Bind Flow0" HorizontalAlignment="Center"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intervaltid2" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="BindFlow2" HorizontalAlignment="Center"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intervaltid3" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="BindFlow3" HorizontalAlignment="Center"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intervaltid4" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="BindFlow4" HorizontalAlignment="Center"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intervaltid5" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="BindFlow5" HorizontalAlignment="Center"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intervaltid6" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="BindFlow6" HorizontalAlignment="Center"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intervaltid7" Width="85">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="BindFlow7" HorizontalAlignment="Center"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intervaltid8" Width="90">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="BindFlow8" HorizontalAlignment="Center"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
     </Grid>
 </UserControl>

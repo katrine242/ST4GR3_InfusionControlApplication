@@ -31,24 +31,6 @@ namespace ICA_BusinessLogicLayer
             Fulltime = fulltime;
         }
 
-      public override string ToString()
-      {
-         return $"{Name}{Factor}{IntervalTime}{Fulltime}{MaxDosis}{Concentration}";
-      }
-
-      public override bool Equals(object obj)
-      {
-         return obj is Medicine medicine &&
-            Name == medicine.Name &&
-            Factor == medicine.Factor &&
-            IntervalTime == medicine.IntervalTime &&
-            MaxDosis == medicine.MaxDosis &&
-            Concentration == medicine.Concentration;
-      }
-      public override int GetHashCode()
-      {
-         return HashCode.Combine(Name, Factor, IntervalTime, MaxDosis, Concentration);
-      }
 
       public Medicine GetMedicine(List<Medicine_config> medicinelist, string name)
       {
