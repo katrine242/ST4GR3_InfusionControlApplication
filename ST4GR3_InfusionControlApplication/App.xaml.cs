@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using ST4GR3_InfusionControlApplication.Stores;
+using ST4GR3_InfusionControlApplication.Navigation;
 using ICA_BusinessLogicLayer;
 using ICA_BusinessLogicLayer.Configuration;
 using ICA_BusinessLogicLayer.Services;

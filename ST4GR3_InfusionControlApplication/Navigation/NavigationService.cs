@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ST4GR3_InfusionControlApplication.Commands;
-using ST4GR3_InfusionControlApplication.Stores;
+using ST4GR3_InfusionControlApplication.Navigation;
 using ST4GR3_InfusionControlApplication.ViewModels;
 
-namespace ICA_BusinessLogicLayer.Services
+namespace ST4GR3_InfusionControlApplication.Navigation
 {
    public class NavigationService
    {

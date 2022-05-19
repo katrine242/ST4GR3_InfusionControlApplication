@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ST4GR3_InfusionControlApplication.ViewModels;
 
-namespace ST4GR3_InfusionControlApplication.Stores
+namespace ST4GR3_InfusionControlApplication.Navigation
 {
     public class NavigationStore
     {

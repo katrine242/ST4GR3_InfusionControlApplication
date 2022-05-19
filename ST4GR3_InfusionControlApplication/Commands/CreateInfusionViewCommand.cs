@@ -10,6 +10,7 @@ using ICA_BusinessLogicLayer;
 using ICA_BusinessLogicLayer.Exception;
 using ICA_BusinessLogicLayer.Services;
 using ST4GR3_InfusionControlApplication.ViewModels;
+using ST4GR3_InfusionControlApplication.Navigation;
 
 namespace ST4GR3_InfusionControlApplication.Commands
 {
