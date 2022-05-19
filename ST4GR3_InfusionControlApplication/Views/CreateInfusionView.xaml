@@ -27,7 +27,7 @@
             <TextBlock Text="Patient:" FontWeight="Bold" FontSize="18" ></TextBlock>
             <TextBlock Text="Plan:" FontWeight="Bold" FontSize="18" Margin="360 0 0 0"></TextBlock>
             <TextBox Grid.Row="0" Text="{Binding Patient, UpdateSourceTrigger=PropertyChanged}" Margin="110 0 470 0" />
-            <Button Content="Tilbage" Command="{Binding BackCommand }" Margin="600 0 0 0" Background="LightPink"/>
+            <Button Content="Tilbage" Command="{Binding BackCommand }" Margin="600 -50 0 50" Background="LightPink"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="10 0 30 10">
@@ -55,7 +55,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Text="Batch ID:" FontWeight="Bold" FontSize="18" Grid.ColumnSpan="2"></TextBlock>
             <TextBox Margin="78,0,470,0" Text="{Binding BatchID, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1"/>
-            <Button Content="Opret Plan" Command="{Binding CreatePlanCommand}" Margin="568,0,0,0" Background="White" Grid.Column="1" Click="Button_Click" ></Button>
+            <Button Content="Opret Plan" Command="{Binding CreatePlanCommand}" Margin="568,0,0,0" Background="White" Grid.Column="1" ></Button>
         </Grid>
 
         <Grid Grid.Row="5" Margin="10 20 30 10">

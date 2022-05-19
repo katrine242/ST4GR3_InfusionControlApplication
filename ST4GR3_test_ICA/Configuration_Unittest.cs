@@ -43,9 +43,9 @@ namespace ST4GR3_test_ICA
 
 
       [TestCase("Iloprost", 0.2, "perifere vaskulære", 0.0005, 360, 30, 0.002 )]
-      [TestCase("Infliximab_1til4", 0, "Reumatoid artritis", 5, 120, 1, 10)]
-      [TestCase("Infliximab_5til10", 0, "Reumatoid artritis", 5, 60, 1, 10)]
-      [TestCase("Infliximab_over10", 0, "Reumatoid artritis", 5, 30, 1, 10)]
+      [TestCase("Infliximab1til4", 1, "Reumatoid artritis", 5, 120, 120, 10)]
+      [TestCase("Infliximab5til10", 1, "Reumatoid artritis", 5, 60, 60, 10)]
+      [TestCase("Infliximabover10", 1, "Reumatoid artritis", 5, 30, 30, 10)]
 
       public void testConfigReturnsListContainsrightValues(string name, double concentration, string disease, double factor, int fulltime, int intervaltime, double maxdosage)
       {

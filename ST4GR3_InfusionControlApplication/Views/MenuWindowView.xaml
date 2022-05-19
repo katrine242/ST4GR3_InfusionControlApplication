@@ -52,11 +52,7 @@
             </ListView>
 
         <ListView Grid.Row="1" Grid.Column="1" Margin="10 78 30 17">
-            <ListViewItem/>
-            <ListViewItem/>
-            <ListViewItem/>
-            <ListViewItem/>
-            <ListViewItem/>
+     
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
