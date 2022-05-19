@@ -17,13 +17,6 @@ namespace ICA_DataAccessLayer.DbContexts
             _connectingString = connectingString;
         }
 
-        public ServiceProvider CreateServiceProvider()
-        {
-            var services = new ServiceCollection();
-            services.AddDbContext<InfusionPlanDbContext>(opt => opt.UseSqlite(_connectingString));
-            var serviceCollection = services.BuildServiceProvider();
-            return serviceCollection;
-        }
         public InfusionPlanDbContext CreateDbContext()
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(_connectingString).Options;
