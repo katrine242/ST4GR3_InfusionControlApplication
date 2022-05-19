@@ -32,7 +32,7 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer
          {
             Name = "Iloprost",
             Concentration = 0.02,
-            Disease = "Perifære Vaskulære",
+            Disease = "perifere vaskulære",
             Factor = 0.0005,
             Fulltime = 360,
             IntervalTime = 30,
@@ -53,7 +53,7 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer
          Assert.Throws<InvalidMedicineNameConflictException>(() => _uut.GetMedicine(_configlist, "panodil"));
       }
 
-      [TestCase("Iloprost", 0.02, "Perifære Vaskulære", 0.0005,360,30,0.002)]
+      [TestCase("Iloprost", 0.2, "perifere vaskulære", 0.0005,360,30,0.002)]
 
       public void TestGetMedicineReturnRightMedicine(string name, double concentration, string disease, double factor,int fulltime,int intervaltime,double maxdosage)
       {
@@ -65,10 +65,17 @@ namespace ST4GR3_test_ICA.BusinessLogicLayer
          
          _configlist = new List<Medicine_config>() { medicine_config_ };
 
-         Assert.That(_uut.GetMedicine(_configlist, "Iloprost"), Is.EqualTo(new Medicine(name, factor, intervaltime, fulltime, maxdosage, concentration)));
+
+         Assert.That(_uut.GetMedicine(_configlist, "Iloprost").Factor, Is.EqualTo(factor));
+         Assert.That(_uut.GetMedicine(_configlist, "Iloprost").Name, Is.EqualTo(name));
+         Assert.That(_uut.GetMedicine(_configlist, "Iloprost").Concentration, Is.EqualTo(concentration));
+         Assert.That(_uut.GetMedicine(_configlist, "Iloprost").Fulltime, Is.EqualTo(fulltime));
+         Assert.That(_uut.GetMedicine(_configlist, "Iloprost").MaxDosis, Is.EqualTo(maxdosage));
+         Assert.That(_uut.GetMedicine(_configlist, "Iloprost").IntervalTime, Is.EqualTo(intervaltime));
       }
 
-      [TestCase("Iloprost", 0.02, "Perifære Vaskulære", 0.0005, 360, 30, 0.002)]
+
+      [TestCase("Iloprost", 0.2, "perifere vaskulære", 0.0005, 360, 30, 0.002)]
 
       public void throws_Rightexception_whennamewrong(string name, double concentration, string disease, double factor, int fulltime, int intervaltime, double maxdosage)
       {

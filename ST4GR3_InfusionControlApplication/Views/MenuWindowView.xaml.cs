@@ -25,9 +25,5 @@ namespace ST4GR3_InfusionControlApplication.Views
             InitializeComponent();
         }
 
-        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

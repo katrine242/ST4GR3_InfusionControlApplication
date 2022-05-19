@@ -23,11 +23,9 @@ namespace ST4GR3_InfusionControlApplication.Views
         public CreateInfusionView()
         {
             InitializeComponent();
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            
         }
+      
     }
 }

@@ -40,6 +40,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
          
          try
          {
+
             InfusionPlan infusionPlan =
                new InfusionPlan(
                   new Medicine().GetMedicine(_infusionOverview.Configlist, _viewModelCreateInfusion.Medicine)

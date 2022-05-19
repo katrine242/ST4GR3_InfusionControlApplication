@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -17,7 +18,6 @@ namespace ICA_BusinessLogicLayer
         public int Fulltime { get; }
         public double MaxDosis { get; }
         public double Concentration { get;  }
-        private Medicine _medicine;
 
 
         public Medicine(){}
@@ -34,19 +34,27 @@ namespace ICA_BusinessLogicLayer
 
       public Medicine GetMedicine(List<Medicine_config> medicinelist, string name)
       {
+         bool medicinenamevalid=false;
+         Medicine _medicine=new Medicine();
+
 
          foreach (Medicine_config medicineConfig in medicinelist)
          {
             if (medicineConfig.Name == name)
             {
-               _medicine = new Medicine(medicineConfig.Name, medicineConfig.Factor, medicineConfig.IntervalTime,
+               _medicine=new Medicine(medicineConfig.Name, medicineConfig.Factor, medicineConfig.IntervalTime,
                   medicineConfig.Fulltime, medicineConfig.MaxDosis, medicineConfig.Concentration);
+
+               medicinenamevalid = true;
+
                break;
             }
-            else
-            {
-               throw new InvalidMedicineNameConflictException(name);
-            }
+         }
+
+         if (medicinenamevalid==false)
+         {
+            throw new InvalidMedicineNameConflictException(name);
+
          }
 
          return _medicine;
