@@ -9,8 +9,6 @@ namespace ICA_DataAccessLayer.DbContexts
 {
     public interface IInfusionPlanDbContextFactory
     {
-        //public ServiceProvider CreateServiceProvider();
-
         public InfusionPlanDbContext CreateDbContext();
 
     }
