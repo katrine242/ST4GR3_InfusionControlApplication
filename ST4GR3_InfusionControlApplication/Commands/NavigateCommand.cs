@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ICA_BusinessLogicLayer;
 using ICA_BusinessLogicLayer.Services;
 using ICA_BusinessLogicLayer.Services.InfusionPlanProvider;
-using ST4GR3_InfusionControlApplication.Stores;
+using ST4GR3_InfusionControlApplication.Navigation;
 using ST4GR3_InfusionControlApplication.ViewModels;
 
 namespace ST4GR3_InfusionControlApplication.Commands

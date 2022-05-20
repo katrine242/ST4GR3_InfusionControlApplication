@@ -9,7 +9,7 @@ using DTO_Library;
 using ICA_BusinessLogicLayer;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ST4GR3_InfusionControlApplication.Commands;
-using ST4GR3_InfusionControlApplication.Stores;
+using ST4GR3_InfusionControlApplication.Navigation;
 
 namespace ST4GR3_InfusionControlApplication.ViewModels
 {

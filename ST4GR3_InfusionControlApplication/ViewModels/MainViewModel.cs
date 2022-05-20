@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ICA_BusinessLogicLayer;
-using ST4GR3_InfusionControlApplication.Stores;
+using ST4GR3_InfusionControlApplication.Navigation;
 
 namespace ST4GR3_InfusionControlApplication.ViewModels
 {
