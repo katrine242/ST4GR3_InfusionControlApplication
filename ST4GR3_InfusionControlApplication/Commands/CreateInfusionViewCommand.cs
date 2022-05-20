@@ -63,7 +63,7 @@ namespace ST4GR3_InfusionControlApplication.Commands
 
       private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
       {
-         if (e.PropertyName == nameof(ViewModelCreateInfusion.Patient)|| e.PropertyName == nameof(ViewModelCreateInfusion.CPR)||e.PropertyName == nameof(ViewModelCreateInfusion.Weight)|| e.PropertyName == nameof(ViewModelCreateInfusion.Medicine)|| e.PropertyName == nameof(ViewModelCreateInfusion.BatchID)|| e.PropertyName == nameof(ViewModelCreateInfusion.MachineID))
+         if (e.PropertyName == nameof(ViewModelCreateInfusion.Patient) || e.PropertyName == nameof(ViewModelCreateInfusion.CPR) || e.PropertyName == nameof(ViewModelCreateInfusion.Weight) || e.PropertyName == nameof(ViewModelCreateInfusion.Medicine) || e.PropertyName == nameof(ViewModelCreateInfusion.BatchID) || e.PropertyName == nameof(ViewModelCreateInfusion.MachineID))
          {
             OnCanExecutedChanged();
          }
